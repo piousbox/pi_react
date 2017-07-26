@@ -1,8 +1,8 @@
 import React    from 'react'
 import ReactDOM from 'react-dom'
-import { hashHistory, Router, Route, Redirect, browserHistory } from 'react-router'
+import { hashHistory, Router, Route, browserHistory } from 'react-router'
 import PropTypes from 'prop-types'
-import { Provider, connect } from 'react-redux'
+import { connect } from 'react-redux'
 
 import 'whatwg-fetch'
 
@@ -15,7 +15,6 @@ import { ProcessWrapped } from '../OurProcess'
 import Products   from './Products'
 import Clients    from './Clients'
 import Stack      from '../Stack/Stack'
-import store      from '../../stores'
 
 
 function getAppState() {
@@ -24,12 +23,19 @@ function getAppState() {
   };
 }
 
+class Redirect extends React.Component {
+  componentWillMount () {
+    console.log('+++ +++ my redirect props:', this.props)
+    console.log('+++ +++ my redirect stats:', this.stats) 
+
+    window.location = this.state.route.loc
+  }
+}
+
 class App extends React.Component {
   state = getAppState()
 
   componentDidMount() {
-    console.log("+++ +++ store: ", store)
-
     ItemsStore.addChangeListener(this.onChange);
     AppActions.getItems();
   }
@@ -44,14 +50,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <Provider store={store} >
-        <Router history={browserHistory}>
-          <Route path="/" component={Home} />
-          <Redirect from="/en/galleries/show_long/:galleryName/:photoIdx" to="http://travel-guilde.mobi/en/galleries/show/:galleryName/" />
-          <Route path="/en/galleries" component={Clients} />
-        </Router>
-      </Provider>
-    );
+      <Router history={browserHistory} >
+        <Route path="/" component={Home} />
+        <Route path="/en/galleries/show_long/:galleryName/:photoIdx" component={Redirect} />
+        <Route path="/en/galleries" component={Clients} />
+      </Router>
+    )
   }
 }
 
