@@ -1,2 +1,5 @@
 
 0.1.0 - now, react.
+0.1.1 - major breaking changes, providers and store
+        I wanna have massive redirects for pi -> tgm
+

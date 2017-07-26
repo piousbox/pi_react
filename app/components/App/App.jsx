@@ -1,7 +1,8 @@
 import React    from 'react'
 import ReactDOM from 'react-dom'
-import { Router, Route, hashHistory } from 'react-router'
+import { hashHistory, Router, Route, Redirect, browserHistory } from 'react-router'
 import PropTypes from 'prop-types'
+import { Provider, connect } from 'react-redux'
 
 import 'whatwg-fetch'
 
@@ -14,6 +15,8 @@ import { ProcessWrapped } from '../OurProcess'
 import Products   from './Products'
 import Clients    from './Clients'
 import Stack      from '../Stack/Stack'
+import store      from '../../stores'
+
 
 function getAppState() {
   return {
@@ -25,6 +28,8 @@ class App extends React.Component {
   state = getAppState()
 
   componentDidMount() {
+    console.log("+++ +++ store: ", store)
+
     ItemsStore.addChangeListener(this.onChange);
     AppActions.getItems();
   }
@@ -39,9 +44,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <Router history={hashHistory}>
-        <Route path="/"         component={Home} />
-      </Router>
+      <Provider store={store} >
+        <Router history={browserHistory}>
+          <Route path="/" component={Home} />
+          <Redirect from="/en/galleries/show_long/:galleryName/:photoIdx" to="http://travel-guilde.mobi/en/galleries/show/:galleryName/" />
+          <Route path="/en/galleries" component={Clients} />
+        </Router>
+      </Provider>
     );
   }
 }
@@ -50,5 +59,11 @@ class App extends React.Component {
   children: PropTypes.node.isRequired
 } */
 
-export default App
+function mapStateToProps(state, ownProps) {
+  return {
+    apiUrl: state.apiUrl,
+  }
+}
+
+export default connect(mapStateToProps)(App)
 
