@@ -41,10 +41,6 @@ class App extends React.Component {
     return (
       <Router history={hashHistory}>
         <Route path="/"         component={Home} />
-        <Route path="/process"  component={ProcessWrapped} />
-        <Route path="/products" component={Products} />
-        <Route path="/clients"  component={Clients} />
-        <Route path="/stack"    component={Stack} />
       </Router>
     );
   }

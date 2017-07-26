@@ -132,7 +132,7 @@
     "buildDir": "./build",
     "buildDirTests": "./build_tests",
     "devHost": "localhost",
-    "devPort": 8000
+    "devPort": 8007
   },
   "scripts": {
     "build": "NODE_ENV=production npm run webpack && cp -v app/contact_us.php build/contact_us.php && echo ok",
