@@ -1,15 +1,2 @@
 
-0.0.4 - maybe appearance is right and specs are wrong
-0.0.5 - specs have always passed in this repo I think, and appearance has never been what I expect
-0.0.6 - specs pass, but appearance is incomplete
-        included bootstrap css
-        specs work, functionality works, everything is great.
-0.0.7 - let's do router
-        let's have process as a routeable page
-0.0.8 - let's do some transitions
-        got list of clients with pics
-0.0.9 - lets wire redux reasonably (show cities)
-        let's have this part test-driven
-0.0.10 - fancy Stack page
-
-
+0.1.0 - now, react.
