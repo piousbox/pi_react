@@ -42,6 +42,4 @@ Ports:
       "development": 8007,
       "test": 8088
 
-the build is really build_piousbox
-
 
