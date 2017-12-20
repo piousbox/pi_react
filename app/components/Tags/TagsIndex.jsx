@@ -4,7 +4,7 @@ import { Grid, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router'
 
 import { tagsAction } from '../../actions'
-import { TgmRouter } from '../App'
+import { AppRouter } from '../App'
 
 class TagsIndex extends React.Component {
 
@@ -19,7 +19,7 @@ class TagsIndex extends React.Component {
 
     let tags = []
     this.props.tags.map((tag, index) => {
-      tags.push(<li key={index} ><Link to={TgmRouter.tagLink(tag.name_seo)}>{tag.name}</Link></li>)
+      tags.push(<li key={index} ><Link to={AppRouter.tagLink(tag.name_seo)}>{tag.name}</Link></li>)
     })
 
     return (

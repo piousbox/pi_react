@@ -1,5 +1,5 @@
 
-let TgmRouter = {
+let AppRouter = {
   cityPath: '/:lang(en|ru|pt|es)/cities/travel-to/:cityname',
   cityLink: (g) => {
     if (typeof g === 'string') {
@@ -114,4 +114,4 @@ let TgmRouter = {
 
 }
 
-export default TgmRouter
+export default AppRouter

@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 import { galleriesShow } from '../../actions'
 
 import Center from '../Center'
-import TgmRouter from '../App/TgmRouter'
+import AppRouter from '../App/AppRouter'
 import { Link } from 'react-router'
 
 import styles from './_Galleries.scss'
@@ -38,19 +38,19 @@ class GalleriesPhotoShow extends React.Component {
     let prev         = null
     let photoIdx     = parseInt(this.props.params.photoIdx)
     if (photoIdx !== 0) {
-      let link = TgmRouter.galleryPhotoLink({galleryname: this.props.params.galleryname, photoIdx: photoIdx-1})
+      let link = AppRouter.galleryPhotoLink({galleryname: this.props.params.galleryname, photoIdx: photoIdx-1})
       prev = (<Link to={link}>previous</Link>)
     }
     let next         = null
     if (this.state.photos && photoIdx+1 !== this.state.photos.length) {
-      let link = TgmRouter.galleryPhotoLink({galleryname: this.props.params.galleryname, photoIdx: photoIdx+1})
+      let link = AppRouter.galleryPhotoLink({galleryname: this.props.params.galleryname, photoIdx: photoIdx+1})
       next = (<Link to={link}>next</Link>)
     }
     let thumb_photos = []
     if (this.state.photos) {
       this.state.photos.forEach((photo, idx) => {
         thumb_photos.push(
-          <Link key={idx} to={TgmRouter.galleryPhotoLink({ galleryname: this.props.params.galleryname, photoIdx: idx})} >
+          <Link key={idx} to={AppRouter.galleryPhotoLink({ galleryname: this.props.params.galleryname, photoIdx: idx})} >
             <img src={photo.thumb_url} alt='' style={{ padding: '5px' }} />
           </Link>)
       })

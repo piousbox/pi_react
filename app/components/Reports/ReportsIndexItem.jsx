@@ -13,7 +13,7 @@ import { reportsShow } from '../../actions'
 
 import Center      from '../Center'
 
-import { LargeSquare, Leaderboard, TgmRouter } from '../App'
+import { LargeSquare, Leaderboard, AppRouter } from '../App'
 
 class ReportsIndexItem extends React.Component {
 
@@ -27,7 +27,7 @@ class ReportsIndexItem extends React.Component {
   render () {
     return (
       <Panel>
-        <h2><Link to={TgmRouter.reportLink(this.props.report)} >{ this.props.report.name }</Link></h2>
+        <h2><Link to={AppRouter.reportLink(this.props.report)} >{ this.props.report.name }</Link></h2>
         { this.props.report.subhead }
         { this.props.report.body }
       </Panel>

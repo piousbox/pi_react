@@ -2,7 +2,7 @@
 import Clearfix    from './Clearfix'
 import Meta        from './Meta'
 import TgmLink     from './TgmLink'
-import TgmRouter   from './TgmRouter'
+import AppRouter   from './AppRouter'
 
 const docTitle = (g) => {
   return `${g} - The Moby Travel Guide`
@@ -16,6 +16,6 @@ export default {
   Meta,
 
   TgmLink,
-  TgmRouter,
+  AppRouter,
   
 }

@@ -21,7 +21,7 @@ import {
   SET_API_URL,
 } from '../../constants/AppConstants'
 import { profileAction } from '../../actions'
-import TgmRouter from './TgmRouter'
+import AppRouter from './AppRouter'
 
 const MyFacebookButton = ({ onClick }) => (
   <button onClick={onClick}>f</button>
@@ -33,16 +33,20 @@ class MainNavigationPressroom extends React.Component {
     super(props)
     this.state = { site: {} }
 
-    if (localStorage.getItem('fbAccountId')) {
+    /* if (localStorage.getItem('fbAccountId')) {
       this.state = { profile: { id: localStorage.getItem('fbAccountId') } }
     } else {
       this.state = { profile: {} }
-    }
+    } */
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log("+++ +++ MainNavigationPressroom componentWillReceiveProps:", nextProps)
+    document.title = nextProps.site.title
   }
 
   componentWillMount(nextProps) {
-    // console.log("+++ +++ MainNavigationPressroom componentWillMount:", nextProps)
-    document.title = config.siteTitle
+    console.log("+++ +++ MainNavigationPressroom componentWillMount:", nextProps)
   }
 
   render () {
@@ -76,10 +80,10 @@ class MainNavigationPressroom extends React.Component {
 				    <ul className="sf-menu">
 					    <li className="selected"><a href="#" title="Home">Home</a></li>
 
-              { config.reportsEnabled ?   <li><Link to={TgmRouter.reportsLink()}>Reports</Link></li>     : null }
-              { config.galleriesEnabled ? <li><Link to={TgmRouter.galleriesLink()}>Galleries</Link></li> : null }
-              { config.videosEnabled ?    <li><Link to={TgmRouter.videosLink()}>Videos</Link></li>       : null }
-              { config.tagsEnabled ?      <li><Link to={TgmRouter.tagsLink()}>Tags</Link></li>           : null }
+              { config.reportsEnabled ?   <li><Link to={AppRouter.reportsLink()}>Reports</Link></li>     : null }
+              { config.galleriesEnabled ? <li><Link to={AppRouter.galleriesLink()}>Galleries</Link></li> : null }
+              { config.videosEnabled ?    <li><Link to={AppRouter.videosLink()}>Videos</Link></li>       : null }
+              { config.tagsEnabled ?      <li><Link to={AppRouter.tagsLink()}>Tags</Link></li>           : null }
 				    </ul>
 				  </nav>
 				  <div className="mobile_menu_container">
@@ -356,10 +360,10 @@ class MainNavigationPressroom extends React.Component {
           <Navbar.Collapse>
             <Nav bsStyle="pills" pullRight>
               { config.citiesEnabled ?    <li><Link to='/en/cities'>Cities</Link></li>                 : null }
-              { config.tagsEnabled ?      <li><Link to={TgmRouter.tagsLink()}>Tags</Link></li>         : null }
-              { config.galleriesEnabled ? <li><Link to={TgmRouter.galleriesLink}>Galleries</Link></li> : null }
-              { config.reportsEnabled ?   <li><Link to={TgmRouter.reportsLink}>Reports</Link></li>     : null }
-              { config.galleriesEnabled ? <li><Link to={TgmRouter.galleriesLink}>Galleries</Link></li> : null }
+              { config.tagsEnabled ?      <li><Link to={AppRouter.tagsLink()}>Tags</Link></li>         : null }
+              { config.galleriesEnabled ? <li><Link to={AppRouter.galleriesLink}>Galleries</Link></li> : null }
+              { config.reportsEnabled ?   <li><Link to={AppRouter.reportsLink}>Reports</Link></li>     : null }
+              { config.galleriesEnabled ? <li><Link to={AppRouter.galleriesLink}>Galleries</Link></li> : null }
             </Nav>
           </Navbar.Collapse>
         </Navbar> */ }
