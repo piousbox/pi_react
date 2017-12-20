@@ -31,6 +31,8 @@ class MainNavigationPressroom extends React.Component {
 
   constructor (props) {
     super(props)
+    this.state = { site: {} }
+
     if (localStorage.getItem('fbAccountId')) {
       this.state = { profile: { id: localStorage.getItem('fbAccountId') } }
     } else {
@@ -46,7 +48,7 @@ class MainNavigationPressroom extends React.Component {
   render () {
     // console.log('+++ +++ MainNavigation render:', this.props, this.state)
 
-    let profilePic = null
+    /* let profilePic = null
     if (this.props.profile.id) {
       profilePic = (<img src={`//graph.facebook.com/${this.props.profile.id}/picture`} alt='' />)
     } else if (this.state.profile.id) {
@@ -54,9 +56,7 @@ class MainNavigationPressroom extends React.Component {
     } 
     let fbLogin = (<FacebookAuth appId={config.fbAppId} fields="name,email,picture" 
                                  callback={(response) => {this.props.dispatch(profileAction(response))}} 
-                                 component={MyFacebookButton} />)
-
-    let lang = this.props.profile.lang
+                                 component={MyFacebookButton} />) */
     
     return (
       <div >
@@ -65,8 +65,8 @@ class MainNavigationPressroom extends React.Component {
 			  <div className="header_container">
 				  <div className="header clearfix">
 					  <div className="logo">
-						  <h1 style={{ margin: 0, fontFamily: 'serif' }} ><a href="home.html" title="Pressroom">Piousbox</a></h1>
-						  <h4>{config.siteSubtitle}</h4>
+						  <h1 style={{ margin: 0, fontFamily: 'serif' }} ><a href="home.html" title="Pressroom">{ this.state.site.title }</a></h1>
+						  <h4>{this.state.site.subtitle}</h4>
 					  </div>
 					  <div className="placeholder">728 x 90</div>
 				  </div>
@@ -76,11 +76,10 @@ class MainNavigationPressroom extends React.Component {
 				    <ul className="sf-menu">
 					    <li className="selected"><a href="#" title="Home">Home</a></li>
 
-              { config.citiesEnabled ?    <li><Link to='/en/cities'>Cities</Link></li>                 : null }
-              { config.tagsEnabled ?      <li><Link to={TgmRouter.tagsLink()}>Tags</Link></li>         : null }
-              { config.galleriesEnabled ? <li><Link to={TgmRouter.galleriesLink}>Galleries</Link></li> : null }
-              { config.reportsEnabled ?   <li><Link to={TgmRouter.reportsLink}>Reports</Link></li>     : null }
-              { config.galleriesEnabled ? <li><Link to={TgmRouter.galleriesLink}>Galleries</Link></li> : null }
+              { config.reportsEnabled ?   <li><Link to={TgmRouter.reportsLink()}>Reports</Link></li>     : null }
+              { config.galleriesEnabled ? <li><Link to={TgmRouter.galleriesLink()}>Galleries</Link></li> : null }
+              { config.videosEnabled ?    <li><Link to={TgmRouter.videosLink()}>Videos</Link></li>       : null }
+              { config.tagsEnabled ?      <li><Link to={TgmRouter.tagsLink()}>Tags</Link></li>           : null }
 				    </ul>
 				  </nav>
 				  <div className="mobile_menu_container">
