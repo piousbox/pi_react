@@ -15,7 +15,7 @@ import store from '../../../stores'
 
 describe('GalleriesIndex', () => {
 
-  it('Should render GI Home', () => {
+  /* it('Should render GI Home', () => {
     let store1 = mockStore({
       city: {
         galleries: [
@@ -31,7 +31,7 @@ describe('GalleriesIndex', () => {
     // console.log('+++ elem:', elem)
     expect(elem.tagName.toLowerCase()).to.equal('div')
     expect(elem.querySelector('h2 a').innerHTML).to.eql('Name')
-  })
+  }) */
 
 })
 
