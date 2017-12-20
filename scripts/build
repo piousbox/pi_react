@@ -4,16 +4,15 @@ set -x
 
 tagNumber=`git branch | grep -e "^*" | cut -d' ' -f 2`
 
-# npm run test-travis &&
+npm run test-travis &&
 
 git checkout master &&
 git merge "$tagNumber" &&
 npm run clean &&
 npm run build &&
-npm run build_piousbox &&
 git add . &&
 git commit -m 'auto-build on `date +%Y%m%d`' ;
 git push &&
 git checkout "$tagNumber" &&
 
-echo "tgm build default, piousbox ok"
+echo "ok build piousbox"
