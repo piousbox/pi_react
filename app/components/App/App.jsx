@@ -17,7 +17,7 @@ import Home from './Home'
 
 import MainNavigationPressroom from './MainNavigationPressroom'
 import Profile from './Profile'
-import TgmRouter from './TgmRouter'
+import AppRouter from './AppRouter'
 
 import { 
   CitiesIndex, CitiesShow, Cities2Show, CitiesWrapper,
@@ -42,47 +42,38 @@ import Tgm2Home from './Tgm2Home'
 import { citiesIndex, profileAction } from '../../actions'
 
 const routes = [
-  { path: '/tgm2',
-    component: Tgm2,
-    indexRoute: { component: Tgm2Home },
-    childRoutes: [
-      { path: '/tgm2/locations/:locationname',        component: Location },
-      { path: '/tgm2/cities/:cityname',               component: Cities2Show },
-      { path: '/tgm2/cities/:cityname/tags/:tagname', component: TagsShow },
-    ],
-  },
   { path: '/',
     component: MainNavigationPressroom,
     indexRoute: { component: Home },
     childRoutes: [
 
-      { path: TgmRouter.sitePath, component: Home },
+      { path: AppRouter.sitePath, component: Home },
 
-      { path: '/en/cities', component: CitiesIndex },
-      { path: TgmRouter.cityWrapperPath, component: CitiesWrapper, childRoutes: [
-        { path: TgmRouter.cityPath, component: CitiesShow },
-        { path: TgmRouter.cityGalleriesPath, component: GalleriesIndex },
-        { path: TgmRouter.cityReportsPath, component: ReportsIndex },
-        { path: TgmRouter.cityUsersPath, component: UsersShow },
-        { path: TgmRouter.cityVenuePath, component: VenuesShow },
-        { path: TgmRouter.cityVenuesPath, component: VenuesIndex },
+      /* { path: '/en/cities', component: CitiesIndex },
+      { path: AppRouter.cityWrapperPath, component: CitiesWrapper, childRoutes: [
+        { path: AppRouter.cityPath, component: CitiesShow },
+        { path: AppRouter.cityGalleriesPath, component: GalleriesIndex },
+        { path: AppRouter.cityReportsPath, component: ReportsIndex },
+        { path: AppRouter.cityUsersPath, component: UsersShow },
+        { path: AppRouter.cityVenuePath, component: VenuesShow },
+        { path: AppRouter.cityVenuesPath, component: VenuesIndex },
       ]},
-      { path: TgmRouter.cityEventPath, component: EventsShow },
+      { path: AppRouter.cityEventPath, component: EventsShow }, */
       
-      { path: TgmRouter.galleriesPath, component: GalleriesIndex, },
-      { path: TgmRouter.galleryPath, component: GalleriesShow },
-      { path: TgmRouter.galleryPhotoPath, component: GalleriesPhotoShow },
+      { path: AppRouter.galleriesPath, component: GalleriesIndex, },
+      { path: AppRouter.galleryPath, component: GalleriesShow },
+      { path: AppRouter.galleryPhotoPath, component: GalleriesPhotoShow },
 
-      { path: '/en/profile', component: Profile },
+      /* { path: '/en/profile', component: Profile }, */
 
-      { path: TgmRouter.reportsPath, component: ReportsIndex },
-      { path: TgmRouter.reportPath,  component: ReportsShow },
+      { path: AppRouter.reportsPath, component: ReportsIndex },
+      { path: AppRouter.reportPath,  component: ReportsShow },
 
-      { path: TgmRouter.tagsPath, component: TagsIndex, childRoutes: [
-        { path: TgmRouter.tagPath, component: TagShow },
+      { path: AppRouter.tagsPath, component: TagsIndex, childRoutes: [
+        { path: AppRouter.tagPath, component: TagShow },
       ]},
       
-      { path: TgmRouter.videoPath, component: VideosShow },
+      { path: AppRouter.videoPath, component: VideosShow },
     ],
   },
 ]

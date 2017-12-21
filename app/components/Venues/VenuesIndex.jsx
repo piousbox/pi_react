@@ -6,7 +6,7 @@ import {
 } from 'react-bootstrap'
 
 import { venuesIndexAction } from '../../actions'
-import { TgmRouter, docTitle } from '../App'
+import { AppRouter, docTitle } from '../App'
 
 class VenuesIndex extends React.Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class VenuesIndex extends React.Component {
 
     let venues = []
     this.props.venues.map((venue, index) => {
-      venues.push(<li><Link to={TgmRouter.cityVenueLink(this.props.params.cityname, venue.name_seo)}>{venue.name}</Link></li>)
+      venues.push(<li><Link to={AppRouter.cityVenueLink(this.props.params.cityname, venue.name_seo)}>{venue.name}</Link></li>)
     })
 
     return (

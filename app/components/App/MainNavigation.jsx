@@ -19,7 +19,7 @@ import {
   SET_API_URL,
 } from '../../constants/AppConstants'
 import { profileAction } from '../../actions'
-import TgmRouter from './TgmRouter'
+import AppRouter from './AppRouter'
 
 const MyFacebookButton = ({ onClick }) => (
   <button onClick={onClick}>f</button>
@@ -68,10 +68,10 @@ class MainNavigation extends React.Component {
           <Navbar.Collapse>
             <Nav bsStyle="pills" pullRight>
               { config.citiesEnabled ?    <li><Link to='/en/cities'>Cities</Link></li>                 : null }
-              { config.tagsEnabled ?      <li><Link to={TgmRouter.tagsLink()}>Tags</Link></li>         : null }
-              { config.galleriesEnabled ? <li><Link to={TgmRouter.galleriesLink}>Galleries</Link></li> : null }
-              { config.reportsEnabled ?   <li><Link to={TgmRouter.reportsLink}>Reports</Link></li>     : null }
-              { config.galleriesEnabled ? <li><Link to={TgmRouter.galleriesLink}>Galleries</Link></li> : null }
+              { config.tagsEnabled ?      <li><Link to={AppRouter.tagsLink()}>Tags</Link></li>         : null }
+              { config.galleriesEnabled ? <li><Link to={AppRouter.galleriesLink}>Galleries</Link></li> : null }
+              { config.reportsEnabled ?   <li><Link to={AppRouter.reportsLink}>Reports</Link></li>     : null }
+              { config.galleriesEnabled ? <li><Link to={AppRouter.galleriesLink}>Galleries</Link></li> : null }
 
               { /* <li><Link to="/en/profile">Profile</Link></li>
               <li>{ profilePic }</li>

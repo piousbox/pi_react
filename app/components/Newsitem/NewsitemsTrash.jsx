@@ -64,7 +64,7 @@ class Newsitems extends React.Component {
     }
     
     return (
-      <Row className="blog big" >
+      <Row>
         { listitems }
         <Col xs={12}>{ pagination }</Col>
       </Row>
