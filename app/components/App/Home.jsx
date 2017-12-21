@@ -41,13 +41,13 @@ const saveFbUser = (r) => {
    <button onClick={onClick}>
    Login with facebook
    </button>
-   ); */
+   ) */
 
 class Home extends React.Component {
 
   constructor(props) {
     super(props) 
-    props.dispatch(siteShow());
+    props.dispatch(siteShow())
 
     console.log('+++ +++ Home constructor:', props)
     if (props.site) {
@@ -189,7 +189,7 @@ class Home extends React.Component {
 								</ul>
 							</div>
 							<ul className="pagination clearfix page_margin_top_section">
-								<li className="left"><a title="" href="#">&nbsp;</a></li>
+								<li className="left"><a title="" href="#">&nbsp</a></li>
 								<li className="selected"><a title="" href="#">1</a></li>
 								<li><a title="" href="#">2</a></li>
 								<li>
@@ -197,7 +197,7 @@ class Home extends React.Component {
 										3
 									</a>
 								</li>
-								<li className="right"><a title="" href="#">&nbsp;</a></li>
+								<li className="right"><a title="" href="#">&nbsp</a></li>
               </ul>
 			      </div>
 			      <div className="column column_1_3 page_margin_top">
@@ -239,7 +239,7 @@ class Home extends React.Component {
 			                    <li className="category"><a title="WORLD" href="category_world.html">WORLD</a></li>
 			                  </ul>
 			                </div>
-			                <div style={{ width: '80.9014%', height: '148px;' }} className="value_bar_container">
+			                <div style={{ width: '80.9014%', height: '148px' }} className="value_bar_container">
                         <div className="value_bar animated_element duration-2000 animation-width width animation-1" ></div>
                       </div>
                     </li>
@@ -275,7 +275,7 @@ class Home extends React.Component {
 			                    <li className="category"><a title="SCIENCE" href="category_science.html">SCIENCE</a></li>
 			                  </ul>
 			                </div>
-			                <div style={{ width: '5%', height: '148px;' }} className="value_bar_container"><div className="value_bar animated_element duration-2000 animation-width width animation-1" ></div></div></li>
+			                <div style={{ width: '5%', height: '148px' }} className="value_bar_container"><div className="value_bar animated_element duration-2000 animation-width width animation-1" ></div></div></li>
 			            </ul>
 			            <a href="#" className="more page_margin_top">SHOW MORE</a>
 			          </div>

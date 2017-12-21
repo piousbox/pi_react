@@ -42,15 +42,6 @@ import Tgm2Home from './Tgm2Home'
 import { citiesIndex, profileAction } from '../../actions'
 
 const routes = [
-  { path: '/tgm2',
-    component: Tgm2,
-    indexRoute: { component: Tgm2Home },
-    childRoutes: [
-      { path: '/tgm2/locations/:locationname',        component: Location },
-      { path: '/tgm2/cities/:cityname',               component: Cities2Show },
-      { path: '/tgm2/cities/:cityname/tags/:tagname', component: TagsShow },
-    ],
-  },
   { path: '/',
     component: MainNavigationPressroom,
     indexRoute: { component: Home },

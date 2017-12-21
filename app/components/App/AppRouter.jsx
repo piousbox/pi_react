@@ -1,60 +1,8 @@
 
 let AppRouter = {
-  cityPath: '/:lang(en|ru|pt|es)/cities/travel-to/:cityname',
-  cityLink: (g) => {
-    if (typeof g === 'string') {
-      return `/en/cities/travel-to/${g}`
-    } else if (typeof g === 'object' ){
-      return `/en/cities/travel-to/${g.cityname}`
-    } else {
-      console.log('no city passed to cityLink!')
-      return null
-    }
-  },
-
-  cityEventPath: '/:lang(en|ru|pt|es)/cities/travel-to/:cityname/events/show/:eventname',
-  cityEventLink: (g) => { return `/en/cities/travel-to/${g.cityname}/events/show/${g.eventname}` },
-
-  cityGalleriesPath: '/:lang(en|ru|pt|es)/cities/travel-to/:cityname/galleries',
-  cityGalleriesLink: (g) => { 
-    if ('string' === typeof g) {
-      return `/en/cities/travel-to/${g}/galleries`
-    } else if ('object' === typeof g) {
-      return `/en/cities/travel-to/${g.cityname}/galleries`
-    }
-  },
-
-  cityUsersPath: '/:lang(en|ru|pt|es)/cities/travel-to/:cityname/people',
-  cityUsersLink: (g) => {
-    return `/en/cities/travel-to/${g.cityname}/people`
-  },
-
-  cityVenuesPath: '/:lang(en|ru|pt|es)/cities/travel-to/:cityname/venues',
-  cityVenuesLink: (g) => {
-    return `/en/cities/travel-to/${g.cityname}/venues`
-  },
-  cityVenuePath: '/:lang(en|ru|pt|es)/cities/travel-to/:cityname/venues/show/:venuename',
-  cityVenueLink: (g, gg) => {
-    if (arguments.length === 1) {
-      return `/en/cities/travel-to/${g.cityname}/venues/show/${g.venuename}`
-    } else {
-      return `/en/cities/travel-to/${g}/venues/show/${gg}`
-    }
-  },
-
-  cityReportsPath: "/:lang(en|ru|pt|es)/cities/travel-to/:cityname/reports",
-  cityReportsLink: (g) => { 
-    if ('string' === typeof g) {
-      return `/en/cities/travel-to/${g}/reports`
-    } else if ('object' === typeof g) {
-      return `/en/cities/travel-to/${g.cityname}/reports`
-    }
-  },
-
-  cityWrapperPath: "/:lang(en|ru|pt|es)/cities/travel-to",
 
   galleriesPath: '/:lang(en|ru|pt|es)/galleries',
-  galleriesLink: '/en/galleries',
+  galleriesLink: () => { '/en/galleries' },
   galleryPath: '/:lang(en|ru|pt|es)/galleries/show/:galleryname',
   galleryLink: (g) => { 
     if (typeof g === 'string') {
@@ -82,7 +30,7 @@ let AppRouter = {
     }
   },
   reportsPath: '/:lang(en|ru|pt|es)/reports',
-  reportsLink: '/en/reports',
+  reportsLink: () => { '/en/reports' },
   
   sitePath: '/:lang(en|ru|es|pt)/sites/show',
   siteLink: (g) => {
@@ -115,3 +63,52 @@ let AppRouter = {
 }
 
 export default AppRouter
+
+/*
+   cityPath: '/:lang(en|ru|pt|es)/cities/travel-to/:cityname',
+   cityLink: (g) => {
+   if (typeof g === 'string') {
+   return `/en/cities/travel-to/${g}`
+   } else if (typeof g === 'object' ){
+   return `/en/cities/travel-to/${g.cityname}`
+   } else {
+   console.log('no city passed to cityLink!')
+   return null
+   }
+   },
+   cityEventPath: '/:lang(en|ru|pt|es)/cities/travel-to/:cityname/events/show/:eventname',
+   cityEventLink: (g) => { return `/en/cities/travel-to/${g.cityname}/events/show/${g.eventname}` },
+   cityGalleriesPath: '/:lang(en|ru|pt|es)/cities/travel-to/:cityname/galleries',
+   cityGalleriesLink: (g) => { 
+   if ('string' === typeof g) {
+   return `/en/cities/travel-to/${g}/galleries`
+   } else if ('object' === typeof g) {
+   return `/en/cities/travel-to/${g.cityname}/galleries`
+   }
+   },
+   cityUsersPath: '/:lang(en|ru|pt|es)/cities/travel-to/:cityname/people',
+   cityUsersLink: (g) => {
+   return `/en/cities/travel-to/${g.cityname}/people`
+   },
+   cityVenuesPath: '/:lang(en|ru|pt|es)/cities/travel-to/:cityname/venues',
+   cityVenuesLink: (g) => {
+   return `/en/cities/travel-to/${g.cityname}/venues`
+   },
+   cityVenuePath: '/:lang(en|ru|pt|es)/cities/travel-to/:cityname/venues/show/:venuename',
+   cityVenueLink: (g, gg) => {
+   if (arguments.length === 1) {
+   return `/en/cities/travel-to/${g.cityname}/venues/show/${g.venuename}`
+   } else {
+   return `/en/cities/travel-to/${g}/venues/show/${gg}`
+   }
+   },
+   cityReportsPath: "/:lang(en|ru|pt|es)/cities/travel-to/:cityname/reports",
+   cityReportsLink: (g) => { 
+   if ('string' === typeof g) {
+   return `/en/cities/travel-to/${g}/reports`
+   } else if ('object' === typeof g) {
+   return `/en/cities/travel-to/${g.cityname}/reports`
+   }
+   },
+   cityWrapperPath: "/:lang(en|ru|pt|es)/cities/travel-to",
+ */
