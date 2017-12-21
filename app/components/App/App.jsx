@@ -19,9 +19,6 @@ import MainNavigationPressroom from './MainNavigationPressroom'
 import Profile from './Profile'
 import AppRouter from './AppRouter'
 
-import { 
-  CitiesIndex, CitiesShow, Cities2Show, CitiesWrapper,
-} from '../Cities'
 import { EventsShow } from '../Events'
 import { 
   GalleriesIndex, GalleriesShow, GalleriesPhotoShow, 
@@ -39,7 +36,7 @@ import { TagsIndex, TagShow } from '../Tags'
 import Tgm2     from './Tgm2'
 import Tgm2Home from './Tgm2Home'
 
-import { citiesIndex, profileAction } from '../../actions'
+import { profileAction } from '../../actions'
 
 const routes = [
   { path: '/',
@@ -48,17 +45,6 @@ const routes = [
     childRoutes: [
 
       { path: AppRouter.sitePath, component: Home },
-
-      /* { path: '/en/cities', component: CitiesIndex },
-      { path: AppRouter.cityWrapperPath, component: CitiesWrapper, childRoutes: [
-        { path: AppRouter.cityPath, component: CitiesShow },
-        { path: AppRouter.cityGalleriesPath, component: GalleriesIndex },
-        { path: AppRouter.cityReportsPath, component: ReportsIndex },
-        { path: AppRouter.cityUsersPath, component: UsersShow },
-        { path: AppRouter.cityVenuePath, component: VenuesShow },
-        { path: AppRouter.cityVenuesPath, component: VenuesIndex },
-      ]},
-      { path: AppRouter.cityEventPath, component: EventsShow }, */
       
       { path: AppRouter.galleriesPath, component: GalleriesIndex, },
       { path: AppRouter.galleryPath, component: GalleriesShow },
@@ -82,8 +68,6 @@ class App extends React.Component {
 
   constructor(props) {
     super(props)
-    // this.props.dispatch(citiesIndex())
-    // this.props.dispatch(profileAction())
   }
 
   componentDidMount() {
@@ -111,8 +95,6 @@ App.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    cities: state.cities,
-    profile: state.profile,
   }
 }
 
