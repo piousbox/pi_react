@@ -54,7 +54,7 @@ class MainNavigationPressroom extends React.Component {
     return (
       <div >
         <div className="site_container">
-          { /* <div className="header_top_bar_container clearfix"><HeaderTopBar /></div> */ }
+          <div className="header_top_bar_container clearfix"><HeaderTopBar /></div>
 			    <div className="header_container">
 				    <div className="header clearfix">
 					    <div className="logo">

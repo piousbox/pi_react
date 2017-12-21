@@ -49,7 +49,7 @@ const routes = [
 
       { path: AppRouter.sitePath, component: Home },
 
-      { path: '/en/cities', component: CitiesIndex },
+      /* { path: '/en/cities', component: CitiesIndex },
       { path: AppRouter.cityWrapperPath, component: CitiesWrapper, childRoutes: [
         { path: AppRouter.cityPath, component: CitiesShow },
         { path: AppRouter.cityGalleriesPath, component: GalleriesIndex },
@@ -58,13 +58,13 @@ const routes = [
         { path: AppRouter.cityVenuePath, component: VenuesShow },
         { path: AppRouter.cityVenuesPath, component: VenuesIndex },
       ]},
-      { path: AppRouter.cityEventPath, component: EventsShow },
+      { path: AppRouter.cityEventPath, component: EventsShow }, */
       
       { path: AppRouter.galleriesPath, component: GalleriesIndex, },
       { path: AppRouter.galleryPath, component: GalleriesShow },
       { path: AppRouter.galleryPhotoPath, component: GalleriesPhotoShow },
 
-      { path: '/en/profile', component: Profile },
+      /* { path: '/en/profile', component: Profile }, */
 
       { path: AppRouter.reportsPath, component: ReportsIndex },
       { path: AppRouter.reportPath,  component: ReportsShow },

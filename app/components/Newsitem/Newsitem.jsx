@@ -35,7 +35,9 @@ class Newsitem extends React.Component {
         })
       }
     } else if (this.props.newsitem.item_type === 'photo') {
-      photos.push(<img src={ this.props.newsitem.photos[0].large_url } style={{ width: '100%' }} alt='' />)
+      let tmpPhoto = <img src={ this.props.newsitem.photos[0].large_url } style={{ width: '330px' }} alt='' />
+      photos.push(tmpPhoto)
+      onePhoto = tmpPhoto
     } else if (this.props.newsitem.item_type === 'report') {
       onePhoto = (<img src={ this.props.newsitem.photo_url }
                        style={{ width: '100px', float: 'left', padding: '5px' }} alt='' />)
@@ -47,14 +49,23 @@ class Newsitem extends React.Component {
     }
 
     return (
-      <Panel>
-        <h3><TgmLink newsitem={ this.props.newsitem } /></h3>
-        <Meta item={ this.props.newsitem } />
-        { onePhoto }
-        { descr }
-        { photos }
-        <div style={{ clear: 'both' }} />
-      </Panel>
+			<div className="post">
+        { /* onePhoto */ }
+				<TgmLink newsitem={this.props.newsitem} >{ onePhoto }</TgmLink>
+				<div className="post_content">
+					<h2>
+            <TgmLink newsitem={this.props.newsitem} >{this.props.newsitem.title || 'Untitled'}</TgmLink>
+					</h2>
+					<ul className="post_details">
+						{ this.props.newsitem.tag_name ? <li className="category"><Link to={AppRouter.tagLink(this.props.newsitem.tag_name)}>{this.props.newsitem.tag_name}</Link></li> :
+              <li className="category">Uncategorized</li> }
+						<li className="date">{ this.props.newsitem.created_at.substr(0,10) }</li>
+					</ul>
+					<div dangerouslySetInnerHTML={{ __html: this.props.newsitem.description }} />
+					{ ('undefined' === typeof this.props.newsitem.item_type ||
+             this.props.newsitem.item_type === 'photo') ? null : <a title="Read more" href="post.html" className="read_more"><span className="arrow"></span><span>READ MORE</span></a> }
+				</div>
+			</div>
     )
   }
 }
@@ -67,3 +78,14 @@ function mapStateToProps(state, ownProps) {
 }
 
 export default connect(mapStateToProps)(Newsitem)
+
+/*
+<Panel>
+<h3><TgmLink newsitem={ this.props.newsitem } /></h3>
+<Meta item={ this.props.newsitem } />
+{ onePhoto }
+{ descr }
+{ photos }
+<div style={{ clear: 'both' }} />
+</Panel>
+*/
