@@ -39,7 +39,7 @@ class Newsitems extends React.Component {
       let idx = 0
       newsitems.map((n, idx) => {
         listitems.push(
-          <Col xs={12} ><Newsitem key={idx} newsitem={ n } /></Col>
+          <Col key={idx} xs={12} ><Newsitem key={idx} newsitem={ n } /></Col>
         )
         if ((idx+1) % 2 === 0) {
           listitems.push(<Clearfix key={`${idx}-clearfix`} />)
@@ -65,6 +65,7 @@ class Newsitems extends React.Component {
     
     return (
       <Row className="blog big" >
+        these newsitems
         { listitems }
         <Col xs={12}>{ pagination }</Col>
       </Row>

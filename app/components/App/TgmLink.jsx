@@ -1,11 +1,10 @@
-
 import React from 'react'
 import { Link } from 'react-router'
 import AppRouter from './AppRouter'
 
 class TgmLink extends React.Component {
   render () {
-    console.log('+++ TgmLink render:', this.props, this.state)
+    // console.log('+++ TgmLink render:', this.props, this.state)
 
     if (this.props.newsitem) {
       switch (this.props.newsitem.item_type) {

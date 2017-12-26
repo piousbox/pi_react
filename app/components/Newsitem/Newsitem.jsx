@@ -5,12 +5,16 @@ import { Grid, Row, Col,
          Panel,
 } from 'react-bootstrap'
 
+import { Link } from 'react-router'
+import Lightbox from 'react-image-lightbox'
+
 import Center from './../Center'
 import styles from './_Newsitems.scss'
+import NewsitemPhoto from './NewsitemPhoto'
 
 import { VideoEmbed, VideoPreview } from '../Videos'
 
-import { Meta, TgmLink } from '../App'
+import { Meta, TgmLink, AppRouter } from '../App'
 
 class Newsitem extends React.Component {
   render() {
@@ -25,7 +29,7 @@ class Newsitem extends React.Component {
         return (<VideoPreview video={ this.props.newsitem } />)
       }
     }
-
+    
     let photos = []
     let onePhoto = null
     if (this.props.newsitem.item_type === 'gallery') {
@@ -35,9 +39,7 @@ class Newsitem extends React.Component {
         })
       }
     } else if (this.props.newsitem.item_type === 'photo') {
-      let tmpPhoto = <img src={ this.props.newsitem.photos[0].large_url } style={{ width: '330px' }} alt='' />
-      photos.push(tmpPhoto)
-      onePhoto = tmpPhoto
+      return(<NewsitemPhoto newsitem={this.props.newsitem} photo={this.props.newsitem.photos[0]} />)
     } else if (this.props.newsitem.item_type === 'report') {
       onePhoto = (<img src={ this.props.newsitem.photo_url }
                        style={{ width: '100px', float: 'left', padding: '5px' }} alt='' />)
@@ -47,7 +49,7 @@ class Newsitem extends React.Component {
     if (this.props.newsitem.descr) {
       descr = (<div dangerouslySetInnerHTML={{ __html: this.props.newsitem.descr }} />)
     }
-
+    
     return (
 			<div className="post">
         { /* onePhoto */ }
