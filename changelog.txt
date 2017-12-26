@@ -43,3 +43,4 @@
          tests pass for travis?
 0.2.0 - let's wire in pressroom
 0.2.1 - incorporating pressroom, and build
+        and lightbox for newsitemPhoto
