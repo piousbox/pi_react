@@ -2,7 +2,14 @@
 let AppRouter = {
 
   galleriesPath: '/:lang(en|ru|pt|es)/galleries',
-  galleriesLink: () => { '/en/galleries' },
+  galleriesPagesPath: '/:lang(en|ru|pt|es)/galleries/page/:galleries_page',
+  galleriesLink: (args={}) => {
+    if (args.galleries_page) {
+      return `/en/galleries/page/${args.galleries_page}`
+    } else {
+      return '/en/galleries'
+    }
+  },
   galleryPath: '/:lang(en|ru|pt|es)/galleries/show/:galleryname',
   galleryLink: (g) => { 
     if (typeof g === 'string') {
@@ -30,7 +37,7 @@ let AppRouter = {
     }
   },
   reportsPath: '/:lang(en|ru|pt|es)/reports',
-  reportsLink: () => { '/en/reports' },
+  reportsLink: () => { return '/en/reports' },
   
   sitePath: '/:lang(en|ru|es|pt)/sites/show',
   siteLink: (g) => {
@@ -52,14 +59,11 @@ let AppRouter = {
   },
   tagsPath: '/:lang(en|ru|pt|es)/tags',
   tagsLink: () => { return '/en/tags' },
-  tgm2Path: 'tgm2', // @obsolete @deprecated
-
-  venuePath: '/:lang(en|ru|pt|es)/venues/show/:venuename',
-  venueLink: (g) => { return `/en/venues/show/${g}` },
 
   videoPath: '/:lang(en|ru|pt|es)/videos/show/:youtube_id',
   videoLink: (g) => { return `/en/videos/show/${g}` },
-
+  videosPath: '/:lang(en|ru|pt|es)/videos',
+  videosLink: () => { return `/en/videos` },
 }
 
 export default AppRouter

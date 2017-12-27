@@ -6,10 +6,10 @@ let Config = {
   domain: "piousbox.com",
   lang: "en",
 
-  citiesEnabled: false,
-  tagsEnabled: true,
   reportsEnabled: true,
   galleriesEnabled: true,
+  videosEnabled: true,
+  tagsEnabled: true,
 
 }
 

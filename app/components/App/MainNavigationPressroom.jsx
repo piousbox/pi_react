@@ -50,6 +50,18 @@ class MainNavigationPressroom extends React.Component {
 
   render () {
     console.log('+++ +++ MainNavigationPressroom render:', this.props, this.state)
+
+    let galleriesSelected, homeSelected = 'selected', reportsSelected, tagsSelected, videosSelected
+    this.props.routes.map((route, idx) => {
+      if (route.path === AppRouter.galleriesPath ||
+          route.path === AppRouter.galleriesPagesPath ||
+          route.path === AppRouter.galleryPath ||
+          route.path === AppRouter.galleryPhotoPath
+      ) {
+        galleriesSelected = 'selected'
+        homeSelected = null
+      }
+    })
     
     return (
       <div >
@@ -66,11 +78,11 @@ class MainNavigationPressroom extends React.Component {
 			    <div className="menu_container clearfix">
 				    <nav>
 				      <ul className="sf-menu">
-					      <li className="selected"><a href="#" title="Home">Home</a></li>
-                { config.reportsEnabled &&   <li><Link to={AppRouter.reportsLink()}>Reports</Link></li> }
-                { config.galleriesEnabled && <li><Link to={AppRouter.galleriesLink()}>Galleries</Link></li> }
-                { config.videosEnabled &&    <li><Link to={AppRouter.videosLink()}>Videos</Link></li> }
-                { config.tagsEnabled &&      <li><Link to={AppRouter.tagsLink()}>Tags</Link></li> }
+					      <li className={homeSelected}><a href="#" title="Home">Home</a></li>
+                { config.reportsEnabled &&   <li className={reportsSelected} ><Link to={AppRouter.reportsLink()}>Reports</Link></li> }
+                { config.galleriesEnabled && <li className={galleriesSelected} ><Link to={AppRouter.galleriesLink()}>Galleries</Link></li> }
+                { config.videosEnabled &&    <li className={videosSelected} ><Link to={AppRouter.videosLink()}>Videos</Link></li> }
+                { config.tagsEnabled &&      <li className={tagsSelected} ><Link to={AppRouter.tagsLink()}>Tags</Link></li> }
 				      </ul>
 				    </nav>
 				    <div className="mobile_menu_container">
