@@ -133,21 +133,20 @@ const galleriesShow = (args) => {
   }
 }
 
-const myGalleriesAction = (args) => {
+/* const myGalleriesAction = (args) => {
   return (dispatch, getState) => {
     dispatch({
       type: SET_MY_GALLERIES,
     })
   }
 }
-
 const myReportsAction = (args) => {
   return (dispatch, getState) => {
     dispatch({
       type: SET_MY_REPORTS,
     })
   }
-}
+} */
 
 const reportsShow = (args) => {
   return (dispatch, getState) => {
@@ -162,10 +161,8 @@ const reportsShow = (args) => {
 }
 
 const reportsIndex = (args={}) => {
-  console.log('+++ args:', !!args.page)
-
   return (dispatch, getState) => {
-    let url = `${config.apiUrl}/api/reports.json?a=b`
+    let url = `${config.apiUrl}/api/reports.json?domain=${config.domain}`
     if (args.page) {
       url = `${url}&reports_page=${args.page}`
     }
@@ -282,8 +279,8 @@ export default {
   logoutAction,
   profileAction,
 
-  myReportsAction,
-  myGalleriesAction,
+  // myReportsAction,
+  // myGalleriesAction,
 
   reportsShow,
   reportsIndex,
