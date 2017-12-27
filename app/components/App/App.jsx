@@ -1,42 +1,31 @@
 import React    from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, browserHistory, Redirect,
-         IndexRoute
+         IndexRoute,
 } from 'react-router'
 import { Provider, connect } from 'react-redux'
-import 'whatwg-fetch'
+// import 'whatwg-fetch'
 
 import config     from 'config'
 import PropTypes from 'prop-types'
 
-import styles     from './_App.scss'
 import bg         from './images/noisy_grid.png'
 import store      from '../../stores'
 
 import Home from './Home'
 
 import MainNavigationPressroom from './MainNavigationPressroom'
-import Profile from './Profile'
 import AppRouter from './AppRouter'
 
-import { EventsShow } from '../Events'
 import { 
   GalleriesIndex, GalleriesShow, GalleriesPhotoShow, 
 } from '../Galleries'
 import { ReportsIndex, ReportsShow 
 } from '../Reports'
 import { TagsShow } from '../Tags/TagsShow'
-import { UsersShow } from '../Users'
-import { VenuesIndex, VenuesShow,
-} from '../Venues'
-import VideosShow from '../Videos/VideosShow'
-import Location from '../Locations/LocationShow'
+import { VideosIndex, VideosShow } from '../Videos'
 
 import { TagsIndex, TagShow } from '../Tags'
-import Tgm2     from './Tgm2'
-import Tgm2Home from './Tgm2Home'
-
-import { profileAction } from '../../actions'
 
 const routes = [
   { path: '/',
@@ -47,44 +36,48 @@ const routes = [
       { path: AppRouter.sitePath, component: Home },
       
       { path: AppRouter.galleriesPath, component: GalleriesIndex, },
+      { path: AppRouter.galleriesPagesPath, component: GalleriesIndex },
       { path: AppRouter.galleryPath, component: GalleriesShow },
       { path: AppRouter.galleryPhotoPath, component: GalleriesPhotoShow },
 
-      /* { path: '/en/profile', component: Profile }, */
-
       { path: AppRouter.reportsPath, component: ReportsIndex },
+      { path: AppRouter.reportsPagesPath, component: ReportsIndex },
       { path: AppRouter.reportPath,  component: ReportsShow },
 
       { path: AppRouter.tagsPath, component: TagsIndex, childRoutes: [
         { path: AppRouter.tagPath, component: TagShow },
       ]},
       
+      { path: AppRouter.videosPath, component: VideosIndex },
+      { path: AppRouter.videosPagesPath, component: VideosIndex },
       { path: AppRouter.videoPath, component: VideosShow },
     ],
   },
 ]
 
 class App extends React.Component {
-
   constructor(props) {
     super(props)
+    this.state = {}
+    this.handleUpdate = this.handleUpdate.bind(this)
   }
 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
-  componentWillUnmount() {
-  }
+  componentWillUnmount() {}
 
-  onChange = () => {
+  onChange () {}
+
+  handleUpdate () {
+    window.scrollTo(0, 0);
   }
 
   render() {
-    // console.log('+++ +++ App props:', this.props, this.state)
+    console.log('+++ +++ App props:', this.props, this.state)
 
     return (
       <Provider store={store} >
-        <Router history={browserHistory} routes={routes} />
+        <Router history={browserHistory} routes={routes} onUpdate={this.handleUpdate} />
       </Provider>
     );
   }
@@ -94,8 +87,7 @@ App.propTypes = {
 }
 
 function mapStateToProps(state, ownProps) {
-  return {
-  }
+  return {}
 }
 
 export default connect(mapStateToProps)(App)

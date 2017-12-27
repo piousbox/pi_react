@@ -23,14 +23,12 @@ class MainNavigationPressroom extends React.Component {
 
   constructor (props) {
     super(props)
-
-    this.state = { site: {}, mobileMenuVisible: false }
-
+    this.state = { mobileMenuVisible: false }
     this.toggleMobileMenu = this.toggleMobileMenu.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("+++ +++ MainNavigationPressroom componentWillReceiveProps:", nextProps)
+    // console.log("+++ +++ MainNavigationPressroom componentWillReceiveProps:", nextProps)
 
     if (nextProps.site) {
       document.title = nextProps.site.title
@@ -50,6 +48,39 @@ class MainNavigationPressroom extends React.Component {
 
   render () {
     console.log('+++ +++ MainNavigationPressroom render:', this.props, this.state)
+    if (!this.props.site) { return (null) }
+
+    let galleriesSelected, homeSelected = 'selected', reportsSelected, tagsSelected, videosSelected
+    this.props.routes.map((route, idx) => {
+      // galleries
+      if (route.path === AppRouter.galleriesPath ||
+          route.path === AppRouter.galleriesPagesPath ||
+          route.path === AppRouter.galleryPath ||
+          route.path === AppRouter.galleryPhotoPath) {
+        galleriesSelected = 'selected'
+        homeSelected = null
+      }
+      // reports
+      if (route.path === AppRouter.reportsPath ||
+          route.path === AppRouter.reportsPagesPath ||
+          route.path === AppRouter.reportPath) {
+        reportsSelected = 'selected'
+        homeSelected = null
+      }
+      // tags
+      if (route.path === AppRouter.tagsPath ||
+          route.path === AppRouter.tagPath) {
+        tagsSelected = 'selected'
+        homeSelected = null
+      }
+      // videos
+      if (route.path === AppRouter.videosPath ||
+          route.path === AppRouter.videosPagesPath ||
+          route.path === AppRouter.videoPath) {
+        videosSelected = 'selected'
+        homeSelected = null
+      }
+    })
     
     return (
       <div >
@@ -66,11 +97,11 @@ class MainNavigationPressroom extends React.Component {
 			    <div className="menu_container clearfix">
 				    <nav>
 				      <ul className="sf-menu">
-					      <li className="selected"><a href="#" title="Home">Home</a></li>
-                { config.reportsEnabled &&   <li><Link to={AppRouter.reportsLink()}>Reports</Link></li> }
-                { config.galleriesEnabled && <li><Link to={AppRouter.galleriesLink()}>Galleries</Link></li> }
-                { config.videosEnabled &&    <li><Link to={AppRouter.videosLink()}>Videos</Link></li> }
-                { config.tagsEnabled &&      <li><Link to={AppRouter.tagsLink()}>Tags</Link></li> }
+					      <li className={homeSelected}><Link to={AppRouter.rootPath}>Home</Link></li>
+                { config.reportsEnabled &&   <li className={reportsSelected} ><Link to={AppRouter.reportsLink()}>Reports</Link></li> }
+                { config.galleriesEnabled && <li className={galleriesSelected} ><Link to={AppRouter.galleriesLink()}>Galleries</Link></li> }
+                { config.videosEnabled &&    <li className={videosSelected} ><Link to={AppRouter.videosLink()}>Videos</Link></li> }
+                { config.tagsEnabled &&      <li className={tagsSelected} ><Link to={AppRouter.tagsLink()}>Tags</Link></li> }
 				      </ul>
 				    </nav>
 				    <div className="mobile_menu_container">
@@ -124,26 +155,3 @@ export default connect(mapStateToProps)(MainNavigationPressroom)
 
 
 
-
-
-
-
-
-
-        /* <Navbar>
-           <Navbar.Header>
-           <Navbar.Brand>
-           <Link to="/">{ config.siteTitle }</Link>
-           </Navbar.Brand>
-           <Navbar.Toggle />
-           </Navbar.Header>
-           <Navbar.Collapse>
-           <Nav bsStyle="pills" pullRight>
-           { config.citiesEnabled ?    <li><Link to='/en/cities'>Cities</Link></li>                 : null }
-           { config.tagsEnabled ?      <li><Link to={AppRouter.tagsLink()}>Tags</Link></li>         : null }
-           { config.galleriesEnabled ? <li><Link to={AppRouter.galleriesLink}>Galleries</Link></li> : null }
-           { config.reportsEnabled ?   <li><Link to={AppRouter.reportsLink}>Reports</Link></li>     : null }
-           { config.galleriesEnabled ? <li><Link to={AppRouter.galleriesLink}>Galleries</Link></li> : null }
-           </Nav>
-           </Navbar.Collapse>
-           </Navbar> */ 

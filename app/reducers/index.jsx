@@ -92,6 +92,16 @@ const tags = (state=[], action) => {
   }
 }
 
+// v
+const videos = (state=[], action) => {
+  switch (action.type) {
+      case SET.videos:
+      return action.videos
+    default:
+      return state
+  }
+}
+
 export default combineReducers({
   cities: citiesIndexReducer,
   city: citiesShowReducer,
@@ -118,4 +128,5 @@ export default combineReducers({
 
   venue: venueReducer,
   venues: venuesReducer,
+  videos,
 })

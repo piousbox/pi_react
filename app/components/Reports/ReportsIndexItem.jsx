@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-
 import { Grid, Row, Col,
          Panel, 
 } from 'react-bootstrap'
@@ -25,6 +24,8 @@ class ReportsIndexItem extends React.Component {
   }
 
   render () {
+    console.log('+++ +++ ReportsIndexItem render:', this.props, this.state)
+
     return (
       <Panel>
         <h2><Link to={AppRouter.reportLink(this.props.report)} >{ this.props.report.name }</Link></h2>

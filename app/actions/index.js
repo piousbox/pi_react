@@ -22,7 +22,7 @@ import {
   SET_CITIES_INDEX,
   SET_CITIES_SHOW,
   SET_CITY,
-
+  
   SET_GALLERY,
   SET_GALLERIES,
 
@@ -38,8 +38,6 @@ import {
 
   SET_SITE,
   SET_SITE_NEWSITEMS,
-
-  SET_TGM2_HOME,
 
   SET_VENUE,
 
@@ -106,11 +104,12 @@ const citiesShow = (args) => {
 
 const galleriesIndex = (args) => {
   return (dispatch, getState) => {
-    let url
+    let url = `${config.apiUrl}/api/galleries.json?domain=${config.domain}`
     if (args.cityname) {
-      url = `${config.apiUrl}/api/galleries.json?domain=${config.domain}&cityname=${args.cityname}`
-    } else {
-      url = `${config.apiUrl}/api/galleries.json?domain=${config.domain}`
+      url = `${url}&cityname=${args.cityname}`
+    }
+    if (args.page) {
+      url = `${url}&galleries_page=${args.page}`
     }
     fetch(url).then(r => r.json()).then(_data => {
       dispatch({
@@ -162,38 +161,18 @@ const reportsShow = (args) => {
   }
 }
 
-const reportsIndex = (args) => {
+const reportsIndex = (args={}) => {
+  console.log('+++ args:', !!args.page)
+
   return (dispatch, getState) => {
-    let url = `${config.apiUrl}/api/reports.json?cityname=${args.cityname}`
+    let url = `${config.apiUrl}/api/reports.json?a=b`
+    if (args.page) {
+      url = `${url}&reports_page=${args.page}`
+    }
     fetch(url).then(r => r.json()).then(_data => {
       dispatch({
         type: SET_REPORTS,
         reports: _data,
-      })
-    })
-  }
-}
-
-const venuesShow = (args) => {
-  return (dispatch, getState) => {
-    let url = `${config.apiUrl}/api/venues/view/${args.venuename}.json`
-    fetch(url).then(r => r.json()).then(_data => {
-      dispatch({
-        type: SET_VENUE,
-        venue: _data.venue,
-      })
-    })
-  }
-}
-
-const venuesIndexAction = (arg) => {
-  // console.log('+++ venuesIndexAction:', arg)
-  return (dispatch, getState) => {
-    let url = `${config.apiUrl}/api/venues.json?cityname=${arg.cityname}`
-    fetch(url).then(r => r.json()).then(_data => {
-      dispatch({
-        type: CONST.setVenues,
-        venues: _data.venues,
       })
     })
   }
@@ -247,7 +226,49 @@ const tagsAction = () => {
     })
   }
 }
-        
+
+// v
+const venuesShow = (args) => {
+  return (dispatch, getState) => {
+    let url = `${config.apiUrl}/api/venues/view/${args.venuename}.json`
+    fetch(url).then(r => r.json()).then(_data => {
+      dispatch({
+        type: SET_VENUE,
+        venue: _data.venue,
+      })
+    })
+  }
+}
+
+const venuesIndexAction = (arg) => {
+  // console.log('+++ venuesIndexAction:', arg)
+  return (dispatch, getState) => {
+    let url = `${config.apiUrl}/api/venues.json?cityname=${arg.cityname}`
+    fetch(url).then(r => r.json()).then(_data => {
+      dispatch({
+        type: CONST.setVenues,
+        venues: _data.venues,
+      })
+    })
+  }
+}
+
+const videoAction = () => {
+}
+
+const videosAction = (args) => {
+  return (dispatch, getState) => {
+    let url = `${config.apiUrl}/api/videos.json?a=b`
+    if (args.page) { url = `${url}&videos_page=${args.page}` }
+    fetch(url).then(r => r.json()).then(_data => {
+      dispatch({
+        type: SET.videos,
+        videos: _data.videos,
+      })
+    })
+  }
+}
+
 import { profileAction, loginAction, logoutAction } from './profileActions'
 
 export default {
@@ -277,5 +298,7 @@ export default {
 
   venuesShow,
   venuesIndexAction,
+  videoAction,
+  videosAction,
 
 }
