@@ -60,7 +60,10 @@ class MainNavigationPressroom extends React.Component {
         galleriesSelected = 'selected'
         homeSelected = null
       }
-      if (route.path === AppRouter.reportsPath) {
+      if (route.path === AppRouter.reportsPath ||
+          route.path === AppRouter.reportsPagesPath ||
+          route.path === AppRouter.reportPath 
+      ) {
         reportsSelected = 'selected'
         homeSelected = null
       }

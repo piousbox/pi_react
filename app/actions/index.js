@@ -22,7 +22,7 @@ import {
   SET_CITIES_INDEX,
   SET_CITIES_SHOW,
   SET_CITY,
-
+  
   SET_GALLERY,
   SET_GALLERIES,
 
@@ -163,9 +163,14 @@ const reportsShow = (args) => {
   }
 }
 
-const reportsIndex = (args) => {
+const reportsIndex = (args={}) => {
+  console.log('+++ args:', !!args.page)
+
   return (dispatch, getState) => {
     let url = `${config.apiUrl}/api/reports.json?a=b`
+    if (args.page) {
+      url = `${url}&reports_page=${args.page}`
+    }
     fetch(url).then(r => r.json()).then(_data => {
       dispatch({
         type: SET_REPORTS,
