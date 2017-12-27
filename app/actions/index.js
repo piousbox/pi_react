@@ -165,7 +165,7 @@ const reportsShow = (args) => {
 
 const reportsIndex = (args) => {
   return (dispatch, getState) => {
-    let url = `${config.apiUrl}/api/reports.json?cityname=${args.cityname}`
+    let url = `${config.apiUrl}/api/reports.json?a=b`
     fetch(url).then(r => r.json()).then(_data => {
       dispatch({
         type: SET_REPORTS,

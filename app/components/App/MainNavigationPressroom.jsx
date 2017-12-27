@@ -23,14 +23,12 @@ class MainNavigationPressroom extends React.Component {
 
   constructor (props) {
     super(props)
-
-    this.state = { site: {}, mobileMenuVisible: false }
-
+    this.state = { mobileMenuVisible: false }
     this.toggleMobileMenu = this.toggleMobileMenu.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("+++ +++ MainNavigationPressroom componentWillReceiveProps:", nextProps)
+    // console.log("+++ +++ MainNavigationPressroom componentWillReceiveProps:", nextProps)
 
     if (nextProps.site) {
       document.title = nextProps.site.title
@@ -50,6 +48,7 @@ class MainNavigationPressroom extends React.Component {
 
   render () {
     console.log('+++ +++ MainNavigationPressroom render:', this.props, this.state)
+    if (!this.props.site) { return (null) }
 
     let galleriesSelected, homeSelected = 'selected', reportsSelected, tagsSelected, videosSelected
     this.props.routes.map((route, idx) => {
@@ -59,6 +58,10 @@ class MainNavigationPressroom extends React.Component {
           route.path === AppRouter.galleryPhotoPath
       ) {
         galleriesSelected = 'selected'
+        homeSelected = null
+      }
+      if (route.path === AppRouter.reportsPath) {
+        reportsSelected = 'selected'
         homeSelected = null
       }
     })
@@ -136,26 +139,3 @@ export default connect(mapStateToProps)(MainNavigationPressroom)
 
 
 
-
-
-
-
-
-
-        /* <Navbar>
-           <Navbar.Header>
-           <Navbar.Brand>
-           <Link to="/">{ config.siteTitle }</Link>
-           </Navbar.Brand>
-           <Navbar.Toggle />
-           </Navbar.Header>
-           <Navbar.Collapse>
-           <Nav bsStyle="pills" pullRight>
-           { config.citiesEnabled ?    <li><Link to='/en/cities'>Cities</Link></li>                 : null }
-           { config.tagsEnabled ?      <li><Link to={AppRouter.tagsLink()}>Tags</Link></li>         : null }
-           { config.galleriesEnabled ? <li><Link to={AppRouter.galleriesLink}>Galleries</Link></li> : null }
-           { config.reportsEnabled ?   <li><Link to={AppRouter.reportsLink}>Reports</Link></li>     : null }
-           { config.galleriesEnabled ? <li><Link to={AppRouter.galleriesLink}>Galleries</Link></li> : null }
-           </Nav>
-           </Navbar.Collapse>
-           </Navbar> */ 

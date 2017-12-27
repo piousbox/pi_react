@@ -37,7 +37,14 @@ let AppRouter = {
     }
   },
   reportsPath: '/:lang(en|ru|pt|es)/reports',
-  reportsLink: () => { return '/en/reports' },
+  reportsPagesPath: '/:lang(en|ru|pt|es)/reports/page/:reports_page',
+  reportsLink: (args={}) => {
+    if (args.reports_page) {
+      return `/en/reports/page/${args.reports_page}`
+    } else {
+      return '/en/reports' 
+    }
+  },
   
   sitePath: '/:lang(en|ru|es|pt)/sites/show',
   siteLink: (g) => {
@@ -63,7 +70,14 @@ let AppRouter = {
   videoPath: '/:lang(en|ru|pt|es)/videos/show/:youtube_id',
   videoLink: (g) => { return `/en/videos/show/${g}` },
   videosPath: '/:lang(en|ru|pt|es)/videos',
-  videosLink: () => { return `/en/videos` },
+  videosPagesPath: '/:lang(en|ru|pt|es)/videos',
+  videosLink: (args={}) => { 
+    if (args.videos_page) {
+      return `/en/videos/page/${args.videos_page}`
+    } else { 
+      return `/en/videos`
+    }
+  },
 }
 
 export default AppRouter

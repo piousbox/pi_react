@@ -41,6 +41,7 @@ const routes = [
       { path: AppRouter.galleryPhotoPath, component: GalleriesPhotoShow },
 
       { path: AppRouter.reportsPath, component: ReportsIndex },
+      { path: AppRouter.reportsPagesPath, component: ReportsIndex },
       { path: AppRouter.reportPath,  component: ReportsShow },
 
       { path: AppRouter.tagsPath, component: TagsIndex, childRoutes: [
@@ -55,6 +56,7 @@ const routes = [
 class App extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {}
     this.handleUpdate = this.handleUpdate.bind(this)
   }
 
@@ -65,13 +67,7 @@ class App extends React.Component {
   onChange () {}
 
   handleUpdate () {
-    let {
-      action
-    } = this.state.location;
-    
-    if (action === 'PUSH') {
-      window.scrollTo(0, 0);
-    }
+    window.scrollTo(0, 0);
   }
 
   render() {
