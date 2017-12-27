@@ -45,4 +45,4 @@
 0.2.1 - incorporating pressroom, and build
         and lightbox for newsitemPhoto
         20171227 galleries render
-        reports render?
+        reports render, videos render.
