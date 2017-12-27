@@ -23,7 +23,7 @@ import {
 import { ReportsIndex, ReportsShow 
 } from '../Reports'
 import { TagsShow } from '../Tags/TagsShow'
-import VideosShow from '../Videos/VideosShow'
+import { VideosIndex, VideosShow } from '../Videos'
 
 import { TagsIndex, TagShow } from '../Tags'
 
@@ -48,6 +48,8 @@ const routes = [
         { path: AppRouter.tagPath, component: TagShow },
       ]},
       
+      { path: AppRouter.videosPath, component: VideosIndex },
+      { path: AppRouter.videosPagesPath, component: VideosIndex },
       { path: AppRouter.videoPath, component: VideosShow },
     ],
   },

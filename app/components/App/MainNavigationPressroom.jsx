@@ -52,19 +52,32 @@ class MainNavigationPressroom extends React.Component {
 
     let galleriesSelected, homeSelected = 'selected', reportsSelected, tagsSelected, videosSelected
     this.props.routes.map((route, idx) => {
+      // galleries
       if (route.path === AppRouter.galleriesPath ||
           route.path === AppRouter.galleriesPagesPath ||
           route.path === AppRouter.galleryPath ||
-          route.path === AppRouter.galleryPhotoPath
-      ) {
+          route.path === AppRouter.galleryPhotoPath) {
         galleriesSelected = 'selected'
         homeSelected = null
       }
+      // reports
       if (route.path === AppRouter.reportsPath ||
           route.path === AppRouter.reportsPagesPath ||
-          route.path === AppRouter.reportPath 
-      ) {
+          route.path === AppRouter.reportPath) {
         reportsSelected = 'selected'
+        homeSelected = null
+      }
+      // tags
+      if (route.path === AppRouter.tagsPath ||
+          route.path === AppRouter.tagPath) {
+        tagsSelected = 'selected'
+        homeSelected = null
+      }
+      // videos
+      if (route.path === AppRouter.videosPath ||
+          route.path === AppRouter.videosPagesPath ||
+          route.path === AppRouter.videoPath) {
+        videosSelected = 'selected'
         homeSelected = null
       }
     })
@@ -84,7 +97,7 @@ class MainNavigationPressroom extends React.Component {
 			    <div className="menu_container clearfix">
 				    <nav>
 				      <ul className="sf-menu">
-					      <li className={homeSelected}><a href="#" title="Home">Home</a></li>
+					      <li className={homeSelected}><Link to={AppRouter.rootPath}>Home</Link></li>
                 { config.reportsEnabled &&   <li className={reportsSelected} ><Link to={AppRouter.reportsLink()}>Reports</Link></li> }
                 { config.galleriesEnabled && <li className={galleriesSelected} ><Link to={AppRouter.galleriesLink()}>Galleries</Link></li> }
                 { config.videosEnabled &&    <li className={videosSelected} ><Link to={AppRouter.videosLink()}>Videos</Link></li> }

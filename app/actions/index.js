@@ -39,8 +39,6 @@ import {
   SET_SITE,
   SET_SITE_NEWSITEMS,
 
-  SET_TGM2_HOME,
-
   SET_VENUE,
 
 } from '../constants/AppConstants';
@@ -180,31 +178,6 @@ const reportsIndex = (args={}) => {
   }
 }
 
-const venuesShow = (args) => {
-  return (dispatch, getState) => {
-    let url = `${config.apiUrl}/api/venues/view/${args.venuename}.json`
-    fetch(url).then(r => r.json()).then(_data => {
-      dispatch({
-        type: SET_VENUE,
-        venue: _data.venue,
-      })
-    })
-  }
-}
-
-const venuesIndexAction = (arg) => {
-  // console.log('+++ venuesIndexAction:', arg)
-  return (dispatch, getState) => {
-    let url = `${config.apiUrl}/api/venues.json?cityname=${arg.cityname}`
-    fetch(url).then(r => r.json()).then(_data => {
-      dispatch({
-        type: CONST.setVenues,
-        venues: _data.venues,
-      })
-    })
-  }
-}
-
 const siteNewsitemsAction = (args = {}) => {
   return (dispatch, getState) => {
     let state = getState()
@@ -253,7 +226,49 @@ const tagsAction = () => {
     })
   }
 }
-        
+
+// v
+const venuesShow = (args) => {
+  return (dispatch, getState) => {
+    let url = `${config.apiUrl}/api/venues/view/${args.venuename}.json`
+    fetch(url).then(r => r.json()).then(_data => {
+      dispatch({
+        type: SET_VENUE,
+        venue: _data.venue,
+      })
+    })
+  }
+}
+
+const venuesIndexAction = (arg) => {
+  // console.log('+++ venuesIndexAction:', arg)
+  return (dispatch, getState) => {
+    let url = `${config.apiUrl}/api/venues.json?cityname=${arg.cityname}`
+    fetch(url).then(r => r.json()).then(_data => {
+      dispatch({
+        type: CONST.setVenues,
+        venues: _data.venues,
+      })
+    })
+  }
+}
+
+const videoAction = () => {
+}
+
+const videosAction = (args) => {
+  return (dispatch, getState) => {
+    let url = `${config.apiUrl}/api/videos.json?a=b`
+    if (args.page) { url = `${url}&videos_page=${args.page}` }
+    fetch(url).then(r => r.json()).then(_data => {
+      dispatch({
+        type: SET.videos,
+        videos: _data.videos,
+      })
+    })
+  }
+}
+
 import { profileAction, loginAction, logoutAction } from './profileActions'
 
 export default {
@@ -283,5 +298,7 @@ export default {
 
   venuesShow,
   venuesIndexAction,
+  videoAction,
+  videosAction,
 
 }
