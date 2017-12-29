@@ -17,10 +17,10 @@ import Home from './Home'
 import MainNavigationPressroom from './MainNavigationPressroom'
 import AppRouter from './AppRouter'
 
-import { 
-  GalleriesIndex, GalleriesShow, GalleriesPhotoShow, 
+import {
+  GalleriesIndex, GalleriesShow, GalleriesPhotoShow,
 } from '../Galleries'
-import { ReportsIndex, ReportsShow 
+import { ReportsIndex, ReportsShow
 } from '../Reports'
 import { TagsShow } from '../Tags/TagsShow'
 import { VideosIndex, VideosShow } from '../Videos'
@@ -34,7 +34,7 @@ const routes = [
     childRoutes: [
 
       { path: AppRouter.sitePath, component: Home },
-      
+
       { path: AppRouter.galleriesPath, component: GalleriesIndex, },
       { path: AppRouter.galleriesPagesPath, component: GalleriesIndex },
       { path: AppRouter.galleryPath, component: GalleriesShow },
@@ -47,7 +47,7 @@ const routes = [
       { path: AppRouter.tagsPath, component: TagsIndex, childRoutes: [
         { path: AppRouter.tagPath, component: TagShow },
       ]},
-      
+
       { path: AppRouter.videosPath, component: VideosIndex },
       { path: AppRouter.videosPagesPath, component: VideosIndex },
       { path: AppRouter.videoPath, component: VideosShow },
@@ -74,12 +74,7 @@ class App extends React.Component {
 
   render() {
     console.log('+++ +++ App props:', this.props, this.state)
-
-    return (
-      <Provider store={store} >
-        <Router history={browserHistory} routes={routes} onUpdate={this.handleUpdate} />
-      </Provider>
-    );
+    return (<Router history={browserHistory} routes={routes} onUpdate={this.handleUpdate} />)
   }
 }
 
@@ -91,4 +86,3 @@ function mapStateToProps(state, ownProps) {
 }
 
 export default connect(mapStateToProps)(App)
-

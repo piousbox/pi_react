@@ -243,19 +243,21 @@ class Footer2 extends React.Component {
 						<div className="column column_3_4">
 							<ul className="footer_menu">
 								<li>
-									<h4><a href="category_world.html" title="World">World</a></h4>
+									<h4>
+                    <Link to={AppRouter.tagLink('entertainment')}>Art & Entertainment</Link>
+                  </h4>
 								</li>
 								<li>
-									<h4><a href="category_health.html" title="Health">Health</a></h4>
+									<h4><a href="category_health.html" title="Health">Music</a></h4>
 								</li>
 								<li>
-									<h4><a href="category_sports.html" title="Sports">Sports</a></h4>
+									<h4><a href="category_sports.html" title="Sports">The FTIM Adventure</a></h4>
 								</li>
 								<li>
-									<h4><a href="category_science.html" title="Science">Science</a></h4>
+									<h4><a href="category_science.html" title="Science">Sports & Health</a></h4>
 								</li>
 								<li>
-									<h4><a href="category_lifestyle.html" title="Lifestyle">Lifestyle</a></h4>
+									<h4><a href="category_lifestyle.html" title="Lifestyle">Photography</a></h4>
 								</li>
 							</ul>
 						</div>
@@ -264,22 +266,13 @@ class Footer2 extends React.Component {
 						</div>
 					</div>
 					<div className="row copyright_row">
-						<div className="column column_2_3">
-							&copy; Copyright <a href="http://quanticalabs.com" title="QuanticaLabs" target="_blank">QuanticaLabs</a> - PressRoom Template. 
-              <a href="https://themeforest.net/cart/add_items?item_ids=9066845&ref=QuanticaLabs" title="PressRoom Template" target="_blank">Click here to buy it</a> 
-						</div>
+						<div className="column column_2_3">&copy; Copyright Wasya Co</div>
 						<div className="column column_1_3">
-							<ul className="footer_menu">
-								<li>
-									<h6><a href="about.html" title="About">About</a></h6>
-								</li>
-								<li>
-									<h6><a href="authors.html" title="Authors">Authors</a></h6>
-								</li>
-								<li>
-									<h6><a href="contact.html" title="Contact Us">Contact Us</a></h6>
-								</li>
-							</ul>
+							{ /* <ul className="footer_menu">
+								<li><h6><a href="about.html" title="About">About</a></h6></li>
+								<li><h6><a href="authors.html" title="Authors">Authors</a></h6></li>
+								<li><h6><a href="contact.html" title="Contact Us">Contact Us</a></h6></li>
+							</ul> */ }
 						</div>
 					</div>
 				</div>
