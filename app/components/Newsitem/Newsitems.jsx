@@ -52,22 +52,28 @@ class Newsitems extends React.Component {
     let activeStyle = { fontWeight: 'bold' }
     const lambda = (pageNum, idx) => {
       pagination.push(
-        <Button bsStyle={this.state.page == pageNum ? 'info' : ''} 
-                className="btn" onClick={() => {this.gotoPage(pageNum)}}
-                style={{ marginRight: '.5em' }}
-                key={idx} >{pageNum}</Button>)
+        <li key={idx} className={this.state.page == pageNum ? 'selected' : '' }>
+          <a className="btn" onClick={() => {this.gotoPage(pageNum)}}>{pageNum}</a>
+        </li>)
     }
     if (this.props.site) {
       for (let i = 0; i < this.props.site.n_newsitems; i += this.props.site.newsitems_per_page) {
         lambda(pageNumber++, i)
       }
     }
+    let lastPage = Math.ceil( this.props.site.n_newsitems / this.props.site.newsitems_per_page )
     
     return (
-      <Row className="blog big" >
-        these newsitems
+      <Row >
         { listitems }
-        <Col xs={12}>{ pagination }</Col>
+
+        <Col xs={12}>
+          <ul className="pagination clearfix page_margin_top_section">
+	          { this.state.page !== 1 && <li className=""><a className="btn" onClick={() => {this.gotoPage(this.state.page-1)}}>&lt;</a></li> }
+            { pagination }
+	          { this.state.page !== lastPage && <li className=""><a className="btn" onClick={() => {this.gotoPage(this.state.page+1)}}>&gt;</a></li> }
+          </ul>
+        </Col>
       </Row>
     )
   }

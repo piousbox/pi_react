@@ -89,7 +89,7 @@ class MainNavigationPressroom extends React.Component {
 			    <div className="header_container">
 				    <div className="header clearfix">
 					    <div className="logo">
-						    <h1 style={{ margin: 0, fontFamily: 'serif' }} ><a href="home.html" title="Pressroom">{ this.props.site.title }</a></h1>
+						    <h1 style={{ margin: 0, fontFamily: 'serif' }} ><Link to="/">{ this.props.site.title }</Link></h1>
 						    <h4>{this.props.site.subhead}</h4>
 					    </div>
 				    </div>
@@ -124,7 +124,7 @@ class MainNavigationPressroom extends React.Component {
           </div>
         </div>
         { this.props.children }
-        <Footer3 />
+        <Footer3 reports={this.props.site.reports} />
       </div>
     )
   }

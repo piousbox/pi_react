@@ -26,11 +26,11 @@ class TagsIndex extends React.Component {
       <Grid>
         <Row>
           <Col xs={12} md={6}>
-            <h5>Tags</h5>
-            <ul>{ tags }</ul>
+            {this.props.children}
           </Col>
           <Col xs={12} md={6}>
-            {this.props.children}
+            <h5 style={{ textAlign: 'center' }} >Tags</h5>
+            <ul>{ tags }</ul>
           </Col>
         </Row>
       </Grid>
