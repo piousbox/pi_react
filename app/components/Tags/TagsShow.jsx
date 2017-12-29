@@ -10,7 +10,7 @@ class TagShow extends React.Component {
   constructor(props) {
     super(props)
     this.state = {}
-    this.props.dispatch(tagAction(this.props.params.tagname))
+    props.dispatch(tagAction(props.params.tagname))
 
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
   }
@@ -27,13 +27,15 @@ class TagShow extends React.Component {
   }
 
   render () {
-    console.log('+++ tag show:', this.props, this.state)
+    console.log('+++ tagShow render:', this.props, this.state)
 
     return (
-      <div>
-        { this.props.tag ? <h5>Tag {this.props.tag.name}</h5> : null }
-        { this.props.tag ? <VideosIndex videos={this.props.tag.videos} /> : null }
-      </div>
+      <Row>
+        <Col xs={12}>
+          { this.props.tag && <h5 style={{ textAlign: 'center' }}>Tag {this.props.tag.name}</h5> }
+          { this.props.tag && <VideosIndex videos={this.props.tag.videos} params={this.props.params} /> }
+        </Col>
+      </Row>
     )
   }
 }

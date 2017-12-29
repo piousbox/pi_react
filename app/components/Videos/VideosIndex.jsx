@@ -38,20 +38,18 @@ class VideosIndex extends React.Component {
       active = page == i ? 'active' : ''
       pages.push(<Link key={i} className={`btn btn-default ${active}`} to={AppRouter.videosLink({videos_page:i})}>{i}</Link>)
     }
-    let pagination = <div className="pagination">{ pages }</div>
-
+    let pagination = (<div className="pagination">{ pages }</div>)
+    
     return (
-      <div>
-        <Grid>
-          <Row>
-            <Col xs={12}>
-              { pagination }
-              { videos }
-              { pagination }
-            </Col>
-          </Row>
-        </Grid>
-      </div>
+      <Grid fluid>
+        <Row>
+          <Col xs={12}>
+            { pagination }
+            { videos }
+            { pagination }
+          </Col>
+        </Row>
+      </Grid>
     )
   }
 }

@@ -46,3 +46,4 @@
         and lightbox for newsitemPhoto
         20171227 galleries render
         reports render, videos render.
+        frontpage less ugly
