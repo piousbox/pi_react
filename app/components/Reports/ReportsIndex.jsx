@@ -20,7 +20,7 @@ class ReportsIndex extends React.Component {
     super(props)
     // console.log('+++ +++ ReportsIndex constructor:', props)
     this.state = {}
-    this.props.dispatch(siteShow())
+    // this.props.dispatch(siteShow())
     this.props.dispatch(reportsIndex({ page: props.params.reports_page }))
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
   }

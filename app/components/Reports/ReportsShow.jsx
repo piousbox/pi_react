@@ -7,7 +7,7 @@ import { Grid, Row, Col } from 'react-bootstrap'
 import config from 'config'
 import Center from '../Center'
 
-import { reportsShow } from '../../actions'
+import { reportsShow, siteShow } from '../../actions'
 
 import { 
   Clearfix, Meta, 
@@ -21,7 +21,8 @@ class ReportsShow extends React.Component {
     this.state = {
       report: {}
     }
-    this.props.dispatch(reportsShow({ reportname: props.params.reportname }))
+    // props.dispatch(siteShow())
+    props.dispatch(reportsShow({ reportname: props.params.reportname }))
   }
 
   componentWillReceiveProps(nextProps) {

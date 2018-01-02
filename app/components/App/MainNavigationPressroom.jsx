@@ -16,14 +16,14 @@ import config from 'config'
 import Footer3      from './Footer3'
 import Leaderboard  from './Leaderboard'
 import HeaderTopBar from './HeaderTopBar'
-// import { profileAction } from '../../actions'
+import { siteShow } from '../../actions'
 import AppRouter from './AppRouter'
 
 class MainNavigationPressroom extends React.Component {
-
   constructor (props) {
     super(props)
     this.state = { mobileMenuVisible: false }
+    props.dispatch(siteShow())
     this.toggleMobileMenu = this.toggleMobileMenu.bind(this)
   }
 
