@@ -76,14 +76,7 @@ class ReportsShow extends React.Component {
   render () {
     console.log('+++ +++ render ReportsShow:', this.props, this.state)
     let url = `https://${config.domain}${AppRouter.reportLink(this.state.report)}`
-    console.log('+++ url:', url)
-
-    let meta = {
-      title: this.state.report.name,
-      description: this.state.report.name,
-      canonical: url,
-      keywords: 'abba zetta',
-    }
+    console.log('+++ url2:', url)
 
     return (
       <Grid>
