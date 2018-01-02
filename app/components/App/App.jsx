@@ -4,7 +4,7 @@ import { Router, Route, browserHistory, Redirect,
          IndexRoute,
 } from 'react-router'
 // import { Provider, connect } from 'react-redux'
-// import 'whatwg-fetch'
+import 'whatwg-fetch'
 
 // import config     from 'config'
 // import PropTypes from 'prop-types'

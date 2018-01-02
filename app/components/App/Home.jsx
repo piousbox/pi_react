@@ -21,9 +21,6 @@ class Home extends React.Component {
     // console.log('+++ +++ Home constructor:', props)
     this.state = { page: 1 }
     props.dispatch(siteNewsitemsAction({ page: this.state.page }))
-    if (props.site) {
-      localStorage.setItem("lang", props.site.lang)
-    }
   }
 
   render () {

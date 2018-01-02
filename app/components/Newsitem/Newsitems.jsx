@@ -24,7 +24,7 @@ class Newsitems extends React.Component {
   }
 
   render() {
-    console.log('+++ +++ Newsitems render:', this.props, this.state)
+    // console.log('+++ +++ Newsitems render:', this.props, this.state)
 
     let listitems = []
     let newsitems = this.props.newsitems
