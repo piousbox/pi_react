@@ -161,6 +161,7 @@ const reportsShow = (args) => {
 }
 
 const reportsIndex = (args={}) => {
+  // console.log('+++ +++ reportsAction:', args)
   return (dispatch, getState) => {
     let url = `${config.apiUrl}/api/reports.json?domain=${config.domain}`
     if (args.page) {
@@ -188,12 +189,12 @@ const siteNewsitemsAction = (args = {}) => {
   }
 }
 
-const siteShow = () => {
+const siteShow = (args={}) => {
+  // console.log('+++ +++ siteAction', args)
   return (dispatch, getState) => {
     let state = getState()
-    let url = `${config.apiUrl}/api/sites/view/${config.domain}.json`
-    
-    if (Object.keys(state.site).length > 0) {
+    let url = `${config.apiUrl}/api/sites/view/${config.domain}.json`    
+    if (state.site && state.site.domain) {
       // ;
     } else {
       fetch(url).then(r => r.json()).then(_data => {

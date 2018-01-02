@@ -16,14 +16,14 @@ import config from 'config'
 import Footer3      from './Footer3'
 import Leaderboard  from './Leaderboard'
 import HeaderTopBar from './HeaderTopBar'
-// import { profileAction } from '../../actions'
+import { siteShow } from '../../actions'
 import AppRouter from './AppRouter'
 
 class MainNavigationPressroom extends React.Component {
-
   constructor (props) {
     super(props)
     this.state = { mobileMenuVisible: false }
+    props.dispatch(siteShow())
     this.toggleMobileMenu = this.toggleMobileMenu.bind(this)
   }
 
@@ -36,18 +36,18 @@ class MainNavigationPressroom extends React.Component {
   }
 
   componentWillMount(nextProps) {
-    console.log("+++ +++ MainNavigationPressroom componentWillMount:", nextProps)
+    // console.log("+++ +++ MainNavigationPressroom componentWillMount:", nextProps)
   }
 
   toggleMobileMenu (e) {
 		e.preventDefault();
-    console.log('+++ toggleMobileMenu')
+    // console.log('+++ toggleMobileMenu')
     this.setState({ mobileMenuVisible: !this.state.mobileMenuVisible })
     $(this.refs['mobile-menu']).slideToggle(500)
   }
 
   render () {
-    console.log('+++ +++ MainNavigationPressroom render:', this.props, this.state)
+    // console.log('+++ +++ MainNavigationPressroom render:', this.props, this.state)
     if (!this.props.site) { return (null) }
 
     let galleriesSelected, homeSelected = 'selected', reportsSelected, tagsSelected, videosSelected

@@ -32,29 +32,28 @@ class Footer3 extends React.Component {
   }
 
   render () {
-    console.log('+++ +++ Footer3:', this.props, this.state)
+    // console.log('+++ +++ Footer3:', this.props, this.state)
+    // if (Object.keys(this.props.site).length === 0) { return (null) }
 
     let langs = []
-    if (this.props.site && this.props.site.langs) {
-      this.props.site.langs.forEach( lang => {
-        let flag = null
-        switch (lang) {
-          case 'es':
-            flag = es
-            break
-          case 'ru':
-            flag = ru
-            break
-          case 'pt':
-            flag = pt
-            break
-          case 'en':
-          default:
-            flag = en
-        }            
-        langs.push(<li key={lang} ><Link to={AppRouter.siteLink(lang)}><img src={flag} alt={lang} /></Link></li>)
-      })
-    }
+    this.props.site.langs && this.props.site.langs.forEach( lang => {
+      let flag = null
+      switch (lang) {
+        case 'es':
+          flag = es
+          break
+        case 'ru':
+          flag = ru
+          break
+        case 'pt':
+          flag = pt
+          break
+        case 'en':
+        default:
+          flag = en
+      }            
+      langs.push(<li key={lang} ><Link to={AppRouter.siteLink(lang)}><img src={flag} alt={lang} /></Link></li>)
+    })
 
     let latestReports = []
     this.props.reports && this.props.reports.map((report, idx) => {
@@ -66,7 +65,7 @@ class Footer3 extends React.Component {
 	               <img src='images/samples/100x100/image_06.jpg' alt='img' />
                  {report.title}
                  </Link> */ }
-	          <div classNameTrash="post_content">
+	          <div >
 	            <h5><Link to={AppRouter.reportLink(report)}>{report.name}</Link></h5>
 	            <ul className="post_details simple">
 	              { /* <li className="category"><a href="category_health.html" title="HEALTH">HEALTH</a></li> */ }
@@ -83,8 +82,8 @@ class Footer3 extends React.Component {
 				<div className="footer clearfix">
           <Row>
             <Col xs={12} md={3}>
-							<h4 className="box_header">About Us</h4>
-							<p className="padding_top_bottom_25">Piousbox.com is an entertainment site (a blog) of Victor Piousbox.</p>
+							<h4 className="box_header">About {this.props.site.domain}</h4>
+							<p className="padding_top_bottom_25">{ this.props.site.description }</p>
             </Col>
             <Col xs={12} md={6}>
               <h4 className="box_header">Latest Posts</h4>
@@ -97,7 +96,7 @@ class Footer3 extends React.Component {
 				    </Col>
             <Col xs={12} md={3}>
               { /* latest galleries */ }
-							<h4 className="box_header" classNameTrash="page_margin_top" >Get In Touch With Us</h4>
+							<h4 className="box_header" >Get In Touch With Us</h4>
 							<ul className="social_icons dark page_margin_top clearfix">
 								<li><a target="_blank" title="" href="http://facebook.com/QuanticaLabs" className="social_icon facebook">&nbsp;</a></li>
 								<li><a target="_blank" title="" href="https://twitter.com/QuanticaLabs" className="social_icon twitter">&nbsp;</a></li>
@@ -149,62 +148,3 @@ export default connect(mapStateToProps)(Footer3)
 
       
 
-
-
-/*
-const latestGalleriesTrash = (
-	<h4 className="box_header">Latest Galleries</h4>
-	<div className="horizontal_carousel_container big page_margin_top">
-	  <ul className="blog horizontal_carousel visible-1 autoplay-0 scroll-1 navigation-1 easing-easeInOutQuint duration-750">
-	    <li className="post">
-	      <a href="post_gallery.html" title="Struggling Nuremberg Sack Coach Verbeek">
-	        <span className="icon gallery"></span>
-	        <img src='images/samples/330x242/image_03.jpg' alt='img' />
-	      </a>
-	      <h5 className="with_number">
-	        <a href="post_gallery.html" title="Struggling Nuremberg Sack Coach Verbeek">Struggling Nuremberg Sack Coach Verbeek</a>
-	        <a className="comments_number" href="post_gallery.html#comments_list" title="2 comments">2<span className="arrow_comments"></span></a>
-	      </h5>
-	      <ul className="post_details simple">
-	        <li className="category"><a href="category_sports.html" title="SPORTS">SPORTS</a></li>
-	        <li className="date">
-	          10:11 PM, Feb 02
-	        </li>
-	      </ul>
-	    </li>
-	    <li className="post">
-	      <a href="post_gallery.html" title="Built on Brotherhood, Club Lives Up to Name">
-	        <span className="icon gallery"></span>
-	        <img src='images/samples/330x242/image_14.jpg' alt='img' />
-	      </a>
-	      <h5 className="with_number">
-	        <a href="post_gallery.html" title="Built on Brotherhood, Club Lives Up to Name">Built on Brotherhood, Club Lives Up to Name</a>
-	        <a className="comments_number" href="post_gallery.html#comments_list" title="2 comments">2<span className="arrow_comments"></span></a>
-	      </h5>
-	      <ul className="post_details simple">
-	        <li className="category"><a href="category_sports.html" title="SPORTS">SPORTS</a></li>
-	        <li className="date">
-	          10:11 PM, Feb 02
-	        </li>
-	      </ul>
-	    </li>
-	    <li className="post">
-	      <a href="post_gallery.html" title="New Painkiller Rekindles Addiction Concerns">
-	        <span className="icon gallery"></span>
-	        <img src='images/samples/330x242/image_04.jpg' alt='img' />
-	      </a>
-	      <h5 className="with_number">
-	        <a href="post_gallery.html" title="New Painkiller Rekindles Addiction Concerns">New Painkiller Rekindles Addiction Concerns</a>
-	        <a className="comments_number" href="post_gallery.html#comments_list" title="2 comments">2<span className="arrow_comments"></span></a>
-	      </h5>
-	      <ul className="post_details simple">
-	        <li className="category"><a href="category_sports.html" title="SPORTS">SPORTS</a></li>
-	        <li className="date">
-	          10:11 PM, Feb 02
-	        </li>
-	      </ul>
-	    </li>
-	  </ul>
-	</div>
-)
-*/
