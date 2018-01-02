@@ -21,18 +21,17 @@ class ReportsShow extends React.Component {
     this.state = {
       report: {}
     }
-    // props.dispatch(siteShow())
     props.dispatch(reportsShow({ reportname: props.params.reportname }))
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("+++ +++ reportsShow received props:", nextProps)
+    // console.log("+++ +++ reportsShow received props:", nextProps)
 
     this.setState(Object.assign({}, this.state, {report: nextProps.report }))
   }
 
   render () {
-    console.log('+++ +++ render ReportsShow:', this.props, this.state)
+    // console.log('+++ +++ render ReportsShow:', this.props, this.state)
 
     return (
       <Grid>

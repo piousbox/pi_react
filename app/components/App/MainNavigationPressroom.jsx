@@ -36,18 +36,18 @@ class MainNavigationPressroom extends React.Component {
   }
 
   componentWillMount(nextProps) {
-    console.log("+++ +++ MainNavigationPressroom componentWillMount:", nextProps)
+    // console.log("+++ +++ MainNavigationPressroom componentWillMount:", nextProps)
   }
 
   toggleMobileMenu (e) {
 		e.preventDefault();
-    console.log('+++ toggleMobileMenu')
+    // console.log('+++ toggleMobileMenu')
     this.setState({ mobileMenuVisible: !this.state.mobileMenuVisible })
     $(this.refs['mobile-menu']).slideToggle(500)
   }
 
   render () {
-    console.log('+++ +++ MainNavigationPressroom render:', this.props, this.state)
+    // console.log('+++ +++ MainNavigationPressroom render:', this.props, this.state)
     if (!this.props.site) { return (null) }
 
     let galleriesSelected, homeSelected = 'selected', reportsSelected, tagsSelected, videosSelected
