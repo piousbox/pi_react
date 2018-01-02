@@ -79,7 +79,7 @@ class ReportsShow extends React.Component {
 
     let meta = {
       title: this.state.report.name,
-      description: 'abba 2'+this.state.report.subhead,
+      description: this.state.report.name,
       canonical: url,
       keywords: 'abba zetta',
     }
