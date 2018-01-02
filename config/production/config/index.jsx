@@ -6,6 +6,7 @@ let Config = {
   googleAnalytics: "UA-53077236-3",
   domain: "piousbox.com",
   lang: "en",
+  disqusShortname: "local-pi",
 
   citiesEnabled: false,
   galleriesEnabled: true,

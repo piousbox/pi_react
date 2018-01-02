@@ -6,6 +6,7 @@ let Config = {
   googleAnalytics: "UA-53077236-3",
   domain: "sedux.net",
   lang: "en",
+  disqusShortname: "local-pi",
 
   galleriesEnabled: true,
   reportsEnabled: true,

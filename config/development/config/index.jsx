@@ -5,6 +5,7 @@ let Config = {
   fbAppId: "123014244977505",
   domain: "piousbox.com",
   lang: "en",
+  disqusShortname: "local-pi",
 
   reportsEnabled: true,
   galleriesEnabled: true,

@@ -1,12 +1,54 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
-
 import { Grid, Row, Col } from 'react-bootstrap'
+import Disqus from 'react-disqus-thread'
+import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share'
+const {
+  FacebookShareButton,
+  GooglePlusShareButton,
+  LinkedinShareButton,
+  TwitterShareButton,
+  TelegramShareButton,
+  WhatsappShareButton,
+  PinterestShareButton,
+  VKShareButton,
+  OKShareButton,
+  RedditShareButton,
+  TumblrShareButton,
+  LivejournalShareButton,
+  EmailShareButton,
+} = ShareButtons
+const {
+  FacebookShareCount,
+  GooglePlusShareCount,
+  LinkedinShareCount,
+  PinterestShareCount,
+  VKShareCount,
+  OKShareCount,
+  RedditShareCount,
+  TumblrShareCount,
+} = ShareCounts
+const FacebookIcon = generateShareIcon('facebook');
+const TwitterIcon = generateShareIcon('twitter');
+const TelegramIcon = generateShareIcon('telegram');
+const WhatsappIcon = generateShareIcon('whatsapp');
+const GooglePlusIcon = generateShareIcon('google');
+const LinkedinIcon = generateShareIcon('linkedin');
+const PinterestIcon = generateShareIcon('pinterest');
+const VKIcon = generateShareIcon('vk');
+const OKIcon = generateShareIcon('ok');
+const RedditIcon = generateShareIcon('reddit');
+const TumblrIcon = generateShareIcon('tumblr');
+const LivejournalIcon = generateShareIcon('livejournal');
+const MailruIcon = generateShareIcon('mailru');
+const EmailIcon = generateShareIcon('email');
+import DocumentMeta from 'react-document-meta'
 
 import config from 'config'
 import Center from '../Center'
 
+import { AppRouter } from '../App'
 import { reportsShow, siteShow } from '../../actions'
 
 import { 
@@ -31,15 +73,42 @@ class ReportsShow extends React.Component {
   }
 
   render () {
-    // console.log('+++ +++ render ReportsShow:', this.props, this.state)
+    console.log('+++ +++ render ReportsShow:', this.props, this.state)
+    let url = `https://${config.domain}${AppRouter.reportLink(this.state.report)}`
+    console.log('+++ url:', url)
+
+    const meta = {
+      title: this.state.report.name,
+      description: this.state.report.subhead,
+      canonical: url,
+      meta: {
+        charset: 'utf-8',
+        name: { keywords: this.state.report.subhead, },
+      },
+    }
 
     return (
       <Grid>
+        <DocumentMeta {...meta} />
         <Row>
           <Col xs={12}>
             <Center>
               <h1>{ this.state.report.name }</h1>
               <Meta item={this.state.report} />
+              
+              <div className="social-buttons">
+                <TwitterShareButton url={url} >
+                  <TwitterIcon size={32} round={true} />
+                </TwitterShareButton>
+                <FacebookShareButton url={url}
+                                     title="title 1" 
+                                     quote="quote 11" >
+                  <FacebookIcon size={32} round={true} />
+                </FacebookShareButton>
+                <p className='socialMediaCount'><FacebookShareCount url={url} /></p>
+                <Clearfix />
+              </div>
+
             </Center>
           </Col>
         </Row>
@@ -53,6 +122,10 @@ class ReportsShow extends React.Component {
             <div dangerouslySetInnerHTML={{__html: this.state.report.description}} />
             <br /><br />
             { /* <Leaderboard /> */ }
+            { this.state.report.name && <Disqus shortname={config.disqusShortname} 
+                                           identifier={this.state.report.reportname}
+                                           title={this.state.report.name} 
+                                           url={url} /> }
           </Col>
         </Row>
       </Grid>

@@ -51,3 +51,4 @@
 0.2.2 - features on Home should not re-load the page
         reports on home have pics
         tags look ok for now (still need pagination)
+        disqus and social icons
