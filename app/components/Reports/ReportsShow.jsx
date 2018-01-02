@@ -100,9 +100,7 @@ class ReportsShow extends React.Component {
                 <TwitterShareButton url={url} >
                   <TwitterIcon size={32} round={true} />
                 </TwitterShareButton>
-                <FacebookShareButton url={url}
-                                     title="title 1" 
-                                     quote="quote 11" >
+                <FacebookShareButton url={url} >  
                   <FacebookIcon size={32} round={true} />
                 </FacebookShareButton>
                 <p className='socialMediaCount'><FacebookShareCount url={url} /></p>
