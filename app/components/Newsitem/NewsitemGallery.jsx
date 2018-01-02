@@ -11,7 +11,7 @@ class NewsitemGallery extends React.Component {
     let onePhoto = null
     if (this.props.newsitem.photos) {
       this.props.newsitem.photos.forEach((photo, idx) => {
-        if (idx !== 0) { photos.push(<li><img key={idx} src={ photo.thumb_url } alt='' /></li>) }
+        if (idx !== 0) { photos.push(<li key={idx} ><img key={idx} src={ photo.thumb_url } alt='' /></li>) }
       })
       onePhoto = (<img style={{ cursor: 'pointer', border: '10px solid gray', padding: '10px', width: '100%' }} 
                        src={this.props.newsitem.photos[0].small_url} alt='' />)

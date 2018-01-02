@@ -1,16 +1,16 @@
 import React    from 'react'
-import ReactDOM from 'react-dom'
+// import ReactDOM from 'react-dom'
 import { Router, Route, browserHistory, Redirect,
          IndexRoute,
 } from 'react-router'
-import { Provider, connect } from 'react-redux'
+// import { Provider, connect } from 'react-redux'
 // import 'whatwg-fetch'
 
-import config     from 'config'
-import PropTypes from 'prop-types'
+// import config     from 'config'
+// import PropTypes from 'prop-types'
 
-import bg         from './images/noisy_grid.png'
-import store      from '../../stores'
+// import bg         from './images/noisy_grid.png'
+// import store      from '../../stores'
 
 import Home from './Home'
 
@@ -22,9 +22,7 @@ import {
 } from '../Galleries'
 import { ReportsIndex, ReportsShow
 } from '../Reports'
-import { TagsShow } from '../Tags/TagsShow'
 import { VideosIndex, VideosShow } from '../Videos'
-
 import { TagsIndex, TagShow } from '../Tags'
 
 const routes = [
@@ -56,33 +54,14 @@ const routes = [
 ]
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-    this.handleUpdate = this.handleUpdate.bind(this)
-  }
-
-  componentDidMount() {}
-
-  componentWillUnmount() {}
-
-  onChange () {}
-
-  handleUpdate () {
-    window.scrollTo(0, 0);
-  }
-
   render() {
-    console.log('+++ +++ App props:', this.props, this.state)
-    return (<Router history={browserHistory} routes={routes} onUpdate={this.handleUpdate} />)
+    // console.log('+++ +++ App props:', this.props, this.state)
+    return (<Router history={browserHistory} routes={routes} onUpdate={() => window.scrollTo(0, 0) }/>)
   }
 }
 
-App.propTypes = {
-}
-
-function mapStateToProps(state, ownProps) {
+/* function mapStateToProps(state, ownProps) {
   return {}
-}
+} */
 
-export default connect(mapStateToProps)(App)
+export default App // connect(mapStateToProps)(App)
