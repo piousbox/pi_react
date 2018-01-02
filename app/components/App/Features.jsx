@@ -31,7 +31,7 @@ class Features extends React.Component {
         if (f.link_path) {
           panel = (
             <Panel style={panelStyle}>
-              <h3><a href={f.link_path} >{ f.name }</a></h3>
+              <h3><Link to={f.link_path} >{ f.name }</Link></h3>
               { f.photo_url ? <img src={f.photo_url} alt='' /> : null }
             </Panel>)
         } else if (f.reportname) {

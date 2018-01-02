@@ -48,3 +48,4 @@
         reports render, videos render.
         frontpage less ugly
         test-driven now, reportsIndex sets Site.
+0.2.2 - features on Home should not re-load the page

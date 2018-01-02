@@ -39,8 +39,6 @@ class Home extends React.Component {
             <Newsitems />
           </Col>
           <Col xs={12} md={4}>
-            <p>features go here</p>
-
             <Features features={this.props.site.features} />
             { /* <LatestPosts /> */ }
             { /* <TopAuthors /> */ }
