@@ -77,19 +77,16 @@ class ReportsShow extends React.Component {
     let url = `https://${config.domain}${AppRouter.reportLink(this.state.report)}`
     console.log('+++ url:', url)
 
-    const meta = {
+    let meta = {
       title: this.state.report.name,
-      description: this.state.report.subhead,
+      description: 'abba 2'+this.state.report.subhead,
       canonical: url,
-      meta: {
-        charset: 'utf-8',
-        name: { keywords: this.state.report.subhead, },
-      },
+      keywords: 'abba zetta',
     }
 
     return (
       <Grid>
-        <DocumentMeta {...meta} />
+        { this.state.report.name && <DocumentMeta {...meta} /> /* */ }
         <Row>
           <Col xs={12}>
             <Center>
