@@ -4,6 +4,7 @@ import { Grid, Row, Col } from 'react-bootstrap'
 
 import { tagAction } from '../../actions'
 
+import { Newsitems } from '../Newsitem'
 import { VideosIndex } from '../Videos'
 
 class TagShow extends React.Component {
@@ -32,8 +33,8 @@ class TagShow extends React.Component {
     return (
       <Row>
         <Col xs={12}>
-          { this.props.tag && <h5 style={{ textAlign: 'center' }}>Tag {this.props.tag.name}</h5> }
-          { this.props.tag && <VideosIndex videos={this.props.tag.videos} params={this.props.params} /> }
+          <h5 style={{ textAlign: 'center' }}>Tag {this.props.tag.name}</h5>
+          <Newsitems newsitems={this.props.tag.newsitems} params={this.props.params} />
         </Col>
       </Row>
     )
