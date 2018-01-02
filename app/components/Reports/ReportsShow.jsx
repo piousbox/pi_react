@@ -86,7 +86,7 @@ class ReportsShow extends React.Component {
           <meta property="og:title"              content={this.state.report.name} />
           <meta property="og:description"        content={this.state.report.name} />
           <meta property="og:image"              content={this.state.report.photo_url} />
-          </Helmet> /* */ }
+          </Helmet> }
         <Row>
           <Col xs={12}>
             <Center>
