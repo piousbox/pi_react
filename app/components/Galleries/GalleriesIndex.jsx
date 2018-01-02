@@ -14,10 +14,9 @@ import GalleriesIndexItem from './GalleriesIndexItem'
 import { AppRouter } from '../App'
 
 class GalleriesIndex extends React.Component {
-
   constructor(props) {
     super(props)
-    console.log('+++ +++ GalleriesIndex constructor:', props)
+    // console.log('+++ +++ GalleriesIndex constructor:', props)
 
     props.dispatch(galleriesIndex({ page: this.props.params.galleries_page }))
 
@@ -25,14 +24,14 @@ class GalleriesIndex extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("+++ +++ galleriesIndex will receive props:", nextProps, this.props, this.state)
+    // console.log("+++ +++ galleriesIndex will receive props:", nextProps, this.props, this.state)
     if (nextProps.params.galleries_page !== this.props.params.galleries_page) {
       this.props.dispatch(galleriesIndex({ page: nextProps.params.galleries_page }))
     }
   }
 
   render () {
-    console.log('+++ +++ GalleriesIndex render:', this.props, this.state)
+    // console.log('+++ +++ GalleriesIndex render:', this.props, this.state)
     if (!this.props.galleries || this.props.galleries.length === 0) { return (null) }
 
     let galleries = []

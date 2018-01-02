@@ -18,7 +18,7 @@ import { Newsitems  } from '../Newsitem'
 class Home extends React.Component {
   constructor(props) {
     super(props) 
-    console.log('+++ +++ Home constructor:', props)
+    // console.log('+++ +++ Home constructor:', props)
 
     props.dispatch(siteShow())
     if (props.site) {

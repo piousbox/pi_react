@@ -24,7 +24,7 @@ class ReportsIndexItem extends React.Component {
   }
 
   render () {
-    console.log('+++ +++ ReportsIndexItem render:', this.props, this.state)
+    // console.log('+++ +++ ReportsIndexItem render:', this.props, this.state)
 
     return (
       <Panel>

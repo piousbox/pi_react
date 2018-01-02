@@ -9,30 +9,31 @@ import { Link } from 'react-router'
 import config from 'config'
 import Center from '../Center'
 
-import { reportsIndex } from '../../actions'
+import { reportsIndex, siteShow } from '../../actions'
 import { AppRouter } from '../App'
 import Leaderboard from '../App/Leaderboard'
 import LargeSquare from '../App/LargeSquare'
 import ReportsIndexItem from './ReportsIndexItem'
 
-
 class ReportsIndex extends React.Component {
   constructor(props) {
     super(props)
+    // console.log('+++ +++ ReportsIndex constructor:', props)
     this.state = {}
+    this.props.dispatch(siteShow())
     this.props.dispatch(reportsIndex({ page: props.params.reports_page }))
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("+++ +++ reportsIndex will receive props:", nextProps, this.props, this.state)
+    // console.log("+++ +++ reportsIndex will receive props:", nextProps, this.props, this.state)
     if (nextProps.params.reports_page !== this.props.params.reports_page) {
       this.props.dispatch(reportsIndex({ page: nextProps.params.reports_page }))
     }
   }
 
   render () {
-    console.log('+++ +++ render ReportsIndex:', this.props, this.state)
+    // console.log('+++ +++ render ReportsIndex:', this.props, this.state)
     if (this.props.reports.length === 0) { return (null) }
 
     let reports = []
@@ -46,15 +47,16 @@ class ReportsIndex extends React.Component {
       active = page == i ? 'active' : ''
       pages.push(<Link key={i} className={`btn btn-default ${active}`} to={AppRouter.reportsLink({reports_page:i})}>{i}</Link>)
     }
-    let pagination = <div className="pagination">{ pages }</div>
+    let pagination = (<div className="pagination">{ pages }</div>)
 
     return (
       <div>
         <Grid>
           <Row>
             <Col xs={12} >
-                 { reports }
-                 { pagination }
+              { reports }
+              { pagination }
+              N reports: {this.props.site.n_reports}
             </Col>
           </Row>
         </Grid>

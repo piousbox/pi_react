@@ -25,7 +25,7 @@ class NewsitemPhoto extends React.Component {
 			    </ul>
 			    { this.props.newsitem.desciption && <p dangerouslySetInnerHTML={{ __html: this.props.newsitem.description }} /> }
         </Col>
-        { this.state.isOpen && <Lightbox mainSrc={this.props.photo.original_url} onCloseRequest={() => { this.setState({isOpen: false }) }} ></Lightbox> }
+        { this.state.isOpen && <Lightbox mainSrc={this.props.photo.original_url} onCloseRequest={() => { this.setState({isOpen: false }) }} /> }
       </Row>			  
     )
   }
