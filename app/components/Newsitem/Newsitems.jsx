@@ -1,28 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
 import { Grid, Row, Col,
          Button,
 } from 'react-bootstrap'
 
+import { siteNewsitemsAction, siteShow } from '../../actions'
+
 import Newsitem from './Newsitem'
 import Center   from './../Center'
 import Clearfix from './../Clearfix'
-import styles   from './_Newsitems.scss'
-
-import { siteNewsitemsAction, siteShow } from '../../actions'
 
 class Newsitems extends React.Component {
-
   constructor(props) {
     super(props)
-    this.state = { page: 1, count: null }
-    this.props.dispatch(siteNewsitemsAction({ page: this.state.page }))
-    this.props.dispatch(siteShow())
-  }
+    this.state = {}
 
-  componentWillReceiveProps(nextProps) {
-    this.setState(Object.assign({}, this.state, { count: nextProps.site.n_newsitems }))
+    this.gotoPage = this.gotoPage.bind(this)
   }
 
   gotoPage (page) {
@@ -31,7 +24,7 @@ class Newsitems extends React.Component {
   }
 
   render() {
-    console.log('+++ +++ newsitems props:', this.props, this.state)
+    console.log('+++ +++ Newsitems render:', this.props, this.state)
 
     let listitems = []
     let newsitems = this.props.newsitems
@@ -81,7 +74,6 @@ class Newsitems extends React.Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-    newsitems: state.newsitems,
     site: state.site,
   }
 }

@@ -8,7 +8,7 @@ import { Link } from 'react-router'
 import { connect } from 'react-redux'
 
 import config from 'config'
-import { siteShow } from '../../actions'
+import { siteNewsitemsAction, siteShow, } from '../../actions'
 
 import Clearfix      from './Clearfix'
 import Features      from './Features'
@@ -19,29 +19,23 @@ class Home extends React.Component {
   constructor(props) {
     super(props) 
     // console.log('+++ +++ Home constructor:', props)
-
-    props.dispatch(siteShow())
+    this.state = { page: 1 }
+    props.dispatch(siteNewsitemsAction({ page: this.state.page }))
     if (props.site) {
       localStorage.setItem("lang", props.site.lang)
     }
   }
 
-  componentWillMount() {
-  }
-
   render () {
     // console.log('+++ +++ rendering Home:', this.props, this.state)
-
     return (
       <Grid>
         <Row>
           <Col xs={12} md={8}>
-            <Newsitems />
+            <Newsitems newsitems={this.props.newsitems} />
           </Col>
           <Col xs={12} md={4}>
             <Features features={this.props.site.features} />
-            { /* <LatestPosts /> */ }
-            { /* <TopAuthors /> */ }
           </Col>
         </Row>
       </Grid>         
@@ -49,12 +43,9 @@ class Home extends React.Component {
   }
 }
 
-Home.propTypes = {
-}
-
 function mapStateToProps(state, ownProps) {
   return {
-    apiUrl: state.apiUrl,
+    newsitems: state.newsitems,
     site: state.site,
   }
 }
