@@ -194,7 +194,7 @@
     }
   },
   "scripts": {
-    "build": "rm build -rf && mkdir build && NODE_ENV=production npm run webpack && cp -v htaccess build/.htaccess && cp sitemap* build/ -v && cp -rv archive/201711_bjjc-email-signup build/ && NODE_ENV=production react-snapshot && echo ok",
+    "build": "rm build -rf && mkdir build && NODE_ENV=production npm run webpack && cp -v htaccess build/.htaccess && cp sitemap* build/ -v && cp -rv archive/201711_bjjc-email-signup build/ && echo ok",
     "build_sedux": "rm build_sedux -rf && mkdir build_sedux && NODE_ENV=sedux npm run webpack && cp -v htaccess build_sedux/.htaccess && echo ok",
     "clean": "NODE_ENV=production rimraf $npm_package_config_buildDir_production && mkdir $npm_package_config_buildDir_production",
     "env": "env",
