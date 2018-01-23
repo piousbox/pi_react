@@ -30,17 +30,21 @@ const routes = [
     component: MainNavigationPressroom,
     indexRoute: { component: Home },
     childRoutes: [
-
-      { path: AppRouter.sitePath, component: Home },
-
+      
       { path: AppRouter.galleriesPath, component: GalleriesIndex, },
       { path: AppRouter.galleriesPagesPath, component: GalleriesIndex },
       { path: AppRouter.galleryPath, component: GalleriesShow },
       { path: AppRouter.galleryPhotoPath, component: GalleriesPhotoShow },
-
+      
+      { path: AppRouter.newsPath, component: Home },
+      
       { path: AppRouter.reportsPath, component: ReportsIndex },
       { path: AppRouter.reportsPagesPath, component: ReportsIndex },
       { path: AppRouter.reportPath,  component: ReportsShow },
+      
+      { path: AppRouter.sitePath,  component: Home },
+      { path: AppRouter.sitePath1, component: Home },
+      { path: AppRouter.sitePath2, component: Home },
 
       { path: AppRouter.tagsPath, component: TagsIndex, childRoutes: [
         { path: AppRouter.tagPath, component: TagShow },

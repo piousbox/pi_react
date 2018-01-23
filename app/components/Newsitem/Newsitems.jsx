@@ -3,12 +3,14 @@ import { connect } from 'react-redux'
 import { Grid, Row, Col,
          Button,
 } from 'react-bootstrap'
+import { Link } from 'react-router'
 
 import { siteNewsitemsAction, siteShow } from '../../actions'
 
 import Newsitem from './Newsitem'
 import Center   from './../Center'
 import Clearfix from './../Clearfix'
+import { AppRouter } from '../App'
 
 class Newsitems extends React.Component {
   constructor(props) {
@@ -19,12 +21,18 @@ class Newsitems extends React.Component {
   }
 
   gotoPage (page) {
+    console.log('+++ gotoPage of Newsitems:', page, this.props, this.state)
+
     this.setState(Object.assign({}, this.state, { page: page }))
     this.props.dispatch(siteNewsitemsAction({ page: page }))
   }
 
+  componentWillReceiveProps (nextProps) {
+    console.log('+++ Newsitems willReceiveProps:', nextProps, this.props, this.state)
+  }
+
   render() {
-    // console.log('+++ +++ Newsitems render:', this.props, this.state)
+    console.log('+++ +++ Newsitems render:', this.props, this.state)
 
     let listitems = []
     let newsitems = this.props.newsitems
@@ -45,8 +53,8 @@ class Newsitems extends React.Component {
     let activeStyle = { fontWeight: 'bold' }
     const lambda = (pageNum, idx) => {
       pagination.push(
-        <li key={idx} className={this.state.page == pageNum ? 'selected' : '' }>
-          <a className="btn" onClick={() => {this.gotoPage(pageNum)}}>{pageNum}</a>
+        <li key={idx} className={this.props.page == pageNum ? 'selected' : '' }>
+          <Link to={AppRouter.newsLink(pageNum)} >{pageNum}</Link>
         </li>)
     }
     if (this.props.site) {
@@ -55,18 +63,20 @@ class Newsitems extends React.Component {
       }
     }
     let lastPage = Math.ceil( this.props.site.n_newsitems / this.props.site.newsitems_per_page )
+    let paginationRender = (
+      <Col xs={12}>
+        <ul className="pagination clearfix page_margin_top_section">
+	        { this.props.page != 1 && <li><Link to={AppRouter.newsLink(parseInt(this.props.page)-1)}>&lt;</Link></li> }
+          { pagination }
+	        { this.props.page != lastPage && <li><Link to={AppRouter.newsLink(parseInt(this.props.page)+1)}>&gt;</Link></li> }
+        </ul>
+      </Col>)
     
     return (
       <Row >
+        { paginationRender }
         { listitems }
-
-        <Col xs={12}>
-          <ul className="pagination clearfix page_margin_top_section">
-	          { this.state.page !== 1 && <li className=""><a className="btn" onClick={() => {this.gotoPage(this.state.page-1)}}>&lt;</a></li> }
-            { pagination }
-	          { this.state.page !== lastPage && <li className=""><a className="btn" onClick={() => {this.gotoPage(this.state.page+1)}}>&gt;</a></li> }
-          </ul>
-        </Col>
+        { paginationRender }
       </Row>
     )
   }
