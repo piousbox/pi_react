@@ -52,3 +52,4 @@
         reports on home have pics
         tags look ok for now (still need pagination)
         disqus and social icons
+0.2.2 - incremental improvements
