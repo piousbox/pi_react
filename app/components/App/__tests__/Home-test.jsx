@@ -10,7 +10,7 @@ import store from '../../../stores'
 describe('Home', () => {
   it('Should render Home', () => {
     let home = ReactTestUtils.renderIntoDocument(
-      <Provider store={store}><Home store={store} /></Provider>
+      <Provider store={store}><Home store={store} params={{}} /></Provider>
     )
     let elem = ReactDOM.findDOMNode(home)
     expect(elem.tagName.toLowerCase()).to.equal('div')

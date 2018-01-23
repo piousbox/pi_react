@@ -29,11 +29,7 @@ class MainNavigation extends React.Component {
 
   constructor (props) {
     super(props)
-    if (localStorage.getItem('fbAccountId')) {
-      this.state = { profile: { id: localStorage.getItem('fbAccountId') } }
-    } else {
-      this.state = { profile: {} }
-    }
+    this.state = { profile: {} }
   }
 
   componentWillMount(nextProps) {

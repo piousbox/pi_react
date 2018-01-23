@@ -17,22 +17,25 @@ import { Newsitems  } from '../Newsitem'
 
 class Home extends React.Component {
   constructor(props) {
-    super(props) 
-    // console.log('+++ +++ Home constructor:', props)
-    this.state = { page: 1 }
-    props.dispatch(siteNewsitemsAction({ page: this.state.page }))
-    if (props.site) {
-      localStorage.setItem("lang", props.site.lang)
+    super(props)
+    props.dispatch(siteNewsitemsAction({ page: 1 }))
+  }
+
+  componentWillReceiveProps (nextProps) {
+    console.log('+++ Home willReceiveProps:', nextProps, this.props, this.state)
+    if (this.props.params.newsitems_page != nextProps.params.newsitems_page) {
+      nextProps.dispatch(siteNewsitemsAction({ page: nextProps.params.newsitems_page }))
     }
   }
 
   render () {
-    // console.log('+++ +++ rendering Home:', this.props, this.state)
+    console.log('+++ +++ rendering Home:', this.props, this.state)
+
     return (
       <Grid>
         <Row>
           <Col xs={12} md={8}>
-            <Newsitems newsitems={this.props.newsitems} />
+            <Newsitems newsitems={this.props.newsitems} page={this.props.params.newsitems_page} />
           </Col>
           <Col xs={12} md={4}>
             <Features features={this.props.site.features} />

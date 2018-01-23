@@ -5,14 +5,16 @@ import 'normalize.css/normalize.css';
 import './scss/app.scss';
 
 import React from 'react'
-import ReactDOM from 'react-dom'
+// import ReactDOM from 'react-dom'
+import { render } from 'react-snapshot'
 import App from './components/App/App';
 
 import store from './stores'
 
 import { Provider } from 'react-redux'
 
-ReactDOM.render(
+// ReactDOM.render(
+render(
   <Provider store={store}>
     <App />
   </Provider>,

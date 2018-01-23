@@ -1,6 +1,6 @@
 
-const profileAction = () => {
-  return (dispatch, getState) => {
+const profileAction = () => {}
+/*  return (dispatch, getState) => {
     if (localStorage.getItem('fbAccount')) {
       let fbAccount = JSON.parse(localStorage.getItem('fbAccount'))
       fetch(TgmApi.profile, {
@@ -16,19 +16,19 @@ const profileAction = () => {
     }
     dispatch({ type: SET_PROFILE, fbAccount: null })
   }
-}
+} // */
 
-const loginAction = (r2) => {
-  return (dispatch, getState) => {
+const loginAction = (r2) => {}
+/*  return (dispatch, getState) => {
     localStorage.setItem('fbAccount', JSON.stringify(r2))
     dispatch(profileAction())
   }
-}
+} // */
 
-const logoutAction = () => {
-  localStorage.removeItem('fbAccount')
+const logoutAction = () => {}
+/*  localStorage.removeItem('fbAccount')
   return({ type: SET_PROFILE, fbAccount: null }) 
-}
+} // */
 
 export default {
   profileAction, loginAction, logoutAction,

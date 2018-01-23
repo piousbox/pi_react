@@ -1,4 +1,6 @@
 
+import config from 'config'
+
 let AppRouter = {
   rootPath: '/',
 
@@ -28,6 +30,12 @@ let AppRouter = {
     }
   },
 
+  newsPath: `/en/sites/show/:domain/newsitems/:newsitems_page`,
+  newsLink: (g) => {
+    if (undefined === g) { g = 1 }
+    return `/en/sites/show/${config.domain}/newsitems/${g}`
+  },
+
   reportPath: '/:lang(en|ru|pt|es)/reports/show/:reportname',
   reportLink: (g) => { 
     if (typeof g === 'string') {
@@ -48,6 +56,8 @@ let AppRouter = {
   },
   
   sitePath: '/:lang(en|ru|es|pt)/sites/show',
+  sitePath1: `/:lang(en|ru|es|pt)/sites/show/:domain`,
+  sitePath2: `/:lang(en|ru|es|pt)/sites/show/:domain/newsitems`,
   siteLink: (g) => {
     if (typeof g === 'string') {
       return `/${g}/sites/show`
