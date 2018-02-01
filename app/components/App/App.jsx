@@ -14,7 +14,7 @@ import 'whatwg-fetch'
 
 import Home from './Home'
 
-import MainNavigationPressroom from './MainNavigationPressroom'
+import MainNavigation from './MainNavigation'
 import AppRouter from './AppRouter'
 
 import {
@@ -27,7 +27,7 @@ import { TagsIndex, TagShow } from '../Tags'
 
 const routes = [
   { path: '/',
-    component: MainNavigationPressroom,
+    component: MainNavigation,
     indexRoute: { component: Home },
     childRoutes: [
       
