@@ -74,7 +74,6 @@ class Newsitems extends React.Component {
     
     return (
       <Row >
-        { paginationRender }
         { listitems }
         { paginationRender }
       </Row>

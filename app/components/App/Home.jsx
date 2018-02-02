@@ -13,7 +13,34 @@ import { siteNewsitemsAction, siteShow, } from '../../actions'
 import Clearfix      from './Clearfix'
 import Features      from './Features'
 import Footer        from './Footer'
-import { Newsitems  } from '../Newsitem'
+import { Newsitems } from '../Newsitem'
+import { 
+  AdSkyscraper, AdLargeSquare, AdBanner, AdSkim, AdWdz, AdCot, AdWasya 
+} from '../Ads'
+
+class TagWidget extends React.Component {
+  render () {
+    return (<div>tag widget</div>)
+  }
+}
+
+class PeopleWidget extends React.Component {
+  render () {
+    return (<div>people widget</div>)
+  }
+}
+
+class PersonWidget extends React.Component {
+  render () {
+    return (<div>person widget</div>)
+  }
+}
+
+class FeatureTags extends React.Component {
+  render () {
+    return (<div>feature tags</div>)
+  }
+}
 
 class Home extends React.Component {
   constructor(props) {
@@ -34,11 +61,28 @@ class Home extends React.Component {
     return (
       <Grid>
         <Row>
-          <Col xs={12} md={8}>
-            <Newsitems newsitems={this.props.newsitems} page={this.props.params.newsitems_page||1} />
+          <Col xs={12} md={5}>
+            <Newsitems newsitems={majorNewsitems} />
+            <TagWidget tagname="bizdev" />
+            <TagWidget tagname="human-resources" />
           </Col>
-          <Col xs={12} md={4}>
-            <Features features={this.props.site.features} />
+          <Col xs={12} md={5}>
+            <AdLargeSquare />
+            <br /><br />
+            <FeatureTags tags={this.props.site.feature_tags } />
+            { /* <Features features={this.props.site.features} /> */ }
+            <Newsitems newsitems={minorNewsitems} />
+          </Col>
+          <Col xs={12} md={2}>
+            <AdSkyscraper />
+            <AdSkyscraper />
+            <PeopleWidget tagname="writers" />
+            <AdSkim />
+            <AdWdz />
+            <AdCot />
+            <PersonWidget username="piousbox" />
+            <PersonWidget username="bondar" />
+            <AdWasya />
           </Col>
         </Row>
       </Grid>         
