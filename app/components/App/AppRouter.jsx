@@ -3,6 +3,7 @@ import config from 'config'
 
 let AppRouter = {
   rootPath: '/',
+  rootLink: () => { return '/' },
 
   galleriesPath: '/:lang(en|ru|pt|es)/galleries',
   galleriesPagesPath: '/:lang(en|ru|pt|es)/galleries/page/:galleries_page',
@@ -35,6 +36,9 @@ let AppRouter = {
     if (undefined === g) { g = 1 }
     return `/en/sites/show/${config.domain}/newsitems/${g}`
   },
+
+  peoplePath: '/en/people',
+  peopleLink: () => { return '/en/people' },
 
   reportPath: '/:lang(en|ru|pt|es)/reports/show/:reportname',
   reportLink: (g) => { 

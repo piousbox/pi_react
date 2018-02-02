@@ -46,7 +46,7 @@ class MainNavigation extends React.Component {
     // console.log('+++ +++ MainNavigation render:', this.props, this.state)
     if (!this.props.site) { return (null) }
 
-    let galleriesSelected, homeSelected = 'selected', reportsSelected, tagsSelected, videosSelected
+    let galleriesSelected, homeSelected = 'selected', reportsSelected, tagsSelected, videosSelected, peopleSelected
     this.props.routes.map((route, idx) => {
       // galleries
       if (route.path === AppRouter.galleriesPath ||
@@ -76,51 +76,59 @@ class MainNavigation extends React.Component {
         videosSelected = 'selected'
         homeSelected = null
       }
+      // people
+      if (route.path === AppRouter.peoplePath) {
+        peopleSelected = 'selected'
+        homeSelected = null
+      }
     })
     
     return (
       <div >
         <HeaderTopBar />
 
-        <div className="site_container">
-			    <div className="header_container">
-				    <div className="header clearfix">
-					    <div className="logo">
-						    <h1 style={{ margin: 0, fontFamily: 'serif' }} ><Link to="/">{ this.props.site.title }</Link></h1>
-						    <h4>{this.props.site.subhead}</h4>
-					    </div>
-				    </div>
-			    </div>
-			    <div className="menu_container clearfix">
-				    <nav>
-				      <ul className="sf-menu">
-					      <li className={homeSelected}><Link to={AppRouter.rootPath}>Home</Link></li>
-                { config.reportsEnabled &&   <li className={reportsSelected} ><Link to={AppRouter.reportsLink()}>Reports</Link></li> }
-                { config.galleriesEnabled && <li className={galleriesSelected} ><Link to={AppRouter.galleriesLink()}>Galleries</Link></li> }
-                { config.videosEnabled &&    <li className={videosSelected} ><Link to={AppRouter.videosLink()}>Videos</Link></li> }
-                { config.tagsEnabled &&      <li className={tagsSelected} ><Link to={AppRouter.tagsLink()}>Tags</Link></li> }
-				      </ul>
-				    </nav>
-				    <div className="mobile_menu_container">
-					    <a href="#" className="mobile-menu-switch" onClick={(e) => {this.toggleMobileMenu(e)}} >
-						    <span className="line"></span>
-						    <span className="line"></span>
-						    <span className="line"></span>
-					    </a>
-					    <div className="mobile-menu-divider"></div>
-					    <nav>
-					      <ul className="mobile-menu" ref='mobile-menu' >
-						      <li className="selected"><a href="home.html" title="Home">Home</a></li>
-						      { config.reportsEnabled && <li className=""><a href="about.html" title="Pages">Reports</a></li> }
-						      { config.galleriesEnabled && <li className=""><a href="about.html" title="Pages">Galleries</a></li> }
-						      { config.videosEnabled && <li className=""><a href="about.html" title="Pages">Videos</a></li> }
-						      { config.tagsEnabled && <li className=""><a href="about.html" title="Pages">Tags</a></li> }
-					      </ul>
-					    </nav>
-				    </div>
-          </div>
+        <div className="center main-logo">
+					<h1 style={{ margin: 0, fontFamily: 'serif' }} ><Link to="/">{ this.props.site.title }</Link></h1>
+					<h4>{this.props.site.subhead}</h4>
+				</div>
+        
+        <div className="menu-primary">
+          <Grid>
+            <Row>
+              <Col xs={12}>
+                <ul>
+                  <li><Link to={AppRouter.rootLink()}>Home</Link></li>
+                  <li><Link to={AppRouter.tagLink('Salsa')}>Salsa</Link></li>
+                  <li><Link to={AppRouter.tagLink('Bachata')}>Bachata</Link></li>
+                  <li><Link to={AppRouter.tagLink('Sketches')}>Sketches</Link></li>
+                  <li><Link to={AppRouter.tagLink('Travel')}>Travel</Link></li>
+                  <li><Link to={AppRouter.tagLink('Music')}>Music</Link></li>
+                  <li><Link to={AppRouter.tagLink('Javascript')}>Javascript</Link></li>
+                  <li><Link to={AppRouter.tagLink('Ruby')}>Ruby</Link></li>
+                </ul>
+              </Col>
+            </Row>
+          </Grid>
         </div>
+        
+        <div className="menu-secondary">
+          <Grid>
+            <Row>
+              <Col xs={12}>
+                <ul>
+                  { config.reportsEnabled &&   <li className={reportsSelected} ><Link to={AppRouter.reportsLink()}>Reports</Link></li> }
+                  { config.galleriesEnabled && <li className={galleriesSelected} ><Link to={AppRouter.galleriesLink()}>Galleries</Link></li> }
+                  { config.videosEnabled &&    <li className={videosSelected} ><Link to={AppRouter.videosLink()}>Videos</Link></li> }
+                  { config.tagsEnabled &&      <li className={tagsSelected} ><Link to={AppRouter.tagsLink()}>Tags</Link></li> }
+                  { config.peopleEnabled &&    <li className={peopleSelected} ><Link to={AppRouter.peopleLink()}>People</Link></li> }
+                </ul>
+              </Col>
+            </Row>
+          </Grid>
+        </div>
+        
         { this.props.children }
+
         <Footer3 reports={this.props.site.reports} />
       </div>
     )

@@ -11,6 +11,7 @@ let Config = {
   galleriesEnabled: true,
   videosEnabled: true,
   tagsEnabled: true,
+  peopleEnabled: true,
 
 }
 
