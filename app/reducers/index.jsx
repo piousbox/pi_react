@@ -83,7 +83,17 @@ const tag = (state={}, action) => {
   }
 }
 
-const tags = (state=[], action) => {
+const tags = (state={}, action) => {
+  switch (action.type) {
+    case SET.tag:
+      let tmp = Object.assign({}, state)
+      tmp[action.tag.tagname] = action.tag
+      return tmp
+    default: 
+      return state
+  }
+}
+const tagsList = (state=[], action) => {
   switch (action.type) {
     case SET.tags:
       return action.tags
@@ -123,8 +133,9 @@ export default combineReducers({
 
   site: sitesReducer,
 
-  tag,
-  tags,
+  tag,      // I think this is not used, unless i'm looking at /en/tags/show/<tag>
+  tags,     // this is the sophisto list
+  tagsList, // this is the simple list
 
   venue: venueReducer,
   venues: venuesReducer,

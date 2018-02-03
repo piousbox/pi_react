@@ -15,8 +15,8 @@ class HeaderTopBar extends React.Component {
               <a className="floatRight" target="_blank" href="http://facebook.com/Piousbox" title="facebook"><img src={fb} alt='facebook' style={{ height: '50px' }} /></a>
               <a className="floatRight" target="_blank" href="http://facebook.com/Piousbox" title="facebook"><img src={ig} alt='instagram' style={{ height: '50px' }} /></a>
 				      <form className="floatRight" style={{ marginRight: '1em' }} >
-					      <input type="text" name="q" placeholder="Search..." value="Search..." style={{ color: 'black' }} />
-                <i className="fa fa-search fa-1x" style={{ marginLeft: '-30px', background: 'black', padding: '4px' }} />
+					      <input readOnly={true} type="text" name="q" placeholder="Search..." value="Search..." style={{ lineHeight: '30px' }} />
+                <i className="fa fa-search fa-1x" style={{ marginLeft: '-30px', padding: '4px' }} />
 				      </form>
               <div className="clearfix" />
             </Col>

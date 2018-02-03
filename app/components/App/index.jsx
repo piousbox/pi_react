@@ -1,3 +1,4 @@
+import React from 'react'
 
 import Clearfix    from './Clearfix'
 import Meta        from './Meta'
@@ -8,7 +9,14 @@ const docTitle = (g) => {
   return `${g} - The Moby Travel Guide`
 }
 
+class Center extends React.Component {
+  render () {
+    return (<div style={{ clear: 'both' }} />)
+  }
+}
+
 export default {
+  Center,
   Clearfix,
 
   docTitle,

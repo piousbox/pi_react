@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import { Row, Col, } from 'react-bootstrap'
 
-import { Meta, TgmLink, AppRouter } from '../App'
+import { Meta, TgmLink, AppRouter, Center, Clearfix } from '../App'
 
 class NewsitemGallery extends React.Component {
   render () {
@@ -13,25 +13,29 @@ class NewsitemGallery extends React.Component {
       this.props.newsitem.photos.forEach((photo, idx) => {
         if (idx !== 0) { photos.push(<li key={idx} ><img key={idx} src={ photo.thumb_url } alt='' /></li>) }
       })
-      onePhoto = (<img style={{ cursor: 'pointer', border: '10px solid gray', padding: '10px', width: '100%' }} 
+      onePhoto = (<img style={{ cursor: 'pointer', border: '10px solid gray', padding: '10px', width: '50%', float: 'left' }} 
                        src={this.props.newsitem.photos[0].small_url} alt='' />)
     }
 
     return (
 			<Row className="NewsitemGallery" style={{ marginTop: '2em' }} >
-        <Col xs={12} md={6}>{ onePhoto }</Col>
-        <Col xs={12} md={6}>
-					<h2><TgmLink newsitem={this.props.newsitem} >{this.props.newsitem.title || this.props.newsitem.name}</TgmLink></h2>
-					<ul className="post_details" >
+        <Col xs={12}>
+          <h2 style={{ margin: 0 }} ><TgmLink newsitem={this.props.newsitem} >{this.props.newsitem.title || this.props.newsitem.name}</TgmLink></h2>
+					<ul className="meta" >
             <li className="category">{ this.props.newsitem.item_type }</li>
 					  { this.props.newsitem.tag_name && <li className="category"><Link to={AppRouter.tagLink(this.props.newsitem.tag_name)}>{this.props.newsitem.tag_name}</Link></li> }
 						<li className="date">{ this.props.newsitem.created_at.substr(0,10) }</li>
 					</ul>
-          <ul className="photos" style={{ clear: 'both' }} >{ photos }</ul>
-					{ this.props.newsitem.description && <p dangerouslySetInnerHTML={{ __html: this.props.newsitem.description }} /> }
-					{ ('undefined' === typeof this.props.newsitem.item_type ||
-             this.props.newsitem.item_type === 'photo') ? null : <a title="Read more" href="post.html" className="read_more"><span className="arrow"></span><span>READ MORE</span></a> }
+        </Col>
+        <Col xs={12}>
+          <ul className="photos">
+            <li>{ onePhoto }</li>{ photos }
+          </ul>
+          <Clearfix />
 				</Col>
+        { this.props.newsitem.description && <p dangerouslySetInnerHTML={{ __html: this.props.newsitem.description }} /> }
+				{ /* ('undefined' === typeof this.props.newsitem.item_type ||
+                   this.props.newsitem.item_type === 'photo') ? null : <a title="Read more" href="post.html" className="readMore"><span className="arrow"></span><span>READ MORE</span></a> */ }
 			</Row>)
   }
 }

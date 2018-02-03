@@ -14,6 +14,7 @@ import Clearfix      from './Clearfix'
 import Features      from './Features'
 import Footer        from './Footer'
 import { Newsitems } from '../Newsitem'
+import { TagNewsitems } from '../Tags'
 import { 
   AdSkyscraper, AdLargeSquare, AdBanner, AdSkim, AdWdz, AdCot, AdWasya 
 } from '../Ads'
@@ -23,6 +24,7 @@ class TagWidget extends React.Component {
     return (<div>tag widget</div>)
   }
 }
+
 
 class PeopleWidget extends React.Component {
   render () {
@@ -62,7 +64,7 @@ class Home extends React.Component {
       <Grid>
         <Row>
           <Col xs={12} md={5}>
-            <Newsitems newsitems={majorNewsitems} />
+            <TagNewsitems tagname="major" />
             <TagWidget tagname="bizdev" />
             <TagWidget tagname="human-resources" />
           </Col>
@@ -70,8 +72,7 @@ class Home extends React.Component {
             <AdLargeSquare />
             <br /><br />
             <FeatureTags tags={this.props.site.feature_tags } />
-            { /* <Features features={this.props.site.features} /> */ }
-            <Newsitems newsitems={minorNewsitems} />
+            <TagNewsitems tagname="minor" />
           </Col>
           <Col xs={12} md={2}>
             <AdSkyscraper />
@@ -92,6 +93,7 @@ class Home extends React.Component {
 
 function mapStateToProps(state, ownProps) {
   return {
+    tags: state.tags,
     newsitems: state.newsitems,
     site: state.site,
   }
