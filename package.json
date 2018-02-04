@@ -168,6 +168,7 @@
       "production": "./build",
       "sedux": "./build_sedux",
       "development": "./build",
+      "development_production": "./build",
       "test": "./build_test"
     },
     "buildDirTests": "./build_tests",
@@ -175,6 +176,7 @@
     "static_domain": {
       "_default": "static.piousbox.com",
       "development": "static.local",
+      "development_production": "static.local",
       "production": "static.piousbox.com",
       "sedux": "static.piousbox.com"
     },
@@ -190,6 +192,7 @@
     },
     "devPort": {
       "development": 8007,
+      "development_production": 8008,
       "test": 8088
     }
   },
@@ -205,6 +208,7 @@
     "pretest": "npm install && npm run lint",
     "pretest-travis": "NODE_ENV=test npm install && npm run lint",
     "start": "NODE_ENV=development node dev-server ./webpack/config",
+    "start_production": "NODE_ENV=development_production node dev-server ./webpack/config",
     "start_bjjc": "NODE_ENV=development_bjjc node dev-server ./webpack/config",
     "test": "NODE_ENV=test karma start",
     "test-travis": "NODE_ENV=test karma start --single-run",

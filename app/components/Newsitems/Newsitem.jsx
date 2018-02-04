@@ -18,7 +18,7 @@ class Newsitem extends React.Component {
   }
 
   render() {
-    // console.log('+++ +++ Newsitem props:', this.props, this.state)
+    // console.log('+++ +++ Newsitem render:', this.props, this.state)
 
     if (this.props.newsitem.item_type === 'video') {
       if (this.props.site.play_videos_in_preview) { return (<VideoEmbed video={ this.props.newsitem } />) }

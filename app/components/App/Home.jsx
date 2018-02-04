@@ -13,7 +13,23 @@ import { siteNewsitemsAction, siteShow, } from '../../actions'
 import Clearfix      from './Clearfix'
 import Features      from './Features'
 import Footer        from './Footer'
-import { Newsitems  } from '../Newsitem'
+import { Newsitems } from '../Newsitems'
+import { TagNewsitems, FeatureTags, TagWidget } from '../Tags'
+import { 
+  AdSkyscraper, AdLargeSquare, AdBanner, AdSkim, AdWdz, AdCot, AdWasya 
+} from '../Ads'
+
+class PeopleWidget extends React.Component {
+  render () {
+    return (<div>people widget</div>)
+  }
+}
+
+class PersonWidget extends React.Component {
+  render () {
+    return (<div>person widget</div>)
+  }
+}
 
 class Home extends React.Component {
   constructor(props) {
@@ -34,11 +50,26 @@ class Home extends React.Component {
     return (
       <Grid>
         <Row>
-          <Col xs={12} md={8}>
-            <Newsitems newsitems={this.props.newsitems} page={this.props.params.newsitems_page||1} />
+          <Col xs={12} md={5}>
+            <TagNewsitems tagname="major" />
+            <TagWidget tagname="entertainment" />
+            <TagWidget tagname="human-resources" />
           </Col>
-          <Col xs={12} md={4}>
-            <Features features={this.props.site.features} />
+          <Col xs={12} md={5}>
+            <AdLargeSquare />
+            <FeatureTags tags={this.props.site.feature_tags } />
+            <TagNewsitems tagname="minor" />
+          </Col>
+          <Col xs={12} md={2}>
+            <AdSkyscraper />
+            <AdSkyscraper />
+            <PeopleWidget tagname="writers" />
+            <AdSkim />
+            <AdWdz />
+            <AdCot />
+            <PersonWidget username="piousbox" />
+            <PersonWidget username="bondar" />
+            <AdWasya />
           </Col>
         </Row>
       </Grid>         
@@ -48,6 +79,7 @@ class Home extends React.Component {
 
 function mapStateToProps(state, ownProps) {
   return {
+    tags: state.tags,
     newsitems: state.newsitems,
     site: state.site,
   }

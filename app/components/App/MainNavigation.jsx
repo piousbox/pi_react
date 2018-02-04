@@ -2,84 +2,134 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import { Grid, Row, Col,
-         Nav, NavItem, Navbar
+         Nav, NavItem, Navbar,
 } from 'react-bootstrap'
-import { authStateReducer } from 'redux-auth'
 import { Link, Redirect } from 'react-router'
 import { connect } from 'react-redux'
-import { LinkContainer } from 'react-router-bootstrap'
-import FacebookAuth from 'react-facebook-auth'
-import { EmailSignUpForm, AuthGlobals } from 'redux-auth/default-theme'
 
-import config from 'config'
-import styles      from './_App.scss'
+import config       from 'config'
+import { siteShow } from '../../actions'
+
 import Footer3      from './Footer3'
-import Leaderboard from './Leaderboard'
-import {
-  SET_API_URL,
-} from '../../constants/AppConstants'
-import { profileAction } from '../../actions'
-import AppRouter from './AppRouter'
-
-const MyFacebookButton = ({ onClick }) => (
-  <button onClick={onClick}>f</button>
-);
+import Leaderboard  from './Leaderboard'
+import HeaderTopBar from './HeaderTopBar'
+import AppRouter    from './AppRouter'
 
 class MainNavigation extends React.Component {
-
   constructor (props) {
     super(props)
-    this.state = { profile: {} }
+    this.state = { mobileMenuVisible: false }
+    props.dispatch(siteShow())
+    this.toggleMobileMenu = this.toggleMobileMenu.bind(this)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // console.log("+++ +++ MainNavigation componentWillReceiveProps:", nextProps)
+
+    if (nextProps.site) {
+      document.title = nextProps.site.title
+    }
   }
 
   componentWillMount(nextProps) {
-    // this.props.dispatch({ type: SET_API_URL, apiUrl: config.apiUrl });
-    // console.log("+++ +++ MainNavigation nextProps?:", nextProps)
+    // console.log("+++ +++ MainNavigation componentWillMount:", nextProps)
+  }
+
+  toggleMobileMenu (e) {
+		e.preventDefault();
+    // console.log('+++ toggleMobileMenu')
+    this.setState({ mobileMenuVisible: !this.state.mobileMenuVisible })
+    $(this.refs['mobile-menu']).slideToggle(500)
   }
 
   render () {
     // console.log('+++ +++ MainNavigation render:', this.props, this.state)
+    if (!this.props.site) { return (null) }
 
-    let profilePic = null
-    if (this.props.profile.id) {
-      profilePic = (<img src={`//graph.facebook.com/${this.props.profile.id}/picture`} alt='' />)
-    } else if (this.state.profile.id) {
-      profilePic = (<img src={`//graph.facebook.com/${this.state.profile.id}/picture`} alt='' />)
-    } 
-    let fbLogin = (<FacebookAuth appId={config.fbAppId} fields="name,email,picture" 
-                                 callback={(response) => {this.props.dispatch(profileAction(response))}} 
-                                 component={MyFacebookButton} />)
-
-    let lang = this.props.profile.lang
+    let galleriesSelected, homeSelected = 'selected', reportsSelected, tagsSelected, videosSelected, peopleSelected
+    this.props.routes.map((route, idx) => {
+      // galleries
+      if (route.path === AppRouter.galleriesPath ||
+          route.path === AppRouter.galleriesPagesPath ||
+          route.path === AppRouter.galleryPath ||
+          route.path === AppRouter.galleryPhotoPath) {
+        galleriesSelected = 'selected'
+        homeSelected = null
+      }
+      // reports
+      if (route.path === AppRouter.reportsPath ||
+          route.path === AppRouter.reportsPagesPath ||
+          route.path === AppRouter.reportPath) {
+        reportsSelected = 'selected'
+        homeSelected = null
+      }
+      // tags
+      if (route.path === AppRouter.tagsPath ||
+          route.path === AppRouter.tagPath) {
+        tagsSelected = 'selected'
+        homeSelected = null
+      }
+      // videos
+      if (route.path === AppRouter.videosPath ||
+          route.path === AppRouter.videosPagesPath ||
+          route.path === AppRouter.videoPath) {
+        videosSelected = 'selected'
+        homeSelected = null
+      }
+      // people
+      if (route.path === AppRouter.peoplePath) {
+        peopleSelected = 'selected'
+        homeSelected = null
+      }
+    })
     
     return (
-      <div>
-        <Navbar>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <Link to="/">{ config.siteTitle }</Link>
-            </Navbar.Brand>
-            <Navbar.Toggle />
-          </Navbar.Header>
-          <Navbar.Collapse>
-            <Nav bsStyle="pills" pullRight>
-              { config.citiesEnabled ?    <li><Link to='/en/cities'>Cities</Link></li>                 : null }
-              { config.tagsEnabled ?      <li><Link to={AppRouter.tagsLink()}>Tags</Link></li>         : null }
-              { config.galleriesEnabled ? <li><Link to={AppRouter.galleriesLink}>Galleries</Link></li> : null }
-              { config.reportsEnabled ?   <li><Link to={AppRouter.reportsLink}>Reports</Link></li>     : null }
-              { config.galleriesEnabled ? <li><Link to={AppRouter.galleriesLink}>Galleries</Link></li> : null }
+      <div >
+        <HeaderTopBar />
 
-              { /* <li><Link to="/en/profile">Profile</Link></li>
-              <li>{ profilePic }</li>
-              <li>{ lang }</li>
-              <li>{ fbLogin }</li> */ }
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-        <Leaderboard />
+        <div className="center main-logo">
+					<h1 style={{ margin: 0, fontFamily: 'serif' }} ><Link to="/">{ this.props.site.title }</Link></h1>
+					<h4>{this.props.site.subhead}</h4>
+				</div>
+        
+        <div className="menu-primary">
+          <Grid>
+            <Row>
+              <Col xs={12}>
+                <ul>
+                  <li><Link to={AppRouter.rootLink()}>Home</Link></li>
+                  <li><Link to={AppRouter.tagLink('Salsa')}>Salsa</Link></li>
+                  <li><Link to={AppRouter.tagLink('Bachata')}>Bachata</Link></li>
+                  <li><Link to={AppRouter.tagLink('Sketches')}>Sketches</Link></li>
+                  <li><Link to={AppRouter.tagLink('Travel')}>Travel</Link></li>
+                  <li><Link to={AppRouter.tagLink('Music')}>Music</Link></li>
+                  <li><Link to={AppRouter.tagLink('Javascript')}>Javascript</Link></li>
+                  <li><Link to={AppRouter.tagLink('Ruby')}>Ruby</Link></li>
+                </ul>
+              </Col>
+            </Row>
+          </Grid>
+        </div>
+        
+        <div className="menu-secondary">
+          <Grid>
+            <Row>
+              <Col xs={12}>
+                <ul>
+                  { config.reportsEnabled &&   <li className={reportsSelected} ><Link to={AppRouter.reportsLink()}>Reports</Link></li> }
+                  { config.galleriesEnabled && <li className={galleriesSelected} ><Link to={AppRouter.galleriesLink()}>Galleries</Link></li> }
+                  { config.videosEnabled &&    <li className={videosSelected} ><Link to={AppRouter.videosLink()}>Videos</Link></li> }
+                  { config.tagsEnabled &&      <li className={tagsSelected} ><Link to={AppRouter.tagsLink()}>Tags</Link></li> }
+                  { config.peopleEnabled &&    <li className={peopleSelected} ><Link to={AppRouter.peopleLink()}>People</Link></li> }
+                </ul>
+              </Col>
+            </Row>
+          </Grid>
+        </div>
+        
         { this.props.children }
-        { /* <Footer apiUrl={this.props.apiUrl} domain={this.props.domain} /> */ }
-        <Footer3 />
+
+        <Footer3 reports={this.props.site.reports} />
       </div>
     )
   }
@@ -87,10 +137,26 @@ class MainNavigation extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    apiUrl: state.apiUrl,
-    domain: state.domain,
-    profile: state.profile,
+    site: state.site,
   }
 }
 
 export default connect(mapStateToProps)(MainNavigation)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

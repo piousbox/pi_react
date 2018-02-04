@@ -6,7 +6,7 @@ import { Meta, TgmLink, AppRouter } from '../App'
 class NewsitemReport extends React.Component {
   render () {
     return (
-      <Row style={{ marginTop: '2em' }} >
+      <Row style={{ marginBottom: '2em' }} >
         <Col xs={12} md={6}>
 			    <TgmLink newsitem={this.props.newsitem} >
             <img style={{ border: '10px solid gray', padding: '10px', width: '100%' }} src={this.props.newsitem.photo_url} alt=''  />

@@ -4,7 +4,7 @@ import { Grid, Row, Col } from 'react-bootstrap'
 
 import { tagAction } from '../../actions'
 
-import { Newsitems } from '../Newsitem'
+import { Newsitems } from '../Newsitems'
 import { VideosIndex } from '../Videos'
 
 class TagShow extends React.Component {
