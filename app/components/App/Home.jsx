@@ -64,7 +64,6 @@ class Home extends React.Component {
           </Col>
           <Col xs={12} md={5}>
             <AdLargeSquare />
-            <br /><br />
             <FeatureTags tags={this.props.site.feature_tags } />
             <TagNewsitems tagname="minor" />
           </Col>

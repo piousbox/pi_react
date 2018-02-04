@@ -7,11 +7,13 @@ class FeatureTags extends React.Component {
     console.log('+++ +++ FeatureTags render:', this.props, this.state)
 
     let rendered = []
-    this.props.tags.map((tag, idx) => {
+    this.props.tags && this.props.tags.map((tag, idx) => {
       rendered.push(
         <div key={idx} className="FeatureTag" >
-          <h3>{tag.name}</h3>
-          <Newsitem newsitem={tag.newsitems[0]} />
+          <h3 className="header" >{tag.name}</h3>
+          <div className="tagContainer">
+            <Newsitem newsitem={tag.newsitems[0]} />
+          </div>
         </div>
       )
     })      

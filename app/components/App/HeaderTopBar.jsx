@@ -11,7 +11,7 @@ class HeaderTopBar extends React.Component {
       <div className="grayBg" >
         <Grid>
           <Row>
-            <Col xs={12} style={{ marginTop: '5px' }} >
+            <Col sm={12} xs={12} style={{ marginTop: '5px' }} >
               <a className="floatRight" target="_blank" href="http://facebook.com/Piousbox" title="facebook"><img src={fb} alt='facebook' style={{ height: '50px' }} /></a>
               <a className="floatRight" target="_blank" href="http://facebook.com/Piousbox" title="facebook"><img src={ig} alt='instagram' style={{ height: '50px' }} /></a>
 				      <form className="floatRight" style={{ marginRight: '1em' }} >
