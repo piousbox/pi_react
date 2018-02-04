@@ -13,8 +13,8 @@ import { siteNewsitemsAction, siteShow, } from '../../actions'
 import Clearfix      from './Clearfix'
 import Features      from './Features'
 import Footer        from './Footer'
-import { Newsitems } from '../Newsitem'
-import { TagNewsitems } from '../Tags'
+import { Newsitems } from '../Newsitems'
+import { TagNewsitems, FeatureTags } from '../Tags'
 import { 
   AdSkyscraper, AdLargeSquare, AdBanner, AdSkim, AdWdz, AdCot, AdWasya 
 } from '../Ads'
@@ -35,12 +35,6 @@ class PeopleWidget extends React.Component {
 class PersonWidget extends React.Component {
   render () {
     return (<div>person widget</div>)
-  }
-}
-
-class FeatureTags extends React.Component {
-  render () {
-    return (<div>feature tags</div>)
   }
 }
 

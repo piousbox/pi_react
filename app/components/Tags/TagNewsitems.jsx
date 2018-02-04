@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { tagAction } from '../../actions'
 
-import { Newsitem } from '../Newsitem'
+import { Newsitem } from '../Newsitems'
 
 class TagNewsitems extends React.Component {
   constructor(props) {
