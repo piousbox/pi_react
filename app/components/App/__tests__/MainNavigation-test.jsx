@@ -12,10 +12,10 @@ const middlewares = [thunk]
 const mockStore = configureStore(middlewares)
 
 import config from 'config'
-import MainNavigationPressroom from '../MainNavigationPressroom'
+import MainNavigation from '../MainNavigation'
 import store from '../../../stores'
 
-describe('MainNavigationPressroom', () => {
+describe('MainNavigation', () => {
   it('sets site in state', () => {
     let trueUrls = { // @TODO: refactor this into AppRouter
       site: `${config.apiUrl}/api/sites/view/${config.domain}.json`,
@@ -37,7 +37,7 @@ describe('MainNavigationPressroom', () => {
       },
     })
     let home = ReactTestUtils.renderIntoDocument(
-      <Provider store={store1} ><MainNavigationPressroom params={{}} routes={[]} /></Provider>
+      <Provider store={store1} ><MainNavigation params={{}} routes={[]} /></Provider>
     )
     expect( dispatched.site ).to.equal( true )
   })
