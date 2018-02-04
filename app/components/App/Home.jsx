@@ -14,17 +14,10 @@ import Clearfix      from './Clearfix'
 import Features      from './Features'
 import Footer        from './Footer'
 import { Newsitems } from '../Newsitems'
-import { TagNewsitems, FeatureTags } from '../Tags'
+import { TagNewsitems, FeatureTags, TagWidget } from '../Tags'
 import { 
   AdSkyscraper, AdLargeSquare, AdBanner, AdSkim, AdWdz, AdCot, AdWasya 
 } from '../Ads'
-
-class TagWidget extends React.Component {
-  render () {
-    return (<div>tag widget</div>)
-  }
-}
-
 
 class PeopleWidget extends React.Component {
   render () {
@@ -59,7 +52,7 @@ class Home extends React.Component {
         <Row>
           <Col xs={12} md={5}>
             <TagNewsitems tagname="major" />
-            <TagWidget tagname="bizdev" />
+            <TagWidget tagname="entertainment" />
             <TagWidget tagname="human-resources" />
           </Col>
           <Col xs={12} md={5}>
