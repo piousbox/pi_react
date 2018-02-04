@@ -18,7 +18,7 @@ class NewsitemGallery extends React.Component {
     }
 
     return (
-			<Row className="NewsitemGallery" style={{ marginTop: '2em' }} >
+			<Row className="NewsitemGallery" style={{ marginBottom: '2em' }} >
         <Col xs={12}>
           <h2 style={{ margin: 0 }} ><TgmLink newsitem={this.props.newsitem} >{this.props.newsitem.title || this.props.newsitem.name}</TgmLink></h2>
 					<ul className="meta" >

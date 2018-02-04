@@ -1,30 +1,21 @@
 import React from 'react'
-
+import { Link } from 'react-router'
 import { Grid, Row, Col } from 'react-bootstrap'
+import { connect } from 'react-redux'
 
 import bg from './images/bg1.png'
-
 import ig from './images/social/instagram.png'
 import fb from './images/social/facebook.png'
 import uu from './images/social/youtube.png'
-
-import config from 'config'
-
-import { siteShow } from '../../actions'
-
-import { Link } from 'react-router'
-import AppRouter from './AppRouter'
-
 import es from './images/flags/es.png'
 import ru from './images/flags/ru.png'
 import en from './images/flags/en.png'
 import pt from './images/flags/pt.png'
 
-import {
-  DO_LOGOUT,
-} from '../../constants/AppConstants'
+import config from 'config'
+import { siteShow } from '../../actions'
 
-import { connect } from 'react-redux'
+import { Center, AppRouter } from './index'
 
 class Footer3 extends React.Component {
   constructor(props) {
@@ -78,62 +69,47 @@ class Footer3 extends React.Component {
     })
 
     return (
-      <div className="footer_container">
-				<div className="footer clearfix">
-          <Row>
-            <Col xs={12} md={3}>
-							<h4 className="box_header">About {this.props.site.domain}</h4>
-							<p className="padding_top_bottom_25">{ this.props.site.description }</p>
-            </Col>
-            <Col xs={12} md={6}>
-              <h4 className="box_header">Latest Posts</h4>
-	            <div className="vertical_carousel_container clearfix">
-	              <ul className="blog small vertical_carousel autoplay-1 scroll-1 navigation-1 easing-easeInOutQuint duration-750"
-                    style={{marginLeft: '10px', marginTop: '25px' }} >
+      <div>
+        <div className="mainFooter">
+          <Grid>
+            <Row>
+              <Col xs={12} md={3}>
+							  <h4 className="box-header">About {this.props.site.domain}</h4>
+							  <p>{ this.props.site.description }</p>
+              </Col>
+              <Col xs={12} md={6}>
+                <h4 className="box-header">Latest Posts</h4>
+	              <ul style={{marginLeft: '10px', marginTop: '25px' }} >
                   { latestReports }
                 </ul>
-              </div>
-				    </Col>
-            <Col xs={12} md={3}>
-              { /* latest galleries */ }
-							<h4 className="box_header" >Get In Touch With Us</h4>
-							<ul className="social_icons dark page_margin_top clearfix">
-								<li><a target="_blank" title="" href="http://facebook.com/QuanticaLabs" className="social_icon facebook">&nbsp;</a></li>
-								<li><a target="_blank" title="" href="https://twitter.com/QuanticaLabs" className="social_icon twitter">&nbsp;</a></li>
-								<li><a title="" href="mailto:contact@pressroom.com" className="social_icon mail">&nbsp;</a></li>
-								<li><a title="" href="#" className="social_icon skype">&nbsp;</a></li>
-								<li><a title="" href="http://themeforest.net/user/QuanticaLabs?ref=QuanticaLabs" className="social_icon envato">&nbsp;</a></li>
-								<li><a title="" href="#" className="social_icon instagram">&nbsp;</a></li>
-								<li><a title="" href="#" className="social_icon pinterest">&nbsp;</a></li>
-							</ul>
-				    </Col>
-					</Row>
-					<div className="row page_margin_top_section">
-						<div className="column column_3_4">
-							<ul className="footer_menu">
-								<li><h4><Link to={AppRouter.tagLink('music')}>Music</Link></h4></li>
-								<li><h4><Link to={AppRouter.tagLink('dance')}>Dance</Link></h4></li>
-								<li><h4><Link to={AppRouter.tagLink('ftim')}>The FTIM Adventure</Link></h4></li>
-								<li><h4><Link to={AppRouter.tagLink('sports')}>Sports & Health</Link></h4></li>
-								<li><h4><Link to={AppRouter.tagLink('photography')}>Photography</Link></h4></li>
-							</ul>
-						</div>
-						<div className="column column_1_4">
-							<a className="scroll_top" href="#top" title="Scroll to top">Top</a>
-						</div>
-					</div>
-					<div className="row copyright_row">
-						<div className="column column_2_3">&copy; Copyright Wasya Co</div>
-						<div className="column column_1_3">
-							{ /* <ul className="footer_menu">
-								<li><h6><a href="about.html" title="About">About</a></h6></li>
-								<li><h6><a href="authors.html" title="Authors">Authors</a></h6></li>
-								<li><h6><a href="contact.html" title="Contact Us">Contact Us</a></h6></li>
-							</ul> */ }
-						</div>
-					</div>
-				</div>
-			</div>
+              </Col>
+              <Col xs={12} md={3}>
+							  <h4 className="box-header" >Get In Touch With Us</h4>
+				      </Col>
+					  </Row>
+            <Row>
+              <Col xs={12} >
+							  <ul className="footer-menu">
+								  <li><Link to={AppRouter.tagLink('music')}>Music</Link></li>
+								  <li><Link to={AppRouter.tagLink('dance')}>Dance</Link></li>
+								  <li><Link to={AppRouter.tagLink('ftim')}>The FTIM Adventure</Link></li>
+								  <li><Link to={AppRouter.tagLink('sports')}>Sports & Health</Link></li>
+								  <li><Link to={AppRouter.tagLink('photography')}>Photography</Link></li>
+							  </ul>
+              </Col>
+            </Row>
+          </Grid>
+        </div>
+        <div className="footer4">
+          <Grid>
+            <Row>
+              <Col xs={12} sm={12} >
+                2018 &copy; Copyright Wasya Co<br /><a href="#">Terms of Service</a>
+              </Col>
+            </Row>
+			    </Grid>
+        </div>
+      </div>
     )
   }
 }
