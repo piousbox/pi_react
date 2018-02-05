@@ -16,20 +16,10 @@ import Footer        from './Footer'
 import { Newsitems } from '../Newsitems'
 import { TagNewsitems, FeatureTags, TagWidget } from '../Tags'
 import { 
-  AdSkyscraper, AdLargeSquare, AdBanner, AdSkim, AdWdz, AdCot, AdWasya 
+  AdSkyscraper, AdLargeSquare, AdBanner, 
+  AdSkim, AdWdz, AdCot, AdTgm, AdWasya,
 } from '../Ads'
-
-class PeopleWidget extends React.Component {
-  render () {
-    return (<div>people widget</div>)
-  }
-}
-
-class PersonWidget extends React.Component {
-  render () {
-    return (<div>person widget</div>)
-  }
-}
+import { PeopleWidget, PersonWidget } from '../Users'
 
 class Home extends React.Component {
   constructor(props) {
@@ -38,14 +28,14 @@ class Home extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log('+++ Home willReceiveProps:', nextProps, this.props, this.state)
+    // console.log('+++ Home willReceiveProps:', nextProps, this.props, this.state)
     if (this.props.params.newsitems_page != nextProps.params.newsitems_page) {
       nextProps.dispatch(siteNewsitemsAction({ page: nextProps.params.newsitems_page }))
     }
   }
 
   render () {
-    console.log('+++ +++ rendering Home:', this.props, this.state)
+    // console.log('+++ +++ rendering Home:', this.props, this.state)
 
     return (
       <Grid>
@@ -65,8 +55,9 @@ class Home extends React.Component {
           <Col xs={12} md={2}>
             <AdSkyscraper />
             <AdSkyscraper />
-            <PeopleWidget tagname="writers" />
+            { /* <PeopleWidget tagname="writers" /> */ }
             <AdSkim />
+            <AdTgm />
             <AdWdz />
             <AdCot />
             <PersonWidget username="piousbox" />

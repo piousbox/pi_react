@@ -12,17 +12,14 @@ class TagNewsitems extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('+++ TagNewsitems will receive props:', nextProps, this.props, this.state)
+    // console.log('+++ TagNewsitems will receive props:', nextProps, this.props, this.state)
   }
 
   render () {
-    console.log('+++ tagNewsitems render:', this.props, this.state, Object.keys(this.props.tags), this.props.tagname, this.props.tags[this.props.tagname] )
-    window.a = this.props.tags
-    window.b = this.props.tagname
+    // console.log('+++ tagNewsitems render:', this.props, this.state, Object.keys(this.props.tags), this.props.tagname, this.props.tags[this.props.tagname] )
 
     let newsitems = []
     this.props.tags[this.props.tagname] && this.props.tags[this.props.tagname].newsitems.map((n, idx) => { 
-      console.log('a?')
       newsitems.push(<Newsitem key={idx} newsitem={n} />)
     })
 

@@ -39,6 +39,8 @@ let AppRouter = {
 
   peoplePath: '/en/people',
   peopleLink: () => { return '/en/people' },
+  profilePath: '/en/people/show/:username',
+  profileLink: (g) => { return `/en/people/show/${g}` },
 
   reportPath: '/:lang(en|ru|pt|es)/reports/show/:reportname',
   reportLink: (g) => { 
