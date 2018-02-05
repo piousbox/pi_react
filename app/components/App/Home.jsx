@@ -52,13 +52,15 @@ class Home extends React.Component {
         <Row>
           <Col xs={12} md={5}>
             <TagNewsitems tagname="major" />
-            <TagWidget tagname="entertainment" />
+            <TagWidget tagname="travel" />
             <TagWidget tagname="human-resources" />
           </Col>
           <Col xs={12} md={5}>
             <AdLargeSquare />
             <FeatureTags tags={this.props.site.feature_tags } />
             <TagNewsitems tagname="minor" />
+            <TagWidget tagname="technology" />
+            <TagWidget tagname="jokes-humour" />
           </Col>
           <Col xs={12} md={2}>
             <AdSkyscraper />
