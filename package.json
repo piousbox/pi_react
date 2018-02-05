@@ -16,6 +16,7 @@
     "normalize.css": "^3.0.3",
     "prop-types": "^15.5.8",
     "react": "^15.5.0",
+    "react-adsense": "0.0.3",
     "react-bootstrap": "^0.30.8",
     "react-disqus-thread": "^0.4.0",
     "react-document-meta": "^2.1.2",

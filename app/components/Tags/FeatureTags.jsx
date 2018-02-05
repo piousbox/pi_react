@@ -4,7 +4,7 @@ import { Newsitem } from '../Newsitems'
 
 class FeatureTags extends React.Component {
   render () {
-    console.log('+++ +++ FeatureTags render:', this.props, this.state)
+    // console.log('+++ +++ FeatureTags render:', this.props, this.state)
 
     let rendered = []
     this.props.tags && this.props.tags.map((tag, idx) => {

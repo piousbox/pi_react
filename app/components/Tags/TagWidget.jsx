@@ -17,7 +17,7 @@ class TagWidget extends React.Component {
  
   render () {
     if (!this.props.tags[this.props.tagname]) return (null)
-    console.log('+++ TagWidget render:', this.props, this.state)
+    // console.log('+++ TagWidget render:', this.props, this.state)
 
     return (
       <div className="TagWidget" >

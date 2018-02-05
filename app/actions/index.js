@@ -211,8 +211,6 @@ const tagAction = (tagname) => {
   return (dispatch) => {
     let url = `${config.apiUrl}/api/tags/view/${tagname}.json`
     fetch(url).then(r => r.json()).then(_data => {
-      console.log(`+++ fetching ${tagname}:`, _data)
-
       dispatch({ type: SET.tag, tag: _data })
     })
   }
