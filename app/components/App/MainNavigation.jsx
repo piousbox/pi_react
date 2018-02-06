@@ -98,13 +98,13 @@ class MainNavigation extends React.Component {
               <Col xs={12}>
                 <ul>
                   <li><Link to={AppRouter.rootLink()}>Home</Link></li>
-                  <li><Link to={AppRouter.tagLink('Salsa')}>Salsa</Link></li>
-                  <li><Link to={AppRouter.tagLink('Bachata')}>Bachata</Link></li>
-                  <li><Link to={AppRouter.tagLink('Sketches')}>Sketches</Link></li>
-                  <li><Link to={AppRouter.tagLink('Travel')}>Travel</Link></li>
-                  <li><Link to={AppRouter.tagLink('Music')}>Music</Link></li>
-                  <li><Link to={AppRouter.tagLink('Javascript')}>Javascript</Link></li>
-                  <li><Link to={AppRouter.tagLink('Ruby')}>Ruby</Link></li>
+                  <li><Link to={AppRouter.tagLink('salsa')}>Salsa</Link></li>
+                  <li><Link to={AppRouter.tagLink('bachata')}>Bachata</Link></li>
+                  <li><Link to={AppRouter.tagLink('sketches')}>Sketches</Link></li>
+                  <li><Link to={AppRouter.tagLink('travel')}>Travel</Link></li>
+                  <li><Link to={AppRouter.tagLink('music')}>Music</Link></li>
+                  <li><Link to={AppRouter.tagLink('javascript')}>Javascript</Link></li>
+                  <li><Link to={AppRouter.tagLink('ruby')}>Ruby</Link></li>
                 </ul>
               </Col>
             </Row>
