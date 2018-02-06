@@ -17,7 +17,7 @@ class TagShow extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log('+++ tagShow will receive props')
+    // console.log('+++ tagShow will receive props')
     if (nextProps.params.tagname !== this.props.params.tagname) {
       this.props.dispatch(tagAction(nextProps.params.tagname))
     }

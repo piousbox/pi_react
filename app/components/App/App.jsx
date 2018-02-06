@@ -46,9 +46,8 @@ const routes = [
       { path: AppRouter.sitePath1, component: Home },
       { path: AppRouter.sitePath2, component: Home },
 
-      { path: AppRouter.tagsPath, component: TagsIndex, childRoutes: [
-        { path: AppRouter.tagPath, component: TagShow },
-      ]},
+      { path: AppRouter.tagsPath, component: TagsIndex },
+      { path: AppRouter.tagPath, component: TagShow },
 
       { path: AppRouter.videosPath, component: VideosIndex },
       { path: AppRouter.videosPagesPath, component: VideosIndex },
