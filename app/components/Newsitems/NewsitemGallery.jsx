@@ -10,11 +10,16 @@ class NewsitemGallery extends React.Component {
     let photos = []
     let onePhoto = null
     if (this.props.newsitem.photos) {
-      this.props.newsitem.photos.forEach((photo, idx) => {
-        if (idx !== 0) { photos.push(<li key={idx} ><img key={idx} src={ photo.thumb_url } alt='' /></li>) }
-      })
       onePhoto = (<img style={{ cursor: 'pointer', border: '10px solid gray', padding: '10px', width: '50%', float: 'left' }} 
                        src={this.props.newsitem.photos[0].small_url} alt='' />)
+      
+      this.props.newsitem.photos.forEach((photo, idx) => {
+        if (idx !== 0) { 
+          if (idx < 5) { // only 4 pics, and the first one is big, so it's idx 1 thru 4.
+            photos.push(<li key={idx} ><img key={idx} src={ photo.thumb_url } alt='' /></li>) 
+          }
+        }
+      })
     }
 
     return (
