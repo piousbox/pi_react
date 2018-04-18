@@ -127,7 +127,7 @@ class MainNavigation extends React.Component {
           </Grid>
         </div>
         
-        { this.props.children }
+        <Grid>{ this.props.children }</Grid>
 
         <Footer3 reports={this.props.site.reports} />
       </div>

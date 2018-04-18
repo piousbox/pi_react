@@ -6,6 +6,7 @@ import { tagAction } from '../../actions'
 
 import { Newsitems } from '../Newsitems'
 import { VideosIndex } from '../Videos'
+import { AdLargeSquare } from '../Ads'
 
 class TagShow extends React.Component {
   constructor(props) {
@@ -32,9 +33,13 @@ class TagShow extends React.Component {
 
     return (
       <Row>
-        <Col xs={12}>
+        <Col xs={12} md={6} >
           <h5 style={{ textAlign: 'center' }}>Tag {this.props.tag.name}</h5>
           <Newsitems newsitems={this.props.tag.newsitems} params={this.props.params} />
+        </Col>
+        <Col xs={12} md={6} >
+          <AdLargeSquare />
+          <AdLargeSquare />
         </Col>
       </Row>
     )
