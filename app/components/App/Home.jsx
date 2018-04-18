@@ -38,34 +38,32 @@ class Home extends React.Component {
     // console.log('+++ +++ rendering Home:', this.props, this.state)
 
     return (
-      <Grid>
-        <Row>
-          <Col xs={12} md={5}>
-            <TagNewsitems tagname="major" />
-            <TagWidget tagname="travel" />
-            <TagWidget tagname="human-resources" />
-          </Col>
-          <Col xs={12} md={5}>
-            <AdLargeSquare />
-            <FeatureTags tags={this.props.site.feature_tags } />
-            <TagNewsitems tagname="minor" />
-            <TagWidget tagname="technology" />
-            <TagWidget tagname="jokes-humour" />
-          </Col>
-          <Col xs={12} md={2}>
-            <AdSkyscraper />
-            <AdSkyscraper />
-            { /* <PeopleWidget tagname="writers" /> */ }
-            <AdSkim />
-            <AdTgm />
-            <AdWdz />
-            <AdCot />
-            <PersonWidget username="piousbox" />
-            <PersonWidget username="bondar" />
-            <AdWasya />
-          </Col>
-        </Row>
-      </Grid>         
+      <Row>
+        <Col xs={12} md={5}>
+          <TagNewsitems tagname="major" />
+          <TagWidget tagname="travel" />
+          <TagWidget tagname="human-resources" />
+        </Col>
+        <Col xs={12} md={5}>
+          <AdLargeSquare />
+          <FeatureTags tags={this.props.site.feature_tags } />
+          <TagNewsitems tagname="minor" />
+          <TagWidget tagname="technology" />
+          <TagWidget tagname="jokes-humour" />
+        </Col>
+        <Col xs={12} md={2}>
+          <AdSkyscraper />
+          <AdSkyscraper />
+          { /* <PeopleWidget tagname="writers" /> */ }
+          <AdSkim />
+          <AdTgm />
+          <AdWdz />
+          <AdCot />
+          <PersonWidget username="piousbox" />
+          <PersonWidget username="bondar" />
+          <AdWasya />
+        </Col>
+      </Row>
     )
   }
 }
