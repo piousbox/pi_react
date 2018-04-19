@@ -15,7 +15,7 @@ class TagsIndex extends React.Component {
   }
 
   render () {
-    // console.log('+++ +++ TagsIndex:', this.props, this.state)
+    console.log('+++ +++ TagsIndex:', this.props, this.state)
 
     let tags = []
     this.props.tags.map((tag, index) => {
