@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Grid, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router'
@@ -15,10 +16,10 @@ class TagsIndex extends React.Component {
   }
 
   render () {
-    console.log('+++ +++ TagsIndex:', this.props, this.state)
+    // console.log('+++ +++ TagsIndex:', this.props, this.state)
 
     let tags = []
-    this.props.tags.map((tag, index) => {
+    this.props.tagsList.map((tag, index) => {
       tags.push(<li key={index} ><Link to={AppRouter.tagLink(tag.name_seo)}>{tag.name}</Link></li>)
     })
 
@@ -38,9 +39,15 @@ class TagsIndex extends React.Component {
   }
 }
 
+TagsIndex.propTypes = {
+  tags: PropTypes.object,
+  tagsList: PropTypes.array,
+}
+
 const mapStateToProps = (state, ownProps) => {
   return {
     tags: state.tags,
+    tagsList: state.tagsList,
   }
 }
 
