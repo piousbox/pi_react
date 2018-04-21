@@ -7,7 +7,7 @@ class AdLargeSquare extends React.Component {
   render () {
     if (config.envName === 'development') {
       return (
-        <div className="adContainer" style={{ width: '336px', height: '280px', color: 'gray', border: '1px solid gray' }} >AdLargeSquare (development)</div>
+        <div className="adContainer" style={{ width: '336px', height: '280px', color: 'gray', border: '1px solid gray' }} >AdLargeSquare</div>
       )
     }
 
