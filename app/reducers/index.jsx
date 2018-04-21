@@ -85,23 +85,13 @@ const tag = (state={}, action) => {
 
 /**
  * this used to be a set, now its a list. _vp_ 20180418
+ * this must be a set for all tags (major, minor) and there's the list in tagsList. _vp_ 20180420
  */
-const tags = (state=[], action) => {
+const tags = (state={}, action) => {
   switch (action.type) {
     case SET.tag:
-      let tmp = []
-      let flag = false
-      state.map((i) => { 
-        if (i.tagname === action.tag.tagname) {
-          tmp.push(action.tag)
-          flag = true
-        } else {
-          tmp.push(i)
-        }
-      })
-      if (!flag) {
-        tmp.push(action.tag)
-      }
+      let tmp = Object.assign({}, state)
+      tmp[action.tag.tagname] = action.tag
       return tmp
     case SET.tags:
       return action.tags

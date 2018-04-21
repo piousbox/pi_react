@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { tagAction } from '../../actions'
@@ -16,7 +17,7 @@ class TagNewsitems extends React.Component {
   }
 
   render () {
-    // console.log('+++ tagNewsitems render:', this.props, this.state, Object.keys(this.props.tags), this.props.tagname, this.props.tags[this.props.tagname] )
+    console.log('+++ tagNewsitems render:', this.props, this.state )
 
     let newsitems = []
     this.props.tags[this.props.tagname] && this.props.tags[this.props.tagname].newsitems.map((n, idx) => { 
@@ -29,6 +30,12 @@ class TagNewsitems extends React.Component {
         { newsitems }
       </div>)
   }
+}
+
+TagNewsitems.propTypes = {
+  tagname: PropTypes.string,
+  tags: PropTypes.object,
+  tagsList: PropTypes.array,
 }
 
 const mapState = (state, ownProps) => {
