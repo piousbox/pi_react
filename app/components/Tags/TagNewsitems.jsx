@@ -9,6 +9,9 @@ import { Newsitem } from '../Newsitems'
 class TagNewsitems extends React.Component {
   constructor(props) {
     super(props)
+
+    console.log('+++ tagname:', props.tagname)
+    
     props.dispatch(tagAction(props.tagname))
   }
 
@@ -20,7 +23,7 @@ class TagNewsitems extends React.Component {
     console.log('+++ tagNewsitems render:', this.props, this.state )
 
     let newsitems = []
-    this.props.tags[this.props.tagname] && this.props.tags[this.props.tagname].newsitems.map((n, idx) => { 
+    this.props.tags[this.props.tagname] && this.props.tags[this.props.tagname].newsitems.map((n, idx) => {
       newsitems.push(<Newsitem key={idx} newsitem={n} />)
     })
 

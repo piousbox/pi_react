@@ -38,9 +38,5 @@ You have to have local API running at localhost:3000, so do:
 
  cd <M3_ROOT> && be rails s
 
-Ports:
-      "development": 8007,
-      "test": 8088
-
-
-
+port: 8007
+npm run start_production (port 8008)

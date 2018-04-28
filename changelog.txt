@@ -54,3 +54,4 @@
         disqus and social icons
 0.2.2 - incremental improvements
         making 'tags' look ok on pi
+0.2.3 - NewsitemsGallery widget, lets revamp that thing, make it native as well

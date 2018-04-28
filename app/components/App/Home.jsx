@@ -15,8 +15,8 @@ import Features      from './Features'
 import Footer        from './Footer'
 import { Newsitems } from '../Newsitems'
 import { TagNewsitems, FeatureTags, TagWidget } from '../Tags'
-import { 
-  AdSkyscraper, AdLargeSquare, AdBanner, 
+import {
+  AdSkyscraper, AdLargeSquare, AdBanner,
   AdSkim, AdWdz, AdCot, AdTgm, AdWasya,
 } from '../Ads'
 import { PeopleWidget, PersonWidget } from '../Users'
@@ -77,4 +77,3 @@ function mapStateToProps(state, ownProps) {
 }
 
 export default connect(mapStateToProps)(Home)
-

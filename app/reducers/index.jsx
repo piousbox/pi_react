@@ -27,7 +27,7 @@ const galleries = (state=[], action) => {
     case SET.galleries:
       console.log('+++ galleries reducer:', action)
       return action.galleries
-    default: 
+    default:
       return state
   }
 }
@@ -90,12 +90,15 @@ const tag = (state={}, action) => {
 const tags = (state={}, action) => {
   switch (action.type) {
     case SET.tag:
+    
+      console.log('+++ set tag:', action)
+
       let tmp = Object.assign({}, state)
       tmp[action.tag.tagname] = action.tag
       return tmp
     case SET.tags:
       return action.tags
-    default: 
+    default:
       return state
   }
 }
@@ -104,7 +107,7 @@ const tagsList = (state=[], action) => {
     case SET.tag:
       let tmp = []
       let flag = false
-      state.map((i) => { 
+      state.map((i) => {
         if (i.tagname === action.tag.tagname) {
           tmp.push(action.tag)
           flag = true
@@ -118,7 +121,7 @@ const tagsList = (state=[], action) => {
       return tmp
     case SET.tags:
       return action.tags
-    default: 
+    default:
       return state
   }
 }

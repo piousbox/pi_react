@@ -8,10 +8,12 @@ class NewsitemGallery extends React.Component {
   render () {
     let newsitem = {}
     let photos = []
-    let onePhoto = null
     if (this.props.newsitem.photos) {
-      onePhoto = (<img style={{ cursor: 'pointer', border: '10px solid gray', padding: '10px', width: '50%', float: 'left' }} 
-                       src={this.props.newsitem.photos[0].small_url} alt='' />)
+      photos.push = (
+        <li><img style={{ cursor: 'pointer', border: '10px solid gray', padding: '10px', 
+                          width: '50%', float: 'left' }} 
+                 src={this.props.newsitem.photos[0].small_url} alt='' />
+        </li>)
       
       this.props.newsitem.photos.forEach((photo, idx) => {
         if (idx !== 0) { 
@@ -33,14 +35,10 @@ class NewsitemGallery extends React.Component {
 					</ul>
         </Col>
         <Col xs={12}>
-          <ul className="photos">
-            <li>{ onePhoto }</li>{ photos }
-          </ul>
+          <ul className="photos">{ photos }</ul>
           <Clearfix />
 				</Col>
         { this.props.newsitem.description && <p dangerouslySetInnerHTML={{ __html: this.props.newsitem.description }} /> }
-				{ /* ('undefined' === typeof this.props.newsitem.item_type ||
-                   this.props.newsitem.item_type === 'photo') ? null : <a title="Read more" href="post.html" className="readMore"><span className="arrow"></span><span>READ MORE</span></a> */ }
 			</Row>)
   }
 }
