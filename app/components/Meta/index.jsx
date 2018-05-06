@@ -7,7 +7,7 @@ import { AppRouter } from '../App'
 class Meta extends React.Component {
   render () {
     console.log('+++ Meta:', this.props, this.state)
-    if (Object.keys(this.props.item).length==0) { return (<span />) }
+    if (Object.keys(this.props.item).length==0) { return (<div />) }
 
     let items = []
 

@@ -29,7 +29,7 @@ class TagShow extends React.Component {
   }
 
   render () {
-    // console.log('+++ tagShow render:', this.props, this.state)
+    // console.log('+++ tagShow:', this.props, this.state)
 
     return (
       <Row>

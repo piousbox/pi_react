@@ -48,6 +48,9 @@ class Newsitems extends React.Component {
       })
     }
     
+    /**
+     * pagination
+     **/
     let pagination = []
     let pageNumber = 1
     let activeStyle = { fontWeight: 'bold' }
