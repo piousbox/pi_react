@@ -2,6 +2,7 @@
 *~
 *.trash
 *-bk
+*.swp
 
 vendor
 node_modules
