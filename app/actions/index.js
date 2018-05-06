@@ -41,7 +41,7 @@ import {
 
   SET_VENUE,
 
-} from '../constants/AppConstants';
+} from '../constants'
 
 import config from 'config'
 

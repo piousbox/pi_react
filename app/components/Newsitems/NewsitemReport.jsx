@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import { Row, Col } from 'react-bootstrap'
 import { Meta, TgmLink, AppRouter } from '../App'
+import { CONST } from '../../constants'
 
 class NewsitemReport extends React.Component {
   render () {
