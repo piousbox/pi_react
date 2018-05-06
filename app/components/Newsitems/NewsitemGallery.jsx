@@ -6,11 +6,13 @@ import { Meta, TgmLink, AppRouter, Center, Clearfix } from '../App'
 
 class NewsitemGallery extends React.Component {
   render () {
+    console.log('+++ +++ NewsitemGallery:', this.props, this.state)
+
     let newsitem = {}
     let photos = []
-    if (this.props.newsitem.photos) {
-      photos.push = (
-        <li><img style={{ cursor: 'pointer', border: '10px solid gray', padding: '10px', 
+    if (this.props.newsitem && this.props.newsitem.photos) {
+      photos.push(
+        <li key="one"><img style={{ cursor: 'pointer', border: '10px solid gray', padding: '10px', 
                           width: '50%', float: 'left' }} 
                  src={this.props.newsitem.photos[0].small_url} alt='' />
         </li>)

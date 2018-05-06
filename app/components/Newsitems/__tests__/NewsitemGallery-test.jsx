@@ -24,11 +24,12 @@ describe('NewsitemsGallery', () => {
       }
     })
     let rendered = ReactTestUtils.renderIntoDocument(
-      <Provider store={store1} ><NewsitemGallery store={store1} params={{cityname: 'cityname'}} 
-                                                 galleries={{ gallery: [1, 2, 3] }} g3={"g5"}
-                                                 props={{ g1: 'g1', galleries: 'az' }} /></Provider>
+      <Provider store={store1} ><NewsitemGallery
+        store={store1} params={{cityname: 'cityname'}} 
+        galleries={{ gallery: [1, 2, 3] }} 
+        newsitem={{created_at: '2018-01-01' }} /></Provider>
     )
-    let elem = ReactDOM.findDOMNode(home)
+    let elem = ReactDOM.findDOMNode(rendered)
     expect(elem.tagName.toLowerCase()).to.equal('div')
     // expect(elem.querySelector('h2 a').innerHTML).to.eql('Name')
   })
