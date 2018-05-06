@@ -52,13 +52,13 @@ import Center from '../Center'
 import { AppRouter } from '../App'
 import { reportsShow, siteShow } from '../../actions'
 
+import Meta from '../Meta'
 import { 
-  Clearfix, Meta, 
+  Clearfix,  
   // LargeSquare, Leaderboard,
 } from '../App'
 
 class ReportsShow extends React.Component {
-
   constructor(props) {
     super(props)
     this.state = {
@@ -74,9 +74,8 @@ class ReportsShow extends React.Component {
   }
 
   render () {
-    console.log('+++ +++ render ReportsShow:', this.props, this.state)
+    console.log('+++ +++ ReportsShow:', this.props, this.state)
     let url = `https://${config.domain}${AppRouter.reportLink(this.state.report)}`
-    console.log('+++ url2:', url)
 
     return (
       <Grid>

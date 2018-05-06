@@ -2,39 +2,43 @@ import React from 'react'
 import { Link } from 'react-router'
 import { Row, Col, } from 'react-bootstrap'
 
-import { Meta, TgmLink, AppRouter, Center, Clearfix } from '../App'
+import { TgmLink, AppRouter, Center, Clearfix } from '../App'
+import Meta from '../Meta'
 
 class NewsitemGallery extends React.Component {
+  constructor(props) {
+    super(props)
+    this.oneImgRef = 'oneImgRef' // React.createRef()
+  }
+
   render () {
     console.log('+++ +++ NewsitemGallery:', this.props, this.state)
+    console.log('+++ height?', this.oneImgRef.offsetHeight)
 
     let newsitem = {}
     let photos = []
     if (this.props.newsitem && this.props.newsitem.photos) {
       photos.push(
-        <li key="one"><img style={{ cursor: 'pointer', border: '10px solid gray', padding: '10px', 
-                          width: '50%', float: 'left' }} 
-                 src={this.props.newsitem.photos[0].small_url} alt='' />
+        <li key="one"><img ref={this.oneImgRef} style={{ cursor: 'pointer', width: '50%', float: 'left' }} 
+          src={this.props.newsitem.photos[0].small_url} alt='' />
         </li>)
       
-      this.props.newsitem.photos.forEach((photo, idx) => {
-        if (idx !== 0) { 
-          if (idx < 5) { // only 4 pics, and the first one is big, so it's idx 1 thru 4.
-            photos.push(<li key={idx} ><img key={idx} src={ photo.thumb_url } alt='' /></li>) 
-          }
-        }
-      })
+      photos.push(
+        <li key="two"><img style={{ cursor: 'pointer', width: '50%', height: '50%', border: '1ps solid red', float: 'left' }} 
+          src={this.props.newsitem.photos[1].small_url} alt='' />
+        </li>)
+
+      photos.push(
+        <li key="three"><img style={{ cursor: 'pointer', width: '50%', float: 'left' }} 
+          src={this.props.newsitem.photos[2].small_url} alt='' />
+        </li>)
     }
 
     return (
 			<Row className="NewsitemGallery" style={{ marginBottom: '2em' }} >
         <Col xs={12}>
           <h2 style={{ margin: 0 }} ><TgmLink newsitem={this.props.newsitem} >{this.props.newsitem.title || this.props.newsitem.name}</TgmLink></h2>
-					<ul className="meta" >
-            <li className="category">{ this.props.newsitem.item_type }</li>
-					  { this.props.newsitem.tag_name && <li className="category"><Link to={AppRouter.tagLink(this.props.newsitem.tag_name)}>{this.props.newsitem.tag_name}</Link></li> }
-						<li className="date">{ this.props.newsitem.created_at.substr(0,10) }</li>
-					</ul>
+          <Meta item={this.props.newsitem} />
         </Col>
         <Col xs={12}>
           <ul className="photos">{ photos }</ul>

@@ -48,6 +48,7 @@ var config = {
   plugins: plugins,
   resolve: {
     extensions: ['', '.js', '.json', '.jsx'],
+    alias: { 'react/lib/ReactMount': 'react-dom/lib/ReactMount' },
     modulesDirectories: ['node_modules', 'config/' + process.env.NODE_ENV ]
   },
   devServer: {
