@@ -6,7 +6,7 @@ import {
   ITEMS_GET_SUCCESS,
 
   SET_API_URL,
-} from '../constants/AppConstants';
+} from '../constants';
 
 class ItemsStore extends BaseStore {
   emitChange() {

@@ -17,7 +17,7 @@ import Footer3      from './Footer3'
 import Leaderboard from './Leaderboard'
 import {
   SET_API_URL,
-} from '../../constants/AppConstants'
+} from '../../constants'
 import { profileAction } from '../../actions'
 import AppRouter from './AppRouter'
 
