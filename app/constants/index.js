@@ -39,6 +39,7 @@ export const SET_VENUES = 'set venues'
 
 export const CONST = {
   setVenues: 'set venues',
+  Tag: 'm-const-tag', // used in Meta
 }
 
 export const SET = {

@@ -3,6 +3,7 @@
 *.trash
 *-bk
 *.swp
+*.swo
 
 vendor
 node_modules
