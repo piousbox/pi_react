@@ -1,7 +1,6 @@
 import React from 'react'
 
 import Clearfix    from './Clearfix'
-import Meta        from './Meta'
 import TgmLink     from './TgmLink'
 import AppRouter   from './AppRouter'
 
@@ -15,13 +14,14 @@ class Center extends React.Component {
   }
 }
 
+/**
+ * Meta is a separate component
+ **/
 export default {
   Center,
   Clearfix,
 
   docTitle,
-
-  Meta,
 
   TgmLink,
   AppRouter,
