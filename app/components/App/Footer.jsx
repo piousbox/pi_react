@@ -2,7 +2,6 @@ import React from 'react'
 
 import { Grid, Row, Col } from 'react-bootstrap'
 
-import styles from './_Footer.scss'
 import bg from './images/bg1.png'
 
 import ig from './images/social/instagram.png'
@@ -64,14 +63,14 @@ class Footer extends React.Component {
     }
 
     return (
-      <div className={styles.footer1} style={{ backgroundImage: `url(${bg})` }} >
+      <div style={{ backgroundImage: `url(${bg})` }} >
         <Grid style={{ height: '200px' }} >
           <Row>
             <Col xs={4} >
               ^__^
             </Col>
             <Col xs={4}>
-              <ul className={styles.socialMediaIcons}>
+              <ul>
                 <li><img src={ig} /></li>
                 <li><img src={fb} /></li>
                 <li><img src={uu} /></li>

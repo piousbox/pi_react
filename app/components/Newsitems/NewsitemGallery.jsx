@@ -24,29 +24,23 @@ class NewsitemGallery extends React.Component {
 
     let newsitem = {}
     let photos = []
-    if (this.props.newsitem && this.props.newsitem.photos) {
-      /* photos.push(
-        <li key="one"><img ref={(a) => this.oneImgRef = a} style={{ cursor: 'pointer', width: '50%', height: this.state.oneImgHeight, float: 'left' }} 
-          src={this.props.newsitem.photos[0].small_url} alt='' />
-        </li>) */
-      
+    let h = this.state.oneImgHeight ? this.state.oneImgHeight / 2 : 0
+    if (this.props.newsitem && this.props.newsitem.photos[0]) {
       photos.push(
         <li key="one" style={{ cursor: 'pointer', width: '50%', height: '300px',  border: '1px solid red', float: 'left',
                                background: `url(${this.props.newsitem.photos[0].small_url})` }} />)
+    }
 
-      let h = this.state.oneImgHeight ? this.state.oneImgHeight / 2 : 0
+    if (this.props.newsitem && this.props.newsitem.photos[1]) {
       photos.push(
         <li key="two" style={{ cursor: 'pointer', width: '50%', height: h,  border: '1px solid red', float: 'left',
                                background: `url(${this.props.newsitem.photos[1].small_url})` }} />)
+    }
 
+    if (this.props.newsitem && this.props.newsitem.photos[2]) {
       photos.push(
         <li key="three" style={{ cursor: 'pointer', width: '50%', height: h,  border: '1px solid green', float: 'left',
                                background: `url(${this.props.newsitem.photos[2].small_url})` }} />)
-
-      /* photos.push(
-        <li key="three"><img style={{ cursor: 'pointer', width: '50%', float: 'left' }} 
-          src={this.props.newsitem.photos[2].small_url} alt='' />
-        </li>) */
     }
 
     return (

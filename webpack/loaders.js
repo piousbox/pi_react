@@ -77,7 +77,7 @@ var loaders = [
   {
     test: /\.json$/,
     exclude: /node_modules/,
-    loaders: jsonLoader
+    loader: 'json-loader'
   },
   {
     test: /\.html$/,

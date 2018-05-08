@@ -56,4 +56,5 @@
         making 'tags' look ok on pi
 0.2.3 - NewsitemsGallery widget, lets revamp that thing, make it native as well
         Let's work on Native-like newsitemslist.
+0.2.4 - Let's work on server-side rendering
 
