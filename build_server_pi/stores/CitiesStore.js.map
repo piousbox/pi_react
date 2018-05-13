@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../app/stores/CitiesStore.jsx"],"names":["store"],"mappings":";;;;;;AACA;;AAEA;;;;;;AAEA,IAAIA,QAAQ,2CAAZ;;kBAEeA,K","file":"CitiesStore.js","sourcesContent":["\nimport { createStore } from 'redux'\n\nimport reducer from '../reducers'\n\nlet store = createStore(reducer)\n\nexport default store\n"]}

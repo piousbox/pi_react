@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../app/dispatcher/AppDispatcher.js"],"names":["Dispatcher"],"mappings":";;;;;;AAAA;;;;;;kBAEe,IAAI,eAAKA,UAAT,E","file":"AppDispatcher.js","sourcesContent":["import Flux from 'flux';\n\nexport default new Flux.Dispatcher();\n"]}

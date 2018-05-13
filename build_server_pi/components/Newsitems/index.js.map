@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../app/components/Newsitems/index.jsx"],"names":["Newsitem","Newsitems"],"mappings":";;;;;;AACA;;;;AACA;;;;;;kBAEe;AACbA,8BADa;AAEbC;AAFa,C","file":"index.js","sourcesContent":["\nimport Newsitem from './Newsitem'\nimport Newsitems from './Newsitems'\n\nexport default {\n  Newsitem,\n  Newsitems,\n}\n\n"]}

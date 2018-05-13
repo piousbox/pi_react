@@ -8,7 +8,10 @@
 
 ## Develop
 
-20170517: I tried react-google-maps, now trying google-maps-react
+I tried react-google-maps, now trying google-maps-react
+
+ npm run build_pi2
+ node build_server_pi/server.js
 
 ## Test
 

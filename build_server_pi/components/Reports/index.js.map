@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../app/components/Reports/index.jsx"],"names":["ReportsIndex","ReportsShow"],"mappings":";;;;;;AACA;;;;AACA;;;;;;kBAEe;AACbA,sCADa;AAEbC;AAFa,C","file":"index.js","sourcesContent":["\nimport ReportsIndex from './ReportsIndex'\nimport ReportsShow from './ReportsShow'\n\nexport default {\n  ReportsIndex,\n  ReportsShow,\n}\n"]}
