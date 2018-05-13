@@ -10,7 +10,6 @@ import { connect } from 'react-redux'
 import config from 'config'
 // import { siteNewsitemsAction, siteShow, } from '../../actions'
 import actions from '../../actions'
-console.log('+++ actions site na:', actions.siteNewsitemsAction)
 
 import Clearfix      from './Clearfix'
 import Features      from './Features'
@@ -39,8 +38,7 @@ class Home extends React.Component {
   }
 
   render () {
-    console.log('+++ +++ rendering Home:', this.props, this.state)
-    console.log('+++ widget:', TagWidget)
+    // console.log('+++ +++ rendering Home:', this.props, this.state)
 
     return (
       <Row>

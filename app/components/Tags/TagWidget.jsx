@@ -5,19 +5,20 @@ import {
 } from 'react-bootstrap'
 
 import { tagAction } from '../../actions'
+import actions from '../../actions'
 
 class TagWidget extends React.Component {
   constructor(props) {
     super(props)
-    props.dispatch(tagAction(props.tagname))
+    props.dispatch(actions.tagAction(props.tagname))
   }
 
   componentWillReceiveProps(nextProps) {
   }
  
   render () {
+    console.log('+++ TagWidget render:', this.props, this.state)
     if (!this.props.tags[this.props.tagname]) return (null)
-    // console.log('+++ TagWidget render:', this.props, this.state)
 
     return (
       <div className="TagWidget" >

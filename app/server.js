@@ -21,7 +21,7 @@ import Home from './components/App/Home'
 // import ServerApp from './serverApp'
 class ServerApp1 extends React.Component {
   render () {
-    console.log('+++ ServerApp1:', this.props, this.state)
+    // console.log('+++ ServerApp1:', this.props, this.state)
     return (
       <Provider store={store}>
         <MainNavigation site={{ a: 'b' }} >
@@ -31,11 +31,6 @@ class ServerApp1 extends React.Component {
     )
   }
 }
-
-
-
-
-
 
 
 
