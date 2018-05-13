@@ -36,6 +36,7 @@ class ServerApp1 extends React.Component {
 
 
 
+
 class ServerApp2 extends React.Component {
   render () {
     console.log('+++ ServerApp2:', this.props, this.state)
@@ -58,7 +59,6 @@ function handleRender(req, res) {
 
 
   const store = createStore(counterApp)
-  console.log('+++ store:', store)
 
   const context = { some: 'context' }
   const html = renderToString(
@@ -66,13 +66,10 @@ function handleRender(req, res) {
       location={req.url}
       context={context} >
       <Provider store={store} >
-        <ServerApp1 what={'vers'} />
+        <ServerApp1 />
       </Provider>
     </StaticRouter>
   )
-  console.log('+++ +++ html:', html)
-
-
 
   const finalState = store.getState()
   res.send(renderFullPage(html, finalState))

@@ -51,8 +51,6 @@ class MainNavigation extends React.Component {
 
     let galleriesSelected, homeSelected = 'selected', reportsSelected, tagsSelected, videosSelected, peopleSelected
 
-    console.log('+++ herehere?')
-
     return (
       <Grid>{ this.props.children }</Grid>
     )

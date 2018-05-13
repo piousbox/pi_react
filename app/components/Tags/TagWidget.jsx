@@ -4,6 +4,7 @@ import {
   Grid, Row, Col, Panel,
 } from 'react-bootstrap'
 
+
 import { tagAction } from '../../actions'
 import actions from '../../actions'
 
@@ -17,7 +18,7 @@ class TagWidget extends React.Component {
   }
  
   render () {
-    console.log('+++ TagWidget render:', this.props, this.state)
+    // console.log('+++ TagWidget render:', this.props, this.state)
     if (!this.props.tags[this.props.tagname]) return (null)
 
     return (
