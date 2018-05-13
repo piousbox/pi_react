@@ -10,8 +10,12 @@
 
 I tried react-google-maps, now trying google-maps-react
 
- npm run build_pi2
- node build_server_pi/server.js
+ npm run build_pi_server
+
+This works in production with nodemon, no need to build:
+ npm run start_pi_server
+
+port 3001
 
 ## Test
 

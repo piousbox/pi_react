@@ -26,7 +26,13 @@ var _App = require('./components/App/App');
 
 var _App2 = _interopRequireDefault(_App);
 
-var _reactRouter = require('react-router');
+var _StaticRouter = require('react-router-dom/StaticRouter');
+
+var _StaticRouter2 = _interopRequireDefault(_StaticRouter);
+
+var _config = require('config');
+
+var _config2 = _interopRequireDefault(_config);
 
 var _server = require('react-dom/server');
 
@@ -49,6 +55,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+console.log('+++ config:', _config2.default);
 
 var ServerApp = function (_React$Component) {
   _inherits(ServerApp, _React$Component);
@@ -93,12 +101,12 @@ function handleRender(req, res) {
   var preloadedState = { counter: counter };
 
   var store = (0, _redux.createStore)(_reducers2.default);
+  var context = {};
   var html = (0, _server.renderToString)(_react2.default.createElement(
-    _reactRouter.StaticRouter,
+    _StaticRouter2.default,
     {
       location: req.url,
-      context: context
-    },
+      context: context },
     _react2.default.createElement(ServerApp, null)
   ));
 

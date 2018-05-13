@@ -13,7 +13,8 @@ import Center from '../Center'
 import AppRouter from '../App/AppRouter'
 import { Link } from 'react-router'
 
-import styles from './_Galleries.scss'
+// import styles from './_Galleries.scss'
+let styles = {} // @TODO: remove! HEREHERE
 
 import Leaderboard from '../App/Leaderboard'
 

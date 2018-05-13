@@ -35,7 +35,7 @@ class Home extends React.Component {
   }
 
   render () {
-    // console.log('+++ +++ rendering Home:', this.props, this.state)
+    console.log('+++ +++ rendering Home:', this.props, this.state)
 
     return (
       <Row>

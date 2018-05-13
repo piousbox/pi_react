@@ -3,27 +3,44 @@ import Express from 'express'
 import React from 'react'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import counterApp from './app/reducers'
-import App from './app/components/App/App'
+import counterApp from './reducers'
+
+import store from './stores'
+
 import { renderToString } from 'react-dom/server'
 import qs from 'qs'
+import reactdom from 'react-dom'
+import reducer from './reducers'
+import StaticRouter from 'react-router-dom/staticrouter'
 
-import './favicon.ico'
-// import 'babel-core/polyfill'
-// import 'normalize.css/normalize.css'
-import ReactDOM from 'react-dom'
+import MainNavigation from './components/App/MainNavigation'
+import Home from './components/App/Home'
 
-// import './app/scss/app.scss'
-import store from './app/stores'
-import reducer from './app/reducers'
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('app')
-)
 
+// import ServerApp from './serverApp'
+class ServerApp1 extends React.Component {
+  render () {
+    console.log('+++ ServerApp1:', this.props, this.state)
+    return (
+      <Provider store={store}>
+        <MainNavigation site={{ a: 'b' }} >
+          <Home />
+        </MainNavigation>
+      </Provider>
+    )
+  }
+}
+
+
+class ServerApp2 extends React.Component {
+  render () {
+    console.log('+++ ServerApp2:', this.props, this.state)
+    return (
+      <div><h2>AppServer2</h2></div>
+    )
+  }
+}
 
 const app = Express()
 const port = 3001
@@ -36,17 +53,32 @@ function handleRender(req, res) {
   const counter = parseInt(params.counter, 10) || 0
   let preloadedState = { counter }
 
+
   const store = createStore(counterApp)
+  console.log('+++ store:', store)
+
+  const context = { some: 'context' }
   const html = renderToString(
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <StaticRouter
+      location={req.url}
+      context={context} >
+      <Provider store={store} >
+        <ServerApp1 what={'vers'} />
+      </Provider>
+    </StaticRouter>
   )
+  console.log('+++ +++ html:', html)
+
+
 
   const finalState = store.getState()
   res.send(renderFullPage(html, finalState))
 }
 app.use(handleRender)
+
+// const preloadedState = window.__PRELOADED_STATE__
+// delete window.__PRELOADED_STATE__
+
 
 function renderFullPage(html, preloadedState) {
   return `

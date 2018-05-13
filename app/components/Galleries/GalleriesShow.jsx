@@ -7,7 +7,9 @@ import { connect } from 'react-redux'
 
 import { galleriesShow } from '../../actions'
 import Center from '../Center'
-import styles from './_Galleries.scss'
+
+// import styles from './_Galleries.scss'
+let styles = {} // @TODO: remove! HEREHERE
 
 class GalleriesShow extends React.Component {
 

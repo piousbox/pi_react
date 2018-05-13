@@ -8,7 +8,10 @@ import { Link, Redirect } from 'react-router'
 import { connect } from 'react-redux'
 
 import config       from 'config'
-import { siteShow } from '../../actions'
+
+//import { siteShow } from '../../actions'
+import actions from '../../actions'
+const siteShow = actions.siteShow
 
 import Footer3      from './Footer3'
 import Leaderboard  from './Leaderboard'
@@ -43,7 +46,7 @@ class MainNavigation extends React.Component {
   }
 
   render () {
-    // console.log('+++ +++ MainNavigation render:', this.props, this.state)
+    console.log('+++ +++ MainNavigation render:', this.props, this.state)
     if (!this.props.site) { return (null) }
 
     let galleriesSelected, homeSelected = 'selected', reportsSelected, tagsSelected, videosSelected, peopleSelected

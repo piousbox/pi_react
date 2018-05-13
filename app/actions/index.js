@@ -4,7 +4,7 @@
  */
 
 // import ReduxThunk from 'redux-thunk'
-
+import 'fetch-everywhere'
 import AppDispatcher from '../dispatcher/AppDispatcher'
 
 import {
@@ -298,5 +298,4 @@ export default {
   venuesIndexAction,
   videoAction,
   videosAction,
-
 }

@@ -3,6 +3,9 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk   from 'redux-thunk'
 import reducer from '../reducers'
 
-let store = createStore( reducer, applyMiddleware( thunk ) )
+const preloadedState = { preloaded: 'sta1a', site: { hereBe: 'si2asdf' } }
+console.log('+++ pre state:', preloadedState)
+
+let store = createStore( reducer, preloadedState, applyMiddleware( thunk ) )
 
 export default store

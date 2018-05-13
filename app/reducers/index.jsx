@@ -14,7 +14,11 @@ import {
 import { citiesIndexReducer, citiesShowReducer } from './citiesReducer'
 import { galleriesShowReducer } from './galleriesReducer'
 import { reportsShowReducer, reportsReducer } from './reportsReducer'
-import { sitesReducer } from './sitesReducer'
+// import { sitesReducer } from './sitesReducer'
+import allSitesReducers from './sitesReducer'
+const sitesReducer = allSitesReducers.sitesReducer
+console.log('+++ sitesReducer?', sitesReducer)
+
 import { venueReducer, venuesReducer,
 } from './venuesReducer'
 
