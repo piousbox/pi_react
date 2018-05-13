@@ -46,46 +46,17 @@ class MainNavigation extends React.Component {
   }
 
   render () {
-    console.log('+++ +++ MainNavigation render:', this.props, this.state)
+    // console.log('+++ +++ MainNavigation render:', this.props, this.state)
     if (!this.props.site) { return (null) }
 
     let galleriesSelected, homeSelected = 'selected', reportsSelected, tagsSelected, videosSelected, peopleSelected
-    this.props.routes.map((route, idx) => {
-      // galleries
-      if (route.path === AppRouter.galleriesPath ||
-          route.path === AppRouter.galleriesPagesPath ||
-          route.path === AppRouter.galleryPath ||
-          route.path === AppRouter.galleryPhotoPath) {
-        galleriesSelected = 'selected'
-        homeSelected = null
-      }
-      // reports
-      if (route.path === AppRouter.reportsPath ||
-          route.path === AppRouter.reportsPagesPath ||
-          route.path === AppRouter.reportPath) {
-        reportsSelected = 'selected'
-        homeSelected = null
-      }
-      // tags
-      if (route.path === AppRouter.tagsPath ||
-          route.path === AppRouter.tagPath) {
-        tagsSelected = 'selected'
-        homeSelected = null
-      }
-      // videos
-      if (route.path === AppRouter.videosPath ||
-          route.path === AppRouter.videosPagesPath ||
-          route.path === AppRouter.videoPath) {
-        videosSelected = 'selected'
-        homeSelected = null
-      }
-      // people
-      if (route.path === AppRouter.peoplePath) {
-        peopleSelected = 'selected'
-        homeSelected = null
-      }
-    })
-    
+
+    console.log('+++ herehere?')
+
+    return (
+      <Grid>{ this.props.children }</Grid>
+    )
+
     return (
       <div >
         <HeaderTopBar />

@@ -8,13 +8,17 @@ import { Link } from 'react-router'
 import { connect } from 'react-redux'
 
 import config from 'config'
-import { siteNewsitemsAction, siteShow, } from '../../actions'
+// import { siteNewsitemsAction, siteShow, } from '../../actions'
+import actions from '../../actions'
+console.log('+++ actions site na:', actions.siteNewsitemsAction)
 
 import Clearfix      from './Clearfix'
 import Features      from './Features'
 import Footer        from './Footer'
 import { Newsitems } from '../Newsitems'
-import { TagNewsitems, FeatureTags, TagWidget } from '../Tags'
+import Tags, { TagNewsitems, FeatureTags } from '../Tags'
+const TagWidget = Tags.TagWidget
+
 import {
   AdSkyscraper, AdLargeSquare, AdBanner,
   AdSkim, AdWdz, AdCot, AdTgm, AdWasya,
@@ -24,7 +28,7 @@ import { PeopleWidget, PersonWidget } from '../Users'
 class Home extends React.Component {
   constructor(props) {
     super(props)
-    props.dispatch(siteNewsitemsAction({ page: 1 }))
+    props.dispatch(actions.siteNewsitemsAction({ page: 1 }))
   }
 
   componentWillReceiveProps (nextProps) {
@@ -36,6 +40,16 @@ class Home extends React.Component {
 
   render () {
     console.log('+++ +++ rendering Home:', this.props, this.state)
+    console.log('+++ widget:', TagWidget)
+
+    return (
+      <Row>
+        home!
+        <Col xs={12} md={5}>
+          <TagWidget tagname="travel" />
+          <TagWidget tagname="human-resources" />
+        </Col>
+      </Row>)
 
     return (
       <Row>
