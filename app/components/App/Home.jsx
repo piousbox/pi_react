@@ -42,7 +42,6 @@ class Home extends React.Component {
 
     return (
       <Row>
-        home!
         <Col xs={12} md={5}>
           <TagWidget tagname="travel" />
           <TagWidget tagname="human-resources" />

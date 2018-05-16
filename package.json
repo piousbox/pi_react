@@ -11,7 +11,7 @@
     "estraverse": "^4.2.0",
     "fetch-everywhere": "^1.0.5",
     "flux": "^2.0.3",
-    "fws": "0.0.1-security",
+    "fs": "0.0.1-security",
     "google-maps-react-pi": "1.0.20",
     "grunt-karma": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
@@ -207,17 +207,11 @@
       "test": 8088
     }
   },
-  "scripts_trash": {
-    "start_production": "NODE_ENV=development_production node dev-server ./webpack/config",
-    "start_bjjc": "NODE_ENV=development_bjjc node dev-server ./webpack/config",
-    "build_pi": "rm -rf build && mkdir build && NODE_ENV=production npm run webpack2",
-    "webpack2": "webpack --config ./webpack/config-server-2.js",
-    "webpack3": "webpack --colors --progress --config ./webpack/config-server",
-    "build_sedux": "rm build_sedux -rf && mkdir build_sedux && NODE_ENV=sedux npm run webpack && cp -v htaccess build_sedux/.htaccess && echo ok"
-  },
   "scripts": {
     "build": "rm -rf build && mkdir build && NODE_ENV=production npm run webpack && cp -v htaccess build/.htaccess && cp -v sitemap* build/ && cp -rv archive/201711_bjjc-email-signup build/ && echo ok",
-    "build_pi_server": "NODE_ENV=development NODE_PATH=./config/development:$NODE_PATH nodemon app/ --exec babel -s -D -d build_server_pi --presets es2015,stage-0",
+    "build_pi_client": "NODE_ENV=development NODE_PATH=./config/development:$NODE_PATH nodemon app/client.jsx --exec babel -s -D -d build_server_pi --presets es2015,stage-0",
+    "start_pi_client": "NODE_ENV=development NODE_PATH=./config/development:$NODE_PATH nodemon app/client.jsx --exec babel-node --presets es2015,stage-0",
+    "build_pi_server": "NODE_ENV=development NODE_PATH=./config/development:$NODE_PATH nodemon app/server.js --exec babel -s -D -d build_server_pi --presets es2015,stage-0",
     "start_pi_server": "NODE_ENV=development NODE_PATH=./config/development:$NODE_PATH nodemon app/server.js --exec babel-node --presets es2015,stage-0",
     "clean": "NODE_ENV=production rimraf $npm_package_config_buildDir_production && mkdir $npm_package_config_buildDir_production",
     "env": "env",

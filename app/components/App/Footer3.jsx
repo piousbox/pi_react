@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { NavLink as Link } from 'react-router-dom'
 import { Grid, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
@@ -15,7 +15,7 @@ import pt from './images/flags/pt.png'
 import config from 'config'
 import { siteShow } from '../../actions'
 
-import { Center, AppRouter } from './index'
+import AppRouter from './AppRouter'
 
 class Footer3 extends React.Component {
   constructor(props) {

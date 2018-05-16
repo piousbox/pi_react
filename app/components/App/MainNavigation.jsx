@@ -5,6 +5,7 @@ import { Grid, Row, Col,
          Nav, NavItem, Navbar,
 } from 'react-bootstrap'
 import { Link, Redirect } from 'react-router'
+import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import config       from 'config'
@@ -46,21 +47,21 @@ class MainNavigation extends React.Component {
   }
 
   render () {
-    // console.log('+++ +++ MainNavigation render:', this.props, this.state)
+    console.log('+++ +++ MainNavigation render:', this.props, this.state)
     if (!this.props.site) { return (null) }
 
     let galleriesSelected, homeSelected = 'selected', reportsSelected, tagsSelected, videosSelected, peopleSelected
 
-    return (
-      <Grid>{ this.props.children }</Grid>
-    )
 
+    /**
+     * unreachable
+     */
     return (
       <div >
         <HeaderTopBar />
 
         <div className="center main-logo">
-					<h1 style={{ margin: 0, fontFamily: 'serif' }} ><Link to="/">{ this.props.site.title }</Link></h1>
+					<h1 style={{ margin: 0, fontFamily: 'serif' }} ><NavLink to="/">{ this.props.site.title }</NavLink></h1>
 					<h4>{this.props.site.subhead}</h4>
 				</div>
         
@@ -69,14 +70,14 @@ class MainNavigation extends React.Component {
             <Row>
               <Col xs={12}>
                 <ul>
-                  <li><Link to={AppRouter.rootLink()}>Home</Link></li>
-                  <li><Link to={AppRouter.tagLink('salsa')}>Salsa</Link></li>
-                  <li><Link to={AppRouter.tagLink('bachata')}>Bachata</Link></li>
-                  <li><Link to={AppRouter.tagLink('sketches')}>Sketches</Link></li>
-                  <li><Link to={AppRouter.tagLink('travel')}>Travel</Link></li>
-                  <li><Link to={AppRouter.tagLink('music')}>Music</Link></li>
-                  <li><Link to={AppRouter.tagLink('javascript')}>Javascript</Link></li>
-                  <li><Link to={AppRouter.tagLink('ruby')}>Ruby</Link></li>
+                  <li><NavLink to={AppRouter.rootLink()}>Home</NavLink></li>
+                  <li><NavLink to={AppRouter.tagLink('salsa')}>Salsa</NavLink></li>
+                  <li><NavLink to={AppRouter.tagLink('bachata')}>Bachata</NavLink></li>
+                  <li><NavLink to={AppRouter.tagLink('sketches')}>Sketches</NavLink></li>
+                  <li><NavLink to={AppRouter.tagLink('travel')}>Travel</NavLink></li>
+                  <li><NavLink to={AppRouter.tagLink('music')}>Music</NavLink></li>
+                  <li><NavLink to={AppRouter.tagLink('javascript')}>Javascript</NavLink></li>
+                  <li><NavLink to={AppRouter.tagLink('ruby')}>Ruby</NavLink></li>
                 </ul>
               </Col>
             </Row>
@@ -88,11 +89,11 @@ class MainNavigation extends React.Component {
             <Row>
               <Col xs={12}>
                 <ul>
-                  { config.reportsEnabled &&   <li className={reportsSelected} ><Link to={AppRouter.reportsLink()}>Reports</Link></li> }
-                  { config.galleriesEnabled && <li className={galleriesSelected} ><Link to={AppRouter.galleriesLink()}>Galleries</Link></li> }
-                  { config.videosEnabled &&    <li className={videosSelected} ><Link to={AppRouter.videosLink()}>Videos</Link></li> }
-                  { config.tagsEnabled &&      <li className={tagsSelected} ><Link to={AppRouter.tagsLink()}>Tags</Link></li> }
-                  { config.peopleEnabled &&    <li className={peopleSelected} ><Link to={AppRouter.peopleLink()}>People</Link></li> }
+                  { config.reportsEnabled &&   <li className={reportsSelected} ><NavLink to={AppRouter.reportsLink()}>Reports</NavLink></li> }
+                  { config.galleriesEnabled && <li className={galleriesSelected} ><NavLink to={AppRouter.galleriesLink()}>Galleries</NavLink></li> }
+                  { config.videosEnabled &&    <li className={videosSelected} ><NavLink to={AppRouter.videosLink()}>Videos</NavLink></li> }
+                  { config.tagsEnabled &&      <li className={tagsSelected} ><NavLink to={AppRouter.tagsLink()}>Tags</NavLink></li> }
+                  { config.peopleEnabled &&    <li className={peopleSelected} ><NavLink to={AppRouter.peopleLink()}>People</NavLink></li> }
                 </ul>
               </Col>
             </Row>

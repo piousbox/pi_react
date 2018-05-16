@@ -5,6 +5,10 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import counterApp from './reducers'
 
+
+
+
+
 import store from './stores'
 
 import { renderToString } from 'react-dom/server'
@@ -24,24 +28,10 @@ class ServerApp1 extends React.Component {
     // console.log('+++ ServerApp1:', this.props, this.state)
     return (
       <Provider store={store}>
-        <MainNavigation site={{ a: 'b' }} >
+        <MainNavigation >
           <Home />
         </MainNavigation>
       </Provider>
-    )
-  }
-}
-
-
-
-
-
-
-class ServerApp2 extends React.Component {
-  render () {
-    console.log('+++ ServerApp2:', this.props, this.state)
-    return (
-      <div><h2>AppServer2</h2></div>
     )
   }
 }
