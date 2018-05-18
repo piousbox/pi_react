@@ -12,7 +12,7 @@ class MainNavigation extends React.Component {
         <Navbar>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">Annesque</Link>
+              <Link to="/">pi react!</Link>
             </Navbar.Brand>
           </Navbar.Header>
           <ul className="main-menu">

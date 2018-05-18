@@ -35060,7 +35060,7 @@ var MainNavigation = function (_React$Component) {
               _react2.default.createElement(
                 _reactRouterDom.Link,
                 { to: '/' },
-                'Annesque'
+                'pi react!'
               )
             )
           ),
