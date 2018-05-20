@@ -5,10 +5,12 @@ import {
 } from 'react-bootstrap'
 
 import config from 'config'
-import { Newsitem, Newsitems } from '../../newsitems/src/index'
-import { Features, Feature } from '../../pi-features/src/index'
-import { Tag, Site } from '../../piousbox-api/src/index'
-// import { Tag, Site } from 'piousbox-api'
+
+// import { Newsitem, Newsitems } from '../../newsitems/src/index'
+import { Newsitems } from 'newsitems'
+
+// import { Tag, Site } from '../../piousbox-api/src/index'
+import { Tag, Site } from 'piousbox-api'
 
 class Home extends React.Component {
   constructor (props) {

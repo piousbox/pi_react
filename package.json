@@ -61,7 +61,8 @@
   "scripts": {
     "dev": "PORT=8082 NODE_PATH=./config/development:$NODE_PATH nodemon --watch touch --exec babel-node src/server.jsx --presets=es2015,react",
     "dev_client": "NODE_ENV=development nodemon --watch touch --exec 'webpack --config webpack/config.js' ",
-    "build": "babel src -s -D -d dist --presets es2015,stage-0",
+    "build": "NODE_ENV=production babel src -s -D -d dist --presets es2015,stage-0",
+    "build_client": "NODE_ENV=production webpack --config webpack/config.js",
     "start": "node dist",
     "prestart": "npm run -s build",
     "test": "eslint src"

@@ -34,85 +34,162 @@ var MainNavigation = function (_React$Component) {
   _createClass(MainNavigation, [{
     key: 'render',
     value: function render() {
+      // console.log('+++ main nav:', this.props)
+
       return _react2.default.createElement(
         'div',
         null,
         _react2.default.createElement(
-          _reactBootstrap.Navbar,
-          null,
+          'div',
+          { className: 'main-header' },
           _react2.default.createElement(
-            _reactBootstrap.Navbar.Header,
+            'div',
+            { className: 'search' },
+            'search, social'
+          ),
+          _react2.default.createElement('div', { className: 'clearfix' }),
+          _react2.default.createElement(
+            _reactBootstrap.Grid,
             null,
             _react2.default.createElement(
-              _reactBootstrap.Navbar.Brand,
+              _reactBootstrap.Row,
               null,
               _react2.default.createElement(
-                _reactRouterDom.Link,
-                { to: '/' },
-                'pi react!'
+                _reactBootstrap.Col,
+                { xs: 12 },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'title' },
+                  _react2.default.createElement(
+                    _reactRouterDom.Link,
+                    { to: '/' },
+                    _react2.default.createElement(
+                      'h1',
+                      null,
+                      'Piousbox'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'subtitle' },
+                  'subtitle'
+                )
               )
             )
           ),
+          _react2.default.createElement('div', { className: 'divider-large' }),
           _react2.default.createElement(
-            'ul',
-            { className: 'main-menu' },
+            _reactBootstrap.Grid,
+            null,
             _react2.default.createElement(
-              'li',
+              _reactBootstrap.Row,
               null,
               _react2.default.createElement(
-                _reactRouterDom.Link,
-                { to: '/' },
-                'News'
+                _reactBootstrap.Col,
+                { xs: 12 },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'main-menu' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'item' },
+                    _react2.default.createElement(
+                      _reactRouterDom.Link,
+                      { to: '/contact' },
+                      'Contact'
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'item' },
+                    _react2.default.createElement(
+                      _reactRouterDom.Link,
+                      { to: '/blog' },
+                      'Blog'
+                    )
+                  )
+                )
               )
-            ),
+            )
+          ),
+          _react2.default.createElement('div', { className: 'divider-small' }),
+          _react2.default.createElement(
+            _reactBootstrap.Grid,
+            null,
             _react2.default.createElement(
-              'li',
+              _reactBootstrap.Row,
               null,
               _react2.default.createElement(
-                _reactRouterDom.Link,
-                { to: '#' },
-                'Location'
+                _reactBootstrap.Col,
+                { xs: 12 },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'second-menu' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'item' },
+                    _react2.default.createElement(
+                      _reactRouterDom.Link,
+                      { to: '/reports' },
+                      'Reports'
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'item' },
+                    _react2.default.createElement(
+                      _reactRouterDom.Link,
+                      { to: '/galleries' },
+                      'Galleries'
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'item' },
+                    _react2.default.createElement(
+                      _reactRouterDom.Link,
+                      { to: '/videos' },
+                      'Videos'
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'item' },
+                    _react2.default.createElement(
+                      _reactRouterDom.Link,
+                      { to: '/events' },
+                      'Events'
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'item' },
+                    _react2.default.createElement(
+                      _reactRouterDom.Link,
+                      { to: '/people' },
+                      'People'
+                    )
+                  )
+                )
               )
-            ),
+            )
+          ),
+          _react2.default.createElement('div', { className: 'divider-small' })
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.Grid,
+          null,
+          _react2.default.createElement(
+            _reactBootstrap.Row,
+            null,
             _react2.default.createElement(
-              'li',
-              null,
-              _react2.default.createElement(
-                _reactRouterDom.Link,
-                { to: '#' },
-                'Schedule'
-              )
-            ),
-            _react2.default.createElement(
-              'li',
-              null,
-              _react2.default.createElement(
-                _reactRouterDom.Link,
-                { to: '#' },
-                'Curriculum'
-              )
-            ),
-            _react2.default.createElement(
-              'li',
-              null,
-              _react2.default.createElement(
-                _reactRouterDom.Link,
-                { to: '#' },
-                'Instructors'
-              )
-            ),
-            _react2.default.createElement(
-              'li',
-              null,
-              _react2.default.createElement(
-                _reactRouterDom.Link,
-                { to: '/contact' },
-                'Contact'
-              )
+              _reactBootstrap.Col,
+              { xs: 12 },
+              this.props.children
             )
           )
         ),
-        this.props.children,
         _react2.default.createElement(
           'div',
           { className: 'main-footer' },
