@@ -30,33 +30,29 @@ var _qs = require('qs');
 
 var _qs2 = _interopRequireDefault(_qs);
 
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
 var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _server = require('react-dom/server');
 
-var _reactRedux = require('react-redux');
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
 var _redux = require('redux');
+
+var _reactRedux = require('react-redux');
 
 var _reduxThunk = require('redux-thunk');
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _reactRouterDom = require('react-router-dom');
+var _reactRouter = require('react-router');
 
 var _config = require('config');
 
 var _config2 = _interopRequireDefault(_config);
-
-var _config3 = require('./config.json');
-
-var _config4 = _interopRequireDefault(_config3);
 
 var _api = require('./api');
 
@@ -82,13 +78,9 @@ var _routes = require('./routes');
 
 var _routes2 = _interopRequireDefault(_routes);
 
-var _Home = require('./Home');
+var _App = require('./App');
 
-var _Home2 = _interopRequireDefault(_Home);
-
-var _Blog = require('./Blog');
-
-var _Blog2 = _interopRequireDefault(_Blog);
+var _App2 = _interopRequireDefault(_App);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -97,6 +89,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Router = _reactRouter.StaticRouter;
 
 var store = (0, _redux.createStore)(_reducers2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default));
 
@@ -123,67 +117,24 @@ var NoMatch = function (_React$Component) {
   return NoMatch;
 }(_react2.default.Component);
 
-var App = function (_React$Component2) {
-  _inherits(App, _React$Component2);
-
-  function App() {
-    _classCallCheck(this, App);
-
-    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
-  }
-
-  _createClass(App, [{
-    key: 'render',
-    value: function render() {
-      console.log('+++ +++ server.js App:', this.props, this.state);
-
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          _MainNavigation2.default,
-          null,
-          _react2.default.createElement(
-            'div',
-            null,
-            'inside main nav'
-          )
-        ),
-        _react2.default.createElement('hr', { style: { border: '1px solid green' } }),
-        _react2.default.createElement(
-          _reactRouterDom.Switch,
-          null,
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/blog', component: _Blog2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _Home2.default })
-        )
-      );
-    }
-  }]);
-
-  return App;
-}(_react2.default.Component);
-
 var app = (0, _express2.default)();
 app.server = _http2.default.createServer(app);
-app.use(_express2.default.static('static'));
+app.use(_express2.default.static('dist'));
 
-// logger
-app.use((0, _morgan2.default)('dev'));
+app.use((0, _morgan2.default)('dev')); // logger
 
-// 3rd party middleware
 app.use((0, _cors2.default)({
-  exposedHeaders: _config4.default.corsHeaders
+  exposedHeaders: _config2.default.corsHeaders
 }));
 
 function handleRender(req, res) {
+  console.log("+++ handleRender:");
+
   var params = _qs2.default.parse(req.query);
-
-  console.log('+++ url:', req.url);
-
   var html = (0, _server.renderToString)(_react2.default.createElement(
-    _reactRouterDom.StaticRouter,
-    { location: req.url, context: {} },
-    _react2.default.createElement(App, null)
+    Router,
+    { context: {}, location: req.url },
+    _react2.default.createElement(_App2.default, null)
   ));
 
   var finalState = store.getState();
@@ -192,11 +143,11 @@ function handleRender(req, res) {
 app.use(handleRender);
 
 function renderFullPage(html, preloadedState) {
-  return '\n    <!doctype html>\n    <html>\n      <head>\n        <title>Redux Universal Example</title>\n      </head>\n      <body>\n        <div id="root">' + html + '</div>\n        <script>\n          // WARNING: See the following for security issues around embedding JSON in HTML:\n          // http://redux.js.org/recipes/ServerRendering.html#security-considerations\n          window.__PRELOADED_STATE__ = ' + JSON.stringify(preloadedState).replace(/</g, '\\u003c') + '\n        </script>\n        <script src="/static/bundle.js"></script>\n      </body>\n    </html>\n  ';
+  return '\n    <!doctype html>\n    <html>\n      <head>\n        <title>Annesque - Salsa Dance Studio in Santa Cruz</title>\n        <!-- Latest compiled and minified bootstrap CSS -->\n        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">\n        <!-- Optional bootstrap theme -->\n        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-roN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->\n        <link rel="stylesheet" href="' + _config2.default.staticDomain + '/annesque.com/style.css" >\n      </head>\n      <body>\n        <div id="app">' + html + '</div>\n        <script>\n          // WARNING: See the following for security issues around embedding JSON in HTML:\n          // http://redux.js.org/recipes/ServerRendering.html#security-considerations\n          window.__PRELOADED_STATE__ = ' + JSON.stringify(preloadedState).replace(/</g, '\\u003c') + '\n        </script>\n        <script src="/client.js"></script>\n\n        <!-- Global site tag (gtag.js) - Google Analytics -->\n        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-47088821-4"></script>\n        <script>\n          window.dataLayer = window.dataLayer || [];\n          function gtag(){dataLayer.push(arguments);}\n          gtag(\'js\', new Date());\n          gtag(\'config\', \'UA-47088821-4\'); // _vp_ 20180503 20180517 annesque.com\n        </script>\n\n        <script>\n          function initMap() {\n            var myLatLng = {lat: 36.9694354, lng: -122.029866};\n            var map = new google.maps.Map(document.getElementById(\'map\'), {\n              zoom: 15,\n              center: myLatLng\n            });\n            var marker = new google.maps.Marker({\n              position: myLatLng,\n              map: map,\n              title: \'Lauden Nelson Community Center\'\n            });\n          }\n        </script>\n        <script async defer\n        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz9MJTIs6pcyffyN5cbogsb9UT8q9xuxI&callback=initMap">\n        </script>\n            \n      </body>\n    </html>\n  ';
 }
 
-app.server.listen(process.env.PORT || _config4.default.port, function () {
-  console.log('Started on port ' + app.server.address().port);
+app.server.listen(process.env.PORT || _config2.default.port, function () {
+  console.log('+++ +++ Started on port ' + app.server.address().port);
 });
 
 exports.default = app;
