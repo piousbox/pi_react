@@ -43,8 +43,6 @@ app.use(cors({
 }))
 
 function handleRender(req, res) {
-  console.log("+++ handleRender:")
-
   const params = qs.parse(req.query)
   const html = renderToString(
     <Router context={{}} location={req.url} >

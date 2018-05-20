@@ -1,5 +1,5 @@
 
-let Config = {
+var Config = {
   envName: "production",
   apiUrl: "https://manager.piousbox.com",
   fbAppId: "155288885040689",
@@ -7,6 +7,9 @@ let Config = {
   domain: "piousbox.com",
   lang: "en",
   disqusShortname: "local-pi",
+  staticDomain: "http://static.local",
+  
+  port: 8083,
 
   citiesEnabled: false,
   galleriesEnabled: true,
@@ -14,5 +17,5 @@ let Config = {
   tagsEnabled: true,
 }
 
-export default Config
+module.exports = Config
 

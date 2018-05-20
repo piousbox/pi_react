@@ -128,8 +128,6 @@ app.use((0, _cors2.default)({
 }));
 
 function handleRender(req, res) {
-  console.log("+++ handleRender:");
-
   var params = _qs2.default.parse(req.query);
   var html = (0, _server.renderToString)(_react2.default.createElement(
     Router,

@@ -6,8 +6,8 @@ import {
 
 import config from 'config'
 
-// import { Newsitem, Newsitems } from '../../newsitems/src/index'
-import { Newsitems } from 'newsitems'
+// import { Newsitems } from '../../newsitems/src/index'
+import N, { Newsitems } from 'newsitems'
 
 // import { Tag, Site } from '../../piousbox-api/src/index'
 import { Tag, Site } from 'piousbox-api'
@@ -33,6 +33,8 @@ class Home extends React.Component {
 
   render () {
     // console.log('+++ Home:', this.props, this.state)
+    console.log('+++ newsitems:', N)
+
     return (
       <div>
         <Row>

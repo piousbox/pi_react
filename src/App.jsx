@@ -7,7 +7,7 @@ import Home           from './Home'
 import Blog           from './Blog'
 
 class App extends React.Component {
-  render () {
+  render () {  	
     return (
       <MainNavigation>
         <Route exact path="/blog" component={Blog} />
