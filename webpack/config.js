@@ -8,7 +8,8 @@ module.exports = {
     filename: 'client.js'
   },
   resolve: {
-    extensions: [ '.js', '.jsx' ]
+    extensions: [ '.js', '.jsx' ],
+    modules: ['node_modules', 'config/' + process.env.NODE_ENV ]
   },
   module: {
     rules: [

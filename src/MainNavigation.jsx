@@ -7,25 +7,59 @@ import {
 
 class MainNavigation extends React.Component {
   render () {
+    // console.log('+++ main nav:', this.props)
+
     return (
       <div>
-        <Navbar>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <Link to="/">pi react!</Link>
-            </Navbar.Brand>
-          </Navbar.Header>
-          <ul className="main-menu">
-            <li><Link to="/">News</Link></li>
-            <li><Link to="#">Location</Link></li>
-            <li><Link to="#">Schedule</Link></li>
-            <li><Link to="#">Curriculum</Link></li>
-            <li><Link to="#">Instructors</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
-          </ul>
-        </Navbar>
 
-        { this.props.children }
+        <div className="main-header">
+          <div className="search" >search, social</div>
+          <div className="clearfix" />
+          <Grid>
+            <Row >
+              <Col xs={12}>
+                <div className="title" >
+                  <Link to="/"><h1>Piousbox</h1></Link>
+                </div>
+                <div className="subtitle" >subtitle</div>
+              </Col>
+            </Row>
+          </Grid>
+          <div className="divider-large" />
+          <Grid>
+            <Row>
+              <Col xs={12}>
+                <div className="main-menu" >
+                  <div className="item"><Link to="/contact">Contact</Link></div>
+                  <div className="item"><Link to="/blog">Blog</Link></div>
+                </div>
+              </Col>
+            </Row>
+          </Grid>
+          <div className="divider-small" />
+          <Grid>
+            <Row>
+              <Col xs={12}>
+                <div className="second-menu" >
+                  <div className='item'><Link to="/reports">Reports</Link></div>
+                  <div className='item'><Link to="/galleries">Galleries</Link></div>
+                  <div className='item'><Link to="/videos">Videos</Link></div>
+                  <div className='item'><Link to="/events">Events</Link></div>
+                  <div className='item'><Link to="/people">People</Link></div>
+                </div>
+              </Col>
+            </Row>
+          </Grid>
+          <div className="divider-small" />
+        </div>
+
+        <Grid>
+          <Row>
+            <Col xs={12}>
+              { this.props.children }
+            </Col>
+          </Row>
+        </Grid>
 
         <div className="main-footer">
           <Grid>
