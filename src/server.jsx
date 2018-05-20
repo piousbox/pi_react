@@ -62,7 +62,7 @@ function renderFullPage(html, preloadedState) {
     <!doctype html>
     <html>
       <head>
-        <title>Annesque - Salsa Dance Studio in Santa Cruz</title>
+        <title>Piousbox - Musings and ramblights for your lighthearted entertainment</title>
         <!-- Latest compiled and minified bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- Optional bootstrap theme -->
@@ -85,24 +85,6 @@ function renderFullPage(html, preloadedState) {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'UA-47088821-4'); // _vp_ 20180503 20180517 annesque.com
-        </script>
-
-        <script>
-          function initMap() {
-            var myLatLng = {lat: 36.9694354, lng: -122.029866};
-            var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 15,
-              center: myLatLng
-            });
-            var marker = new google.maps.Marker({
-              position: myLatLng,
-              map: map,
-              title: 'Lauden Nelson Community Center'
-            });
-          }
-        </script>
-        <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz9MJTIs6pcyffyN5cbogsb9UT8q9xuxI&callback=initMap">
         </script>
             
       </body>

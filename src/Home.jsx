@@ -16,21 +16,21 @@ class Home extends React.Component {
     this.state = {}
 
     const tag = new Tag(config)
-    const site = new Site(config)
-    tag.get('major').then(_data => {
-      console.log('+++ got major data:', _data)
-      this.setState({ major: _data })
+    tag.get('major', { newsitems_per: 5 }).then(_data => {
+      this.setState({ major: _data.newsitems })
     })
+
     /* tag.get('minor').then(_data => {
       this.setState({ minor: _data })
     })
+    const site = new Site(config)
     site.features().then(_data => {
       this.setState({ features: _data })
     }) */
   }
 
   render () {
-    console.log('+++ Home:', this.props, this.state)
+    // console.log('+++ Home:', this.props, this.state)
     return (
       <div>
         <Row>
