@@ -30,11 +30,13 @@ I need a service there...
 Description=pi_react
 
 [Service]
-Type=forking
 Environment=NODE_ENV=production
 Environment=NODE_PATH=/home/ubuntu/projects/pi_react/current/config/production
-ExecStartPre=echo "starting pi_react"
 ExecStart=/usr/bin/node /home/ubuntu/projects/pi_react/current/dist/server.js
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+User=ubuntu
 
 [Install]
 WantedBy=multi-user.target

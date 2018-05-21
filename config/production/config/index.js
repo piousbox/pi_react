@@ -7,7 +7,7 @@ var Config = {
   domain: "piousbox.com",
   lang: "en",
   disqusShortname: "local-pi",
-  staticDomain: "https//static.piousbox.com",
+  staticDomain: "https://static.piousbox.com",
   
   port: 8083,
 
