@@ -7,7 +7,8 @@ let Config = {
   staticDomain: "http://static.local",
   "port": 8081,
   "bodyLimit": "100kb",
-  "corsHeaders": ["Link"]
+  "corsHeaders": ["Link"],
+  "staticDir": 'dist'
 }
 
 export default Config

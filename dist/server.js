@@ -119,7 +119,7 @@ var NoMatch = function (_React$Component) {
 
 var app = (0, _express2.default)();
 app.server = _http2.default.createServer(app);
-app.use(_express2.default.static('dist'));
+app.use(_express2.default.static(_config2.default.staticDir));
 
 app.use((0, _morgan2.default)('dev')); // logger
 

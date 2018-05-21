@@ -1,4 +1,4 @@
 0.0.0 - 20180513 start
 0.0.1 - 20180518 Let's adapt isomorphic to pi_react. 
 0.0.2 - lets replace annesque content with pi_react stuff from legacy.
-
+0.3.0 - 20180520 I don't know what happened previously, but lets go isomporphic modularized.

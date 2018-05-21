@@ -34,7 +34,7 @@ class NoMatch extends React.Component {
 
 let app = Express()
 app.server = http.createServer(app)
-app.use(Express.static('dist'))
+app.use(Express.static(config.staticDir))
 
 app.use(morgan('dev')) // logger
 

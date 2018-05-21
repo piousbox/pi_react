@@ -8,6 +8,7 @@ var Config = {
   lang: "en",
   disqusShortname: "local-pi",
   staticDomain: "https://static.piousbox.com",
+  staticDir: '/home/ubuntu/projects/pi_react/current/dist',
   
   port: 8083,
 
