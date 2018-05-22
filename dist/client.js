@@ -2560,26 +2560,23 @@ module.exports = exports['default'];
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var Config = {
-  envName: "production",
-  apiUrl: "https://manager.piousbox.com",
-  fbAppId: "155288885040689",
-  googleAnalytics: "UA-53077236-3",
+  envName: "development",
+  apiUrl: "http://localhost:3000",
   domain: "piousbox.com",
   lang: "en",
-  disqusShortname: "local-pi",
-  staticDomain: "https://static.piousbox.com",
-  staticDir: '/home/ubuntu/projects/pi_react/current/dist',
-
-  port: 8083,
-
-  citiesEnabled: false,
-  galleriesEnabled: true,
-  reportsEnabled: true,
-  tagsEnabled: true
+  staticDomain: "http://static.local",
+  "port": 8081,
+  "bodyLimit": "100kb",
+  "corsHeaders": ["Link"],
+  "staticDir": 'dist'
 };
 
-module.exports = Config;
+exports.default = Config;
 
 /***/ }),
 /* 49 */
@@ -13125,15 +13122,29 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Site = exports.Tag = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
 
 var _axios = __webpack_require__(389);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
 
 var Tag = function () {
   function Tag(config) {
@@ -13175,6 +13186,15 @@ var Site = function () {
   _createClass(Site, [{
     key: 'features',
     value: function features() {}
+  }, {
+    key: 'all',
+    value: function all() {
+      var url = this.config.apiUrl + '/api/sites/view/' + this.config.domain + '.json';
+      var a = _axios2.default.get(url).then(function (r) {
+        return r.data.site;
+      });
+      return a;
+    }
   }]);
 
   return Site;
@@ -13182,7 +13202,6 @@ var Site = function () {
 
 exports.Tag = Tag;
 exports.Site = Site;
-
 
 /***/ }),
 /* 175 */
