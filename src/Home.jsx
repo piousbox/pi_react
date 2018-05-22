@@ -5,6 +5,7 @@ import {
 } from 'react-bootstrap'
 
 import config from 'config'
+import AppRouter from './AppRouter'
 import { AdLargeSquare, AdSkyscraper } from './Ads'
 
 import { Tag, Site } from '../../piousbox-api/src/index'
@@ -46,14 +47,14 @@ class Home extends React.Component {
 
 
   render () {
-    console.log('+++ Home:', this.props, this.state)
+    // console.log('+++ Home:', this.props, this.state)
 
     return (
       <div>
         { /* <Row><div className="features">{ this.state.features }</div></Row> */ }
         <Row>
           <Col sm={12} md={5} >
-            <TagFeature item={this.state.hr} />
+            <TagFeature router={AppRouter} item={this.state.hr} />
             <Newsitems items={this.state.major} />
           </Col>
           <Col sm={12} md={5} >
@@ -61,7 +62,7 @@ class Home extends React.Component {
             { /* <TagFeature item={this.state.salsa} /> */ }
             <Newsitems items={this.state.minor} />
           </Col>
-          <Col sm={12} md={2} >
+          <Col sm={12} md={2} className="hide-on-small">
             <div><AdSkyscraper /></div>
             <div><AdSkyscraper /></div>
             <h1>WDZ</h1>
