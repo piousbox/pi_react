@@ -8,11 +8,11 @@ import config from 'config'
 import AppRouter from './AppRouter'
 import { AdLargeSquare, AdSkyscraper } from './Ads'
 
-import { Tag, Site } from '../../piousbox-api/src/index'
-// import { Tag, Site } from 'piousbox-api'
+// import { Tag, Site } from '../../piousbox-api/src/index'
+import { Tag, Site } from 'piousbox-api'
 
-import { Features, Feature, Newsitems, TagFeature } from '../../piousbox-render/src/index'
-// import { Features } from 'piousbox-render'
+// import { Features, Feature, Newsitems, TagFeature } from '../../piousbox-render/src/index'
+import { Features, Feature, Newsitems, TagFeature } from 'piousbox-render'
 
 class Home extends React.Component {
   constructor (props) {

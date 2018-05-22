@@ -8,8 +8,8 @@ import {
 import config from 'config'
 import AppRouter from './AppRouter'
 
-import { Tag, Site } from '../../piousbox-api/src/index'
-// import { Tag, Site } from 'piousbox-api'
+// import { Tag, Site } from '../../piousbox-api/src/index'
+import { Tag, Site } from 'piousbox-api'
 
 class MainNavigation extends React.Component {
   constructor(props) {
