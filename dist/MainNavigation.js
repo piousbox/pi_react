@@ -14,6 +14,16 @@ var _reactRouterDom = require('react-router-dom');
 
 var _reactBootstrap = require('react-bootstrap');
 
+var _config = require('config');
+
+var _config2 = _interopRequireDefault(_config);
+
+var _AppRouter = require('./AppRouter');
+
+var _AppRouter2 = _interopRequireDefault(_AppRouter);
+
+var _piousboxApi = require('piousbox-api');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22,19 +32,48 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// import { Tag, Site } from '../../piousbox-api/src/index'
+
+
 var MainNavigation = function (_React$Component) {
   _inherits(MainNavigation, _React$Component);
 
-  function MainNavigation() {
+  function MainNavigation(props) {
     _classCallCheck(this, MainNavigation);
 
-    return _possibleConstructorReturn(this, (MainNavigation.__proto__ || Object.getPrototypeOf(MainNavigation)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (MainNavigation.__proto__ || Object.getPrototypeOf(MainNavigation)).call(this, props));
+
+    var site = new _piousboxApi.Site(_config2.default);
+    _this.state = { mainMenu: [] };
+
+    var mainMenu = [];
+    site.all().then(function (_data) {
+      _data.feature_tags.map(function (tag, idx) {
+        mainMenu.push(_react2.default.createElement(
+          'div',
+          { key: idx, className: 'item' },
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: _AppRouter2.default.tagLink(tag) },
+            tag.name
+          )
+        ));
+      });
+      _this.setState({ mainMenu: mainMenu });
+    });
+
+    return _this;
   }
 
   _createClass(MainNavigation, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      console.log('+++ MainNavigation reveices props:', nextProps);
+    }
+  }, {
     key: 'render',
     value: function render() {
-      // console.log('+++ main nav:', this.props)
+      // console.log('+++ MainNavigation render:', this.props, this.state)
 
       return _react2.default.createElement(
         'div',
@@ -91,24 +130,7 @@ var MainNavigation = function (_React$Component) {
                 _react2.default.createElement(
                   'div',
                   { className: 'main-menu' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'item' },
-                    _react2.default.createElement(
-                      _reactRouterDom.Link,
-                      { to: '/contact' },
-                      'Contact'
-                    )
-                  ),
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'item' },
-                    _react2.default.createElement(
-                      _reactRouterDom.Link,
-                      { to: '/blog' },
-                      'Blog'
-                    )
-                  )
+                  this.state.mainMenu
                 )
               )
             )

@@ -16,11 +16,15 @@ var _config = require('config');
 
 var _config2 = _interopRequireDefault(_config);
 
-var _newsitems = require('newsitems');
+var _AppRouter = require('./AppRouter');
 
-var _newsitems2 = _interopRequireDefault(_newsitems);
+var _AppRouter2 = _interopRequireDefault(_AppRouter);
+
+var _Ads = require('./Ads');
 
 var _piousboxApi = require('piousbox-api');
+
+var _piousboxRender = require('piousbox-render');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30,10 +34,10 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// import { Newsitems } from '../../newsitems/src/index'
-
-
 // import { Tag, Site } from '../../piousbox-api/src/index'
+
+
+// import { Features, Feature, Newsitems, TagFeature } from '../../piousbox-render/src/index'
 
 
 var Home = function (_React$Component) {
@@ -44,20 +48,36 @@ var Home = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
 
-    _this.state = {};
+    _this.state = { features: [] };
 
     var tag = new _piousboxApi.Tag(_config2.default);
+    var site = new _piousboxApi.Site(_config2.default);
+
     tag.get('major', { newsitems_per: 5 }).then(function (_data) {
       _this.setState({ major: _data.newsitems });
     });
+    tag.get('minor', { newsitems_per: 5 }).then(function (_data) {
+      _this.setState({ minor: _data.newsitems });
+    });
 
-    /* tag.get('minor').then(_data => {
-      this.setState({ minor: _data })
-    })
-    const site = new Site(config)
-    site.features().then(_data => {
-      this.setState({ features: _data })
-    }) */
+    tag.get('salsa', { newsitems_per: 1 }).then(function (_data) {
+      _this.setState({ salsa: _data });
+    });
+    tag.get('human-resources', { newsitems_per: 1 }).then(function (_data) {
+      _this.setState({ hr: _data });
+    });
+
+    var features = [];
+    site.all().then(function (_data) {
+      _data.features.map(function (f, idx) {
+        features.push(_react2.default.createElement(
+          'div',
+          { key: idx, className: 'item' },
+          _react2.default.createElement(_piousboxRender.Feature, { item: f })
+        ));
+      });
+      _this.setState({ features: features });
+    });
     return _this;
   }
 
@@ -65,7 +85,6 @@ var Home = function (_React$Component) {
     key: 'render',
     value: function render() {
       // console.log('+++ Home:', this.props, this.state)
-      console.log('+++ newsitems:', _newsitems2.default);
 
       return _react2.default.createElement(
         'div',
@@ -76,26 +95,42 @@ var Home = function (_React$Component) {
           _react2.default.createElement(
             _reactBootstrap.Col,
             { sm: 12, md: 5 },
-            _react2.default.createElement(_newsitems.Newsitems, { items: this.state.major })
+            _react2.default.createElement(_piousboxRender.TagFeature, { router: _AppRouter2.default, item: this.state.hr }),
+            _react2.default.createElement(_piousboxRender.Newsitems, { items: this.state.major })
           ),
-          _react2.default.createElement(_reactBootstrap.Col, { sm: 12, md: 5 }),
           _react2.default.createElement(
             _reactBootstrap.Col,
-            { sm: 12, md: 2 },
+            { sm: 12, md: 5 },
+            _react2.default.createElement(_Ads.AdLargeSquare, null),
+            _react2.default.createElement(_piousboxRender.Newsitems, { items: this.state.minor })
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.Col,
+            { sm: 12, md: 2, className: 'hide-on-small' },
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement(_Ads.AdSkyscraper, null)
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement(_Ads.AdSkyscraper, null)
+            ),
             _react2.default.createElement(
               'h1',
               null,
               'WDZ'
             ),
             _react2.default.createElement(
-              'div',
+              'h1',
               null,
-              'skyscraper 1'
+              'TGM'
             ),
             _react2.default.createElement(
-              'div',
+              'h1',
               null,
-              'skyscraper 2'
+              'SKIM.LAW'
             )
           )
         )
