@@ -2,7 +2,7 @@
 let Config = {
   envName: "development",
   apiUrl: "http://localhost:3000",
-  domain: "annesque.com",
+  domain: "piousbox.com",
   lang: "en",
   staticDomain: "http://static.local",
   "port": 8081,

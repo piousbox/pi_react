@@ -65,7 +65,7 @@ function renderFullPage(html, preloadedState) {
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- Optional bootstrap theme -->
         <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-roN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
-        <link rel="stylesheet" href="${config.staticDomain}/annesque.com/style.css" >
+        <link rel="stylesheet" href="${config.staticDomain}/piousbox.com/style.css" >
       </head>
       <body>
         <div id="app">${html}</div>

@@ -44,3 +44,4 @@ WantedBy=multi-user.target
 * ubuntu@ip-10-0-1-81:/etc/systemd/system/multi-user.target.wants$ 
 * sudo ln -s /lib/systemd/system/pi_react.service .
 * sudo systemctl start pi_react.service
+* sudo systemctl restart pi_react.service

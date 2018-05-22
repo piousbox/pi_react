@@ -5,9 +5,32 @@ import {
   Grid, Row, Col,
 } from 'react-bootstrap'
 
+import config from 'config'
+import AppRouter from './AppRouter'
+
+import { Tag, Site } from '../../piousbox-api/src/index'
+// import { Tag, Site } from 'piousbox-api'
+
 class MainNavigation extends React.Component {
+  constructor(props) {
+    super(props)
+    const site = new Site(config)
+    this.state = { mainMenu: [] }
+
+    let mainMenu = []
+    site.all().then(_data => {
+      _data.feature_tags.map((tag, idx) => {
+        mainMenu.push(<div key={idx} className="item"><Link to={AppRouter.tagLink(tag)}>{tag.name}</Link></div>)
+      })
+      this.setState({ mainMenu: mainMenu })
+    })
+
+  }
+  componentWillReceiveProps(nextProps) {
+    console.log('+++ MainNavigation reveices props:', nextProps)
+  }
   render () {
-    // console.log('+++ main nav:', this.props)
+    // console.log('+++ MainNavigation render:', this.props, this.state)
 
     return (
       <div>
@@ -29,10 +52,7 @@ class MainNavigation extends React.Component {
           <Grid>
             <Row>
               <Col xs={12}>
-                <div className="main-menu" >
-                  <div className="item"><Link to="/contact">Contact</Link></div>
-                  <div className="item"><Link to="/blog">Blog</Link></div>
-                </div>
+                <div className="main-menu" >{ this.state.mainMenu }</div>
               </Col>
             </Row>
           </Grid>
