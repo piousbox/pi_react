@@ -1,7 +1,8 @@
 
 # Intro
 
-pi_react, serving piousbox.com
+pi_react, serving piousbox.com - with isomorphic router/renderer.
+I'm not using this b/c pi.com is already on wp, so this is just an obsolete playground.
 
 # Develop
  NODE_ENV=development_production NODE_PATH=./config/development_production node dist/server.js
@@ -54,6 +55,7 @@ ssh into app_81
  git pull
  npm install
  sudo systemctl restart pi_react.service
+ sudo systemctl status pi_react.service
  journalctl -u pi_react.service
  
  NODE_ENV=production NODE_PATH=/home/ubuntu/projects/pi_react/current/config/production /usr/bin/node /home/ubuntu/projects/pi_react/current/dist/server.js
